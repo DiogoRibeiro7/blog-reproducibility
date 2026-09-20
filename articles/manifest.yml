@@ -117,3 +117,95 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  aspartame-fruit-true-premise-bad-argument:
+    path: _posts/healthcare/2026-07-12-aspartame_fruit_true_premise_bad_argument.md
+    permalink: /healthcare/aspartame_fruit_true_premise_bad_argument/
+    modules:
+      - blog_reproducibility.health.aspartame_dose
+      - blog_reproducibility.health.aspartame_dose_figure
+    figure_scripts:
+      - scripts/figures/health/aspartame_dose.py
+    generated_figures:
+      - build/figures/health/aspartame_methanol_sources.png
+      - build/figures/health/aspartame_blood_methanol.png
+    tests:
+      - tests/health/test_aspartame_dose.py
+      - tests/health/test_aspartame_dose_figure.py
+    original_website_sources:
+      - assets/viz/generate_aspartame_dose_figures.py
+      - tests/test_aspartame_dose_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  hormone-balance-social-media-myth:
+    path: _posts/healthcare/2026-02-18-hormone_balance_social_media_myth.md
+    permalink: /healthcare/hormone_balance_social_media_myth/
+    modules:
+      - blog_reproducibility.health.hormone_testing
+      - blog_reproducibility.health.hormone_testing_figure
+    figure_scripts:
+      - scripts/figures/health/hormone_testing.py
+    generated_figures:
+      - build/figures/health/hormone_panel_false_flags.png
+      - build/figures/health/hormone_reference_change_values.png
+    tests:
+      - tests/health/test_hormone_testing.py
+      - tests/health/test_hormone_testing_figure.py
+    original_website_sources:
+      - assets/viz/generate_hormone_testing_figures.py
+      - tests/test_hormone_testing_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  consumer-microbiome-testing-limits:
+    path: _posts/healthcare/2026-03-05-consumer_microbiome_testing_limits.md
+    permalink: /healthcare/consumer_microbiome_testing_limits/
+    modules:
+      - blog_reproducibility.health.microbiome_testing
+      - blog_reproducibility.health.microbiome_testing_figure
+    figure_scripts:
+      - scripts/figures/health/microbiome_testing.py
+    generated_figures:
+      - build/figures/health/microbiome_compositional_closure.png
+      - build/figures/health/microbiome_flag_repeatability.png
+    tests:
+      - tests/health/test_microbiome_testing.py
+      - tests/health/test_microbiome_testing_figure.py
+    original_website_sources:
+      - assets/viz/generate_microbiome_testing_figures.py
+      - tests/test_microbiome_testing_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  parasite-cleanse-social-media-myth:
+    path: _posts/healthcare/2026-01-24-parasite_cleanse_social_media_myth.md
+    permalink: /healthcare/parasite_cleanse_social_media_myth/
+    modules:
+      - blog_reproducibility.health.parasite_testing
+      - blog_reproducibility.health.parasite_testing_figure
+    figure_scripts:
+      - scripts/figures/health/parasite_testing.py
+    generated_figures:
+      - build/figures/health/parasite_repeat_sampling.png
+      - build/figures/health/parasite_negative_results.png
+    tests:
+      - tests/health/test_parasite_testing.py
+      - tests/health/test_parasite_testing_figure.py
+    original_website_sources:
+      - assets/viz/generate_parasite_testing_figures.py
+      - tests/test_parasite_testing_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
