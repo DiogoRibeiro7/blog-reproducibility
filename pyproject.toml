@@ -6,9 +6,11 @@ authors = ["Diogo Ribeiro"]
 license = "MIT"
 readme = "README.md"
 packages = [{ include = "blog_reproducibility", from = "src" }]
+include = ["src/blog_reproducibility/common/house.mplstyle"]
 
 [tool.poetry.dependencies]
 python = ">=3.11,<4.0"
+matplotlib = ">=3.9,<4.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = ">=1.14,<2.0"
