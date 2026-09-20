@@ -34,16 +34,21 @@ jobs:
         run: poetry check
 
       - name: Install dependencies
+        id: install
         run: poetry install --no-interaction
 
       - name: Ruff lint
+        if: ${{ always() && steps.install.outcome == 'success' }}
         run: poetry run ruff check .
 
       - name: Ruff format
+        if: ${{ always() && steps.install.outcome == 'success' }}
         run: poetry run ruff format --check .
 
       - name: Type check
+        if: ${{ always() && steps.install.outcome == 'success' }}
         run: poetry run mypy src tests
 
       - name: Test
+        if: ${{ always() && steps.install.outcome == 'success' }}
         run: poetry run pytest --cov=blog_reproducibility --cov-report=term-missing

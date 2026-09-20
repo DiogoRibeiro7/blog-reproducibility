@@ -10,13 +10,19 @@ articles:
     permalink: /data-science/advanced_sequential_changepoint/
     modules:
       - blog_reproducibility.time_series.sequential_cusum
+      - blog_reproducibility.time_series.sequential_cusum_figure
+    figure_scripts:
+      - scripts/figures/time_series/sequential_cusum.py
+    generated_figures:
+      - build/figures/time_series/sequential_cusum_worked_example.png
     tests:
       - tests/time_series/test_sequential_cusum.py
+      - tests/time_series/test_sequential_cusum_figure.py
     original_website_sources:
       - assets/viz/generate_sequential_changepoint_figure.py
       - tests/test_sequential_cusum.py
     migration:
       numerical_model: migrated
       reproducibility_tests: migrated
-      figure_renderer: pending
+      figure_renderer: migrated
       website_cleanup: pending
