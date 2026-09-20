@@ -4,17 +4,19 @@ website:
   repository: DiogoRibeiro7/DiogoRibeiro7.github.io
   branch: master
 
-# Each migrated article will be registered here.
-#
-# Example:
-#
-# articles:
-#   aspartame-fruit-true-premise-bad-argument:
-#     path: _posts/healthcare/2026-07-12-aspartame_fruit_true_premise_bad_argument.md
-#     modules:
-#       - blog_reproducibility.health.aspartame
-#     figure_scripts:
-#       - scripts/figures/health/aspartame.py
-#     tests:
-#       - tests/health/test_aspartame.py
-articles: {}
+articles:
+  advanced-sequential-changepoint:
+    path: _posts/data_science/2024-02-14-advanced_sequential_changepoint.md
+    permalink: /data-science/advanced_sequential_changepoint/
+    modules:
+      - blog_reproducibility.time_series.sequential_cusum
+    tests:
+      - tests/time_series/test_sequential_cusum.py
+    original_website_sources:
+      - assets/viz/generate_sequential_changepoint_figure.py
+      - tests/test_sequential_cusum.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: pending
+      website_cleanup: pending

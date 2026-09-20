@@ -37,8 +37,8 @@ The current website inventory includes work for:
 ## Phase 2 — Shared foundations
 
 - [ ] Migrate plotting style utilities into `blog_reproducibility.common`.
-- [ ] Separate numerical models from plotting functions.
-- [ ] Define deterministic random-number handling for simulations.
+- [x] Separate numerical models from plotting functions for the first migrated article.
+- [x] Define deterministic random-number handling for the first migrated simulation.
 - [ ] Define a common output directory contract for generated figures.
 - [ ] Add small typed helpers only where repeated code justifies them.
 
@@ -66,6 +66,10 @@ The current website inventory includes work for:
 ### Time series
 
 - [ ] Sequential CUSUM/change-point example.
+  - [x] Numerical model and deterministic simulation.
+  - [x] Reproducibility tests and article manifest.
+  - [ ] Figure renderer and shared plotting style.
+  - [ ] Website cleanup and article-link rewiring.
 
 ### Physics and scientific communication
 
@@ -90,8 +94,10 @@ The current website inventory includes work for:
 ## Phase 5 — Reproducibility tests
 
 - [ ] Move article-specific numerical tests from the website repository.
+  - [x] Sequential CUSUM numerical tests migrated.
 - [ ] Preserve tests that verify numbers quoted in published articles.
-- [ ] Add invariant/property tests for numerical code where useful.
+  - [x] Sequential CUSUM published values are explicitly regression-tested.
+- [x] Add invariant/property-style tests for the first migrated numerical model.
 - [ ] Add regression tests for benchmark summaries.
 - [ ] Keep website-layout, Markdown, theme, and link tests in the website repository.
 
