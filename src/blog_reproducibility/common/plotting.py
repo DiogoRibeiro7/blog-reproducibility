@@ -14,6 +14,7 @@ DEFAULT_FIGURE_OUTPUT_DIR: Final[Path] = Path("build") / "figures"
 
 SURFACE: Final[str] = "#f7f9fa"
 INK_SECONDARY: Final[str] = "#52514e"
+INK_MUTED: Final[str] = "#898781"
 
 PALETTE: Final[tuple[str, ...]] = (
     "#2a78d6",

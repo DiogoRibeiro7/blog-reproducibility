@@ -25,4 +25,27 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
+      website_cleanup: complete
+
+  why-a-small-p-value-does-not-settle-a-claim:
+    path: _posts/science_communication/2024-11-07-why_a_small_p_value_does_not_settle_a_claim.md
+    permalink: /science-communication/why_a_small_p_value_does_not_settle_a_claim/
+    modules:
+      - blog_reproducibility.statistics.pvalue_evidence
+      - blog_reproducibility.statistics.pvalue_evidence_figure
+    figure_scripts:
+      - scripts/figures/statistics/pvalue_evidence.py
+    generated_figures:
+      - build/figures/statistics/science_pvalue_selected_studies.png
+      - build/figures/statistics/science_pvalue_study_comparison.png
+    tests:
+      - tests/statistics/test_pvalue_evidence.py
+      - tests/statistics/test_pvalue_evidence_figure.py
+    original_website_sources:
+      - assets/viz/generate_pvalue_evidence_figures.py
+      - tests/test_pvalue_evidence_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
       website_cleanup: pending

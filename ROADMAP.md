@@ -36,10 +36,10 @@ The current website inventory includes work for:
 
 ## Phase 2 — Shared foundations
 
-- [ ] Migrate plotting style utilities into `blog_reproducibility.common`.
+- [x] Migrate plotting style utilities into `blog_reproducibility.common`.
 - [x] Separate numerical models from plotting functions for the first migrated article.
 - [x] Define deterministic random-number handling for the first migrated simulation.
-- [ ] Define a common output directory contract for generated figures.
+- [x] Define a common output directory contract for generated figures.
 - [ ] Add small typed helpers only where repeated code justifies them.
 
 ## Phase 3 — Domain migration
@@ -48,7 +48,7 @@ The current website inventory includes work for:
 
 - [ ] Confidence-set examples.
 - [ ] Coverage demonstrations.
-- [ ] P-value/evidence models.
+- [x] P-value/evidence model, tests, and figure renderers.
 - [ ] Poll-selection models.
 - [ ] Results-rhetoric models.
 
@@ -68,8 +68,8 @@ The current website inventory includes work for:
 - [ ] Sequential CUSUM/change-point example.
   - [x] Numerical model and deterministic simulation.
   - [x] Reproducibility tests and article manifest.
-  - [ ] Figure renderer and shared plotting style.
-  - [ ] Website cleanup and article-link rewiring.
+  - [x] Figure renderer and shared plotting style.
+  - [x] Website cleanup and article-link rewiring.
 
 ### Physics and scientific communication
 
@@ -85,9 +85,9 @@ The current website inventory includes work for:
 
 ## Phase 4 — Figure generation
 
-- [ ] Replace monolithic figure generation with article/domain entry points.
-- [ ] Write generated output to `build/figures/`.
-- [ ] Make every figure generation command deterministic where applicable.
+- [x] Establish article/domain figure entry points for migrated articles.
+- [x] Write generated output to `build/figures/`.
+- [x] Make migrated figure generation commands deterministic where applicable.
 - [ ] Record the source module and article identifier in figure metadata where practical.
 - [ ] Keep publication-ready rendered assets in the website repository.
 
@@ -95,8 +95,10 @@ The current website inventory includes work for:
 
 - [ ] Move article-specific numerical tests from the website repository.
   - [x] Sequential CUSUM numerical tests migrated.
+  - [x] P-value evidence numerical tests migrated.
 - [ ] Preserve tests that verify numbers quoted in published articles.
   - [x] Sequential CUSUM published values are explicitly regression-tested.
+  - [x] P-value evidence article values are explicitly regression-tested.
 - [x] Add invariant/property-style tests for the first migrated numerical model.
 - [ ] Add regression tests for benchmark summaries.
 - [ ] Keep website-layout, Markdown, theme, and link tests in the website repository.
