@@ -111,28 +111,34 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 - [x] Write generated output to `build/figures/`.
 - [x] Make migrated figure generation commands deterministic where applicable.
 - [ ] Record the source module and article identifier in figure metadata where practical.
-- [ ] Keep publication-ready rendered assets in the website repository.
+- [x] Keep publication-ready rendered assets in the website repository.
 
 ## Phase 5 — Reproducibility tests
 
-- [ ] Move article-specific numerical tests from the website repository.
+- [x] Move article-specific numerical tests from the website repository.
   - [x] Sequential CUSUM numerical tests migrated.
   - [x] P-value evidence numerical tests migrated.
-- [ ] Preserve tests that verify numbers quoted in published articles.
+- [x] Preserve tests that verify numbers quoted in published articles.
   - [x] Sequential CUSUM published values are explicitly regression-tested.
   - [x] P-value evidence article values are explicitly regression-tested.
 - [x] Add invariant/property-style tests for the first migrated numerical model.
 - [x] Add regression tests for benchmark summaries.
-- [ ] Keep website-layout, Markdown, theme, and link tests in the website repository.
+- [x] Keep website-layout, Markdown, theme, and link tests in the website repository.
 
 ## Phase 6 — Website rewiring
 
-- [ ] Update the website `/code/` page to point here.
-- [ ] Add reproducibility links to relevant articles.
-- [ ] Remove migrated scientific Python from the website repository.
-- [ ] Remove scientific Python test dependencies from the website CI.
-- [ ] Keep rendered figures and article content in the website repository.
-- [ ] Verify that no article URL changes during the migration.
+- [x] Update the website `/code/` page to point here.
+- [x] Add reproducibility links to relevant articles.
+- [x] Remove migrated scientific Python from the website repository.
+- [x] Keep the website's own Python tests there: post layout, Markdown
+      delimiters, theme synchronisation, and the cited-author reference checks
+      that used to sit inside the migrated model tests.
+- [x] Keep rendered figures and article content in the website repository.
+- [x] Verify that no article URL changes during the migration.
+- [ ] Migrate `assets/viz/generate_figures.py`, the last scientific Python in
+      the website repository. See
+      [docs/migration-inventory.md](docs/migration-inventory.md#7-generate_figurespy--the-one-outstanding-migration)
+      for its contents, its cost, and the suggested order.
 
 ## Phase 7 — Hardening
 
