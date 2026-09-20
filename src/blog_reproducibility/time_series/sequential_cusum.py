@@ -1,9 +1,10 @@
 """Sequential upper-CUSUM calculations used by the blog's change-point article."""
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 from math import isfinite
 from random import Random
-from typing import Final, Iterable
+from typing import Final
 
 DEFAULT_SEED: Final[int] = 42
 DEFAULT_BASELINE: Final[float] = 0.0
@@ -126,7 +127,7 @@ def seeded_mean_shift_example(*, seed: int = DEFAULT_SEED) -> SequentialCusumExa
         data,
         baseline=baseline,
         target_shift=target_shift,
-        threshold=DEFAULD_THRESHOLD,
+        threshold=DEFAULT_THRESHOLD,
     )
 
     return SequentialCusumExample(
