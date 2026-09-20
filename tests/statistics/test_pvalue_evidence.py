@@ -21,10 +21,7 @@ def test_rejection_probability_matches_direct_density_integration() -> None:
     normal = NormalDist(2.0, 1.0)
     samples = 16_000
     width = 2.0 * cutoff / samples
-    inside = sum(
-        normal.pdf(-cutoff + (index + 0.5) * width)
-        for index in range(samples)
-    ) * width
+    inside = sum(normal.pdf(-cutoff + (index + 0.5) * width) for index in range(samples)) * width
 
     assert rejection_probability() == pytest.approx(1.0 - inside, abs=1e-8)
     assert two_sided_p(2.0) == pytest.approx(2.0 * NormalDist().cdf(-2.0))
@@ -125,9 +122,7 @@ def test_article_regression_values() -> None:
     assert two_sided_p(2.0) == pytest.approx(0.04550026389635844)
     assert selected.power == pytest.approx(0.516005273976175)
     assert selected.signal_given_rejection == pytest.approx(0.5341640339625117)
-    assert selected.repeat_rejection_given_first_rejection == pytest.approx(
-        0.29892325699491906
-    )
+    assert selected.repeat_rejection_given_first_rejection == pytest.approx(0.29892325699491906)
     assert study_a.p_value == pytest.approx(0.04550026389635844)
     assert study_b.p_value == pytest.approx(0.08411869479791355)
     assert difference.p_value == pytest.approx(0.94636892512424)
