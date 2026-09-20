@@ -116,10 +116,7 @@ def seeded_mean_shift_example(*, seed: int = DEFAULT_SEED) -> SequentialCusumExa
 
     data = tuple(
         [rng.gauss(baseline, sigma) for _ in range(first_changed_index)]
-        + [
-            rng.gauss(changed_mean, sigma)
-            for _ in range(DEFAULT_SAMPLE_SIZE - first_changed_index)
-        ]
+        + [rng.gauss(changed_mean, sigma) for _ in range(DEFAULT_SAMPLE_SIZE - first_changed_index)]
     )
 
     target_shift = changed_mean - baseline
