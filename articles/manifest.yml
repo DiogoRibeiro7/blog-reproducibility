@@ -49,3 +49,71 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  confidence-sets-are-not-just-intervals:
+    path: _posts/statistics/2026-09-12-confidence_sets_are_not_just_intervals.md
+    permalink: /statistics/confidence_sets_are_not_just_intervals/
+    modules:
+      - blog_reproducibility.statistics.confidence_sets
+      - blog_reproducibility.statistics.confidence_sets_figure
+    figure_scripts:
+      - scripts/figures/statistics/confidence_sets.py
+    generated_figures:
+      - build/figures/statistics/confidence_set_components.png
+      - build/figures/statistics/confidence_set_profile_basins.png
+    tests:
+      - tests/statistics/test_confidence_sets.py
+      - tests/statistics/test_confidence_sets_figure.py
+    original_website_sources:
+      - assets/viz/generate_confidence_set_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  why-a-million-responses-can-still-give-the-wrong-answer:
+    path: _posts/science_communication/2024-09-12-why_a_million_responses_can_still_give_the_wrong_answer.md
+    permalink: /science-communication/why_a_million_responses_can_still_give_the_wrong_answer/
+    modules:
+      - blog_reproducibility.statistics.poll_selection
+      - blog_reproducibility.statistics.poll_selection_figure
+    figure_scripts:
+      - scripts/figures/statistics/poll_selection.py
+    generated_figures:
+      - build/figures/statistics/science_poll_selection_precision.png
+      - build/figures/statistics/science_poll_selection_weighting.png
+    tests:
+      - tests/statistics/test_poll_selection.py
+      - tests/statistics/test_poll_selection_figure.py
+    original_website_sources:
+      - assets/viz/generate_poll_selection_figures.py
+      - tests/test_poll_selection_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  what-before-and-after-testimonials-can-establish:
+    path: _posts/science_communication/2026-09-19-what_before_and_after_testimonials_can_establish.md
+    permalink: /science-communication/what_before_and_after_testimonials_can_establish/
+    modules:
+      - blog_reproducibility.statistics.testimonial_selection
+      - blog_reproducibility.statistics.testimonial_selection_figure
+    figure_scripts:
+      - scripts/figures/statistics/testimonial_selection.py
+    generated_figures:
+      - build/figures/statistics/science_testimonial_selection.png
+      - build/figures/statistics/science_testimonial_counterfactual.png
+    tests:
+      - tests/statistics/test_testimonial_selection.py
+      - tests/statistics/test_testimonial_selection_figure.py
+    original_website_sources:
+      - assets/viz/generate_testimonial_figures.py
+      - tests/test_testimonial_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending

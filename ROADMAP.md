@@ -47,17 +47,18 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 - [x] Separate numerical models from plotting functions for the first migrated article.
 - [x] Define deterministic random-number handling for the first migrated simulation.
 - [x] Define a common output directory contract for generated figures.
-- [ ] Add small typed helpers only where repeated code justifies them.
+- [x] Add small typed helpers only where repeated code justifies them.
 
 ## Phase 3 — Domain migration
 
 ### Statistics
 
-- [ ] Confidence-set examples.
+- [x] Confidence-set examples: inversion, hull cost, Fieller sets, profile projection.
 - [ ] Coverage demonstrations.
 - [x] P-value/evidence model, tests, and figure renderers.
-- [ ] Poll-selection models.
+- [x] Poll-selection models.
 - [ ] Results-rhetoric models.
+- [x] Testimonial selection and regression to the mean.
 
 ### Health and evidence communication
 
@@ -121,7 +122,10 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 
 ## Phase 7 — Hardening
 
-- [ ] Add a manifest validation test.
+- [x] Add a manifest schema and validation tests for local references and outputs.
+- [x] Lock dependencies and verify installed package resources.
+- [x] Add a manifest-driven reproduction command with environment and checksum reports.
+- [x] Document contributor, article migration, and maintenance workflows.
 - [ ] Add provenance metadata for external datasets.
 - [ ] Add checksums for immutable small inputs.
 - [ ] Document reproducibility limitations for external APIs or changing datasets.
