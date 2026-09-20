@@ -1,0 +1,34 @@
+name: Bug or reproducibility failure
+description: Report a calculation, rendering, installation, or test failure.
+title: "[Bug]: "
+body:
+  - type: input
+    id: article
+    attributes:
+      label: Article or component
+      description: Article identifier, URL, or affected repository component.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How to reproduce
+      description: Include the exact command and minimal input needed to reproduce the problem.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and observed result
+      description: For numerical differences, include values, units, and the relevant article claim.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include the commit, operating system, Python version, and Poetry version. A reproduction.json excerpt can help; remove personal paths.
+      render: text
+    validations:
+      required: true

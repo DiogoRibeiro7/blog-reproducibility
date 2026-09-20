@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: >-
+  Cite this software and the associated article when using these computations.
+  Include the repository commit or release used to reproduce the result.
+type: software
+title: blog-reproducibility
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+repository-code: https://github.com/DiogoRibeiro7/blog-reproducibility
+url: https://diogoribeiro7.github.io/
+abstract: >-
+  Reproducible computations, numerical checks, and figure-generation code
+  supporting articles published by Diogo Ribeiro.
+license: MIT

@@ -1,0 +1,23 @@
+name: Article migration or improvement
+description: Propose a computational example, migration, or reproducibility improvement.
+title: "[Proposal]: "
+body:
+  - type: input
+    id: article
+    attributes:
+      label: Article or source
+      description: Link the article or original implementation where applicable.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed change
+      description: Describe the numerical claim or workflow this would improve.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Evidence and validation
+      description: Describe reference values, independent checks, required data, and expected figures.
+    validations:
+      required: true

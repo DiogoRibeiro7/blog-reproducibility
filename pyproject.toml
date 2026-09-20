@@ -1,23 +1,63 @@
-[tool.poetry]
+[project]
 name = "blog-reproducibility"
 version = "0.1.0"
 description = "Reproducible computations and figures supporting articles on DiogoRibeiro7.github.io"
-authors = ["Diogo Ribeiro"]
+authors = [{ name = "Diogo Ribeiro" }]
 license = "MIT"
+license-files = ["LICENSE"]
 readme = "README.md"
-packages = [{ include = "blog_reproducibility", from = "src" }]
-include = ["src/blog_reproducibility/common/house.mplstyle"]
+requires-python = ">=3.11,<4.0"
+keywords = ["reproducibility", "statistics", "scientific-computing", "visualization"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+dependencies = ["matplotlib>=3.9,<4.0", "cycler>=0.12.1,<0.13"]
 
-[tool.poetry.dependencies]
-python = ">=3.11,<4.0"
-matplotlib = ">=3.9,<4.0"
+[project.urls]
+Homepage = "https://diogoribeiro7.github.io/"
+Repository = "https://github.com/DiogoRibeiro7/blog-reproducibility"
+Documentation = "https://github.com/DiogoRibeiro7/blog-reproducibility/tree/main/docs"
+Issues = "https://github.com/DiogoRibeiro7/blog-reproducibility/issues"
+Changelog = "https://github.com/DiogoRibeiro7/blog-reproducibility/blob/main/CHANGELOG.md"
+
+[tool.poetry]
+requires-poetry = ">=2.2,<3.0"
+packages = [{ include = "blog_reproducibility", from = "src" }]
+include = [
+    { path = "src/blog_reproducibility/common/house.mplstyle", format = ["sdist", "wheel"] },
+    { path = "src/blog_reproducibility/py.typed", format = ["sdist", "wheel"] },
+    { path = "articles", format = "sdist" },
+    { path = "scripts", format = "sdist" },
+    { path = "tests", format = "sdist" },
+    { path = "docs", format = "sdist" },
+    { path = "data", format = "sdist" },
+    { path = "poetry.lock", format = "sdist" },
+    { path = "poetry.toml", format = "sdist" },
+    { path = "*.md", format = "sdist" },
+    { path = "CITATION.cff", format = "sdist" },
+    { path = "notebooks/README.md", format = "sdist" },
+    { path = ".pre-commit-config.yaml", format = "sdist" },
+]
 
 [tool.poetry.group.dev.dependencies]
 mypy = ">=1.14,<2.0"
 pre-commit = ">=4.0,<5.0"
 pytest = ">=8.0,<10.0"
-pytest-cov = ">=6.0,<8.0"
+pytest-cov = ">=7.0,<8.0"
+coverage = ">=7.10.6,<8.0"
 ruff = ">=0.9,<1.0"
+pyyaml = ">=6.0,<7.0"
+jsonschema = ">=4.23,<5.0"
+types-pyyaml = ">=6.0,<7.0"
+types-jsonschema = ">=4.23,<5.0"
 
 [tool.poetry.group.benchmarks]
 # The data-engineering harnesses under scripts/benchmarks/ need these. They take
@@ -33,13 +73,13 @@ psutil = ">=6.0,<8.0"
 pyarrow = ">=17.0"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
+requires = ["poetry-core>=2.2.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 target-version = "py311"
 line-length = 100
-src = ["src", "tests"]
+src = ["src", "scripts", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]
@@ -48,21 +88,31 @@ ignore = []
 [tool.ruff.format]
 docstring-code-format = true
 
+[tool.ruff.lint.isort]
+known-first-party = ["blog_reproducibility", "scripts"]
+
 [tool.mypy]
-python_version = "3.11"
 strict = true
 mypy_path = "src"
 warn_unreachable = true
 pretty = true
+# Manual benchmark harnesses retain their original untyped implementation.
+exclude = ["^scripts/benchmarks/"]
 
 [tool.pytest.ini_options]
 addopts = "-ra --strict-config --strict-markers"
 testpaths = ["tests"]
+pythonpath = ["."]
 
 [tool.coverage.run]
 branch = true
-source = ["blog_reproducibility"]
+patch = ["subprocess"]
+source = ["blog_reproducibility", "scripts"]
+omit = ["*/scripts/check_distribution.py", "*/scripts/benchmarks/*"]
 
 [tool.coverage.report]
+# Child renderers can run from temporary directories, so use absolute-path globs.
+omit = ["*/scripts/check_distribution.py", "*/scripts/benchmarks/*"]
 show_missing = true
 skip_covered = true
+fail_under = 90
