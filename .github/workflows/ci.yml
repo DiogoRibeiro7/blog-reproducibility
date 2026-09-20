@@ -3,8 +3,9 @@ name: CI
 on:
   push:
     branches: ["main"]
+  # No branch filter: the migration is reviewed as a stack of pull requests,
+  # and one whose base is another feature branch still has to be checked.
   pull_request:
-    branches: ["main"]
 
 permissions:
   contents: read
