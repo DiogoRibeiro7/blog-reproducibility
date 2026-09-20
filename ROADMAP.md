@@ -55,6 +55,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 
 - [x] Confidence-set examples: inversion, hull cost, Fieller sets, profile projection.
 - [x] Coverage demonstrations — the confidence-set coverage simulation.
+- [x] Randomisation balance (draft).
 - [x] P-value/evidence model, tests, and figure renderers.
 - [x] Poll-selection models.
 - [x] Results-rhetoric models — migrated under `health.results_rhetoric`.
@@ -69,6 +70,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 - [x] Microbiome-testing model.
 - [x] Parasite-testing model.
 - [x] Screening/survival model.
+- [x] Adaptive personal baseline (draft).
 - [x] Testimonial model — migrated under `statistics.testimonial_selection`,
       because the mechanism is selection on a baseline rather than anything clinical.
 
@@ -92,9 +94,10 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 
 ### Data engineering
 
-- [ ] Data-lake benchmarks.
-- [ ] Database benchmarks.
-- [ ] Preserve benchmark provenance and environment metadata.
+- [x] Data-lake benchmarks.
+- [x] Database benchmarks.
+- [x] Preserve benchmark provenance and environment metadata.
+- [x] Storage dispatch ledger (draft).
 
 ## Phase 4 — Figure generation
 
@@ -113,7 +116,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
   - [x] Sequential CUSUM published values are explicitly regression-tested.
   - [x] P-value evidence article values are explicitly regression-tested.
 - [x] Add invariant/property-style tests for the first migrated numerical model.
-- [ ] Add regression tests for benchmark summaries.
+- [x] Add regression tests for benchmark summaries.
 - [ ] Keep website-layout, Markdown, theme, and link tests in the website repository.
 
 ## Phase 6 — Website rewiring
@@ -131,7 +134,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 - [x] Lock dependencies and verify installed package resources.
 - [x] Add a manifest-driven reproduction command with environment and checksum reports.
 - [x] Document contributor, article migration, and maintenance workflows.
-- [ ] Add provenance metadata for external datasets.
+- [x] Add provenance metadata for the benchmark records.
 - [ ] Add checksums for immutable small inputs.
-- [ ] Document reproducibility limitations for external APIs or changing datasets.
+- [x] Document reproducibility limitations for the benchmark records.
 - [ ] Add release tags for coherent reproducibility snapshots.

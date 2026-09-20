@@ -455,3 +455,127 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  a-database-for-analysis:
+    path: _posts/data_science/2026-09-19-a_database_for_analysis_rows_columns_indexes.md
+    permalink: /data-science/a_database_for_analysis_rows_columns_indexes/
+    modules:
+      - blog_reproducibility.engineering.benchmark_results
+      - blog_reproducibility.engineering.database_benchmarks
+      - blog_reproducibility.engineering.database_benchmarks_figure
+    figure_scripts:
+      - scripts/figures/engineering/database_benchmarks.py
+    benchmark_harness: scripts/benchmarks/database_benchmarks.py
+    generated_figures:
+      - build/figures/engineering/database_rows_versus_columns.png
+      - build/figures/engineering/database_index_helps_and_hurts.png
+    tests:
+      - tests/engineering/test_database_benchmarks.py
+      - tests/engineering/test_database_benchmarks_figure.py
+    data_inputs:
+      - data/engineering/database_benchmarks.json
+    original_website_sources:
+      - assets/viz/database_benchmarks.py
+      - assets/viz/database_benchmarks.json
+      - assets/viz/generate_database_figures.py
+      - tests/test_database_benchmarks.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  a-data-lake-is-a-directory-with-rules:
+    path: _posts/data_science/2026-09-19-a_data_lake_is_a_directory_with_rules.md
+    permalink: /data-science/a_data_lake_is_a_directory_with_rules/
+    modules:
+      - blog_reproducibility.engineering.benchmark_results
+      - blog_reproducibility.engineering.data_lake_benchmarks
+      - blog_reproducibility.engineering.data_lake_benchmarks_figure
+    figure_scripts:
+      - scripts/figures/engineering/data_lake_benchmarks.py
+    benchmark_harness: scripts/benchmarks/data_lake_benchmarks.py
+    generated_figures:
+      - build/figures/engineering/data_lake_formats_and_columns.png
+      - build/figures/engineering/data_lake_partition_layouts.png
+    tests:
+      - tests/engineering/test_data_lake_benchmarks.py
+      - tests/engineering/test_data_lake_benchmarks_figure.py
+    data_inputs:
+      - data/engineering/data_lake_benchmarks.json
+    original_website_sources:
+      - assets/viz/data_lake_benchmarks.py
+      - assets/viz/data_lake_benchmarks.json
+      - assets/viz/generate_data_lake_figures.py
+      - tests/test_data_lake_benchmarks.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+# Unpublished drafts. The prose is still in _drafts/ on the website, so there is
+# no permalink yet, but the models are real and their checks are worth keeping.
+drafts:
+  randomisation-and-baseline-balance:
+    path: _drafts/ideas/randomisation-and-baseline-balance.md
+    modules:
+      - blog_reproducibility.statistics.randomisation_balance
+      - blog_reproducibility.statistics.randomisation_balance_figure
+    figure_scripts:
+      - scripts/figures/statistics/randomisation_balance.py
+    generated_figures:
+      - build/figures/statistics/research_randomisation_balance.png
+    tests:
+      - tests/statistics/test_randomisation_balance.py
+      - tests/statistics/test_randomisation_balance_figure.py
+    original_website_sources:
+      - assets/viz/generate_coverage_draft_figures.py
+      - tests/test_coverage_draft_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  storage-must-balance-power-energy-and-losses:
+    path: _drafts/ideas/storage-must-balance-power-energy-and-losses.md
+    modules:
+      - blog_reproducibility.engineering.storage_ledger
+      - blog_reproducibility.engineering.storage_ledger_figure
+    figure_scripts:
+      - scripts/figures/engineering/storage_ledger.py
+    generated_figures:
+      - build/figures/engineering/environment_storage_constraints.png
+    tests:
+      - tests/engineering/test_storage_ledger.py
+      - tests/engineering/test_storage_ledger_figure.py
+    original_website_sources:
+      - assets/viz/generate_coverage_draft_figures.py
+      - tests/test_coverage_draft_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  a-personal-baseline-can-learn-the-change:
+    path: _drafts/ideas/a-personal-baseline-can-learn-the-change.md
+    modules:
+      - blog_reproducibility.health.adaptive_baseline
+      - blog_reproducibility.health.adaptive_baseline_figure
+    figure_scripts:
+      - scripts/figures/health/adaptive_baseline.py
+    generated_figures:
+      - build/figures/health/healthcare_adaptive_baseline.png
+    tests:
+      - tests/health/test_adaptive_baseline.py
+      - tests/health/test_adaptive_baseline_figure.py
+    original_website_sources:
+      - assets/viz/generate_coverage_draft_figures.py
+      - tests/test_coverage_draft_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
