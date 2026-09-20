@@ -50,18 +50,18 @@ The current website inventory includes work for:
 - [ ] Coverage demonstrations.
 - [x] P-value/evidence model, tests, and figure renderers.
 - [x] Poll-selection models.
-- [ ] Results-rhetoric models.
+- [x] Results-rhetoric models — migrated under `health.results_rhetoric`.
 - [x] Testimonial selection and regression to the mean.
 
 ### Health and evidence communication
 
 - [x] Aspartame dose model.
 - [x] Hormone-testing model.
-- [ ] Inflammation-marker model.
-- [ ] Leaky-gut model.
+- [x] Inflammation-marker model.
+- [x] Leaky-gut model.
 - [x] Microbiome-testing model.
 - [x] Parasite-testing model.
-- [ ] Screening/survival model.
+- [x] Screening/survival model.
 - [x] Testimonial model — migrated under `statistics.testimonial_selection`,
       because the mechanism is selection on a baseline rather than anything clinical.
 

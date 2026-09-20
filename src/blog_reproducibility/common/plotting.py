@@ -13,8 +13,11 @@ STYLE_PATH: Final[Path] = Path(__file__).with_name("house.mplstyle")
 DEFAULT_FIGURE_OUTPUT_DIR: Final[Path] = Path("build") / "figures"
 
 SURFACE: Final[str] = "#f7f9fa"
+INK_PRIMARY: Final[str] = "#0b0b0b"
 INK_SECONDARY: Final[str] = "#52514e"
 INK_MUTED: Final[str] = "#898781"
+GRID: Final[str] = "#e1e0d9"
+BASELINE: Final[str] = "#c3c2b7"
 
 PALETTE: Final[tuple[str, ...]] = (
     "#2a78d6",

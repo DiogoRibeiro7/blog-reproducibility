@@ -19,10 +19,10 @@ Sources are named beside each constant.
 """
 
 from dataclasses import dataclass
-from math import sqrt
 from statistics import NormalDist
 from typing import Final
 
+from blog_reproducibility.common.bivariate import conditional_top_share
 from blog_reproducibility.common.validation import count, positive, probability
 
 __all__ = [
@@ -94,27 +94,9 @@ def flagged_again(reliability: float, *, top: float = 0.05, step: float = 0.001)
     """Chance a taxon in its top share repeats that in a second sample.
 
     Two samples from one person are bivariate standard normal with correlation
-    ``reliability``. The integral over the flagged region is evaluated on a fixed
-    midpoint grid, so the result is deterministic and the step is explicit.
+    ``reliability``, so this is the shared tail-agreement integral.
     """
-    correlation = probability(reliability, name="reliability")
-    share = probability(top, name="top", inclusive=False)
-    spacing = positive(step, name="step")
-
-    if correlation >= 1.0:
-        return 1.0
-
-    cut = STANDARD.inv_cdf(1.0 - share)
-    spread = sqrt(1.0 - correlation**2)
-
-    total = 0.0
-    position = cut
-    while position < 8.0:
-        middle = position + spacing / 2.0
-        above = 1.0 - STANDARD.cdf((cut - correlation * middle) / spread)
-        total += STANDARD.pdf(middle) * above * spacing
-        position += spacing
-    return total / share
+    return conditional_top_share(reliability, top=top, step=step)
 
 
 def example_payload() -> MicrobiomeSummary:

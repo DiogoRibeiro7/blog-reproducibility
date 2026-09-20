@@ -209,3 +209,95 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  inflammation-is-not-a-diagnosis:
+    path: _posts/healthcare/2026-09-02-inflammation_is_not_a_diagnosis_social_media_myths.md
+    permalink: /healthcare/inflammation_is_not_a_diagnosis_social_media_myths/
+    modules:
+      - blog_reproducibility.health.inflammation_markers
+      - blog_reproducibility.health.inflammation_markers_figure
+    figure_scripts:
+      - scripts/figures/health/inflammation_markers.py
+    generated_figures:
+      - build/figures/health/inflammation_crp_scale.png
+      - build/figures/health/inflammation_trials_forest.png
+    tests:
+      - tests/health/test_inflammation_markers.py
+      - tests/health/test_inflammation_markers_figure.py
+    original_website_sources:
+      - assets/viz/generate_inflammation_marker_figures.py
+      - tests/test_inflammation_marker_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  leaky-gut-social-media-myths:
+    path: _posts/healthcare/2026-06-03-leaky_gut_social_media_myths.md
+    permalink: /healthcare/leaky_gut_social_media_myths/
+    modules:
+      - blog_reproducibility.health.leaky_gut
+      - blog_reproducibility.health.leaky_gut_figure
+    figure_scripts:
+      - scripts/figures/health/leaky_gut.py
+    generated_figures:
+      - build/figures/health/leaky_gut_surrogate_test.png
+      - build/figures/health/leaky_gut_relatives_risk.png
+    tests:
+      - tests/health/test_leaky_gut.py
+      - tests/health/test_leaky_gut_figure.py
+    original_website_sources:
+      - assets/viz/generate_leaky_gut_figures.py
+      - tests/test_leaky_gut_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  results-are-not-evidence:
+    path: _posts/healthcare/2026-05-11-results_are_not_evidence_influencer_science.md
+    permalink: /healthcare/results_are_not_evidence_influencer_science/
+    modules:
+      - blog_reproducibility.health.results_rhetoric
+      - blog_reproducibility.health.results_rhetoric_figure
+    figure_scripts:
+      - scripts/figures/health/results_rhetoric.py
+    generated_figures:
+      - build/figures/health/results_rhetoric_retention.png
+      - build/figures/health/results_rhetoric_testimonial_wall.png
+    tests:
+      - tests/health/test_results_rhetoric.py
+      - tests/health/test_results_rhetoric_figure.py
+    original_website_sources:
+      - assets/viz/generate_results_rhetoric_figures.py
+      - tests/test_results_rhetoric_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  why-longer-survival-after-diagnosis-can-mislead:
+    path: _posts/science_communication/2025-07-17-why_longer_survival_after_diagnosis_can_mislead.md
+    permalink: /science-communication/why_longer_survival_after_diagnosis_can_mislead/
+    modules:
+      - blog_reproducibility.health.screening_survival
+      - blog_reproducibility.health.screening_survival_figure
+    figure_scripts:
+      - scripts/figures/health/screening_survival.py
+    generated_figures:
+      - build/figures/health/science_screening_survival_and_mortality.png
+      - build/figures/health/science_screening_duration_selection.png
+    tests:
+      - tests/health/test_screening_survival.py
+      - tests/health/test_screening_survival_figure.py
+    original_website_sources:
+      - assets/viz/generate_screening_survival_figures.py
+      - tests/test_screening_survival_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
