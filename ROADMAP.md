@@ -141,6 +141,6 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 - [x] Add a manifest-driven reproduction command with environment and checksum reports.
 - [x] Document contributor, article migration, and maintenance workflows.
 - [x] Add provenance metadata for the benchmark records.
-- [ ] Add checksums for immutable small inputs.
+- [x] Add checksums for immutable small inputs.
 - [x] Document reproducibility limitations for the benchmark records.
 - [ ] Add release tags for coherent reproducibility snapshots.

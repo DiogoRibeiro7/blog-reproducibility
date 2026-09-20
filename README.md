@@ -49,6 +49,7 @@ poetry run python -m scripts.reproduce --list
 poetry run python -m scripts.reproduce --list --domain statistics
 poetry run python -m scripts.reproduce --list --search pvalue --json
 poetry run python -m scripts.reproduce --check
+poetry run python -m scripts.check_data
 poetry run python -m scripts.reproduce --article advanced-sequential-changepoint
 poetry run python -m scripts.reproduce --output-dir build/review-figures
 ```
@@ -68,6 +69,9 @@ poetry run python scripts/figures/statistics/pvalue_evidence.py --dry-run
 Numerical results are regression-tested with explicit tolerances. Image bytes can
 vary with the operating system, fonts, and rendering libraries. See the
 [reproducibility guide](docs/reproducibility.md) for the guarantees and limitations.
+
+Registered data inputs are verified against the committed `data/SHA256SUMS` before
+reproduction. See [the data policy](data/README.md) for reviewing intentional updates.
 
 ## Development
 

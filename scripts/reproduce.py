@@ -15,6 +15,7 @@ from tempfile import TemporaryDirectory
 
 import yaml
 
+from scripts.check_data import verify_checksums
 from scripts.manifest import ROOT, Article, load_manifest
 
 
@@ -153,6 +154,7 @@ def main(argv: list[str] | None = None) -> int:
         parser.error("--check validates the entire manifest and cannot be filtered")
     try:
         articles = load_manifest()
+        verify_checksums(articles.values(), root=ROOT)
         if args.article and args.article not in articles:
             parser.error(
                 f"unknown article {args.article!r}; use --list to see available identifiers"
@@ -196,7 +198,7 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 print("\n".join(article.identifier for article in selected))
         elif args.check:
-            print(f"Validated {len(articles)} articles and their local references.")
+            print(f"Validated {len(articles)} articles, local references, and data checksums.")
         else:
             report = reproduce(selected, args.output_dir)
             print(f"Reproduced {len(selected)} articles. Report: {report}")

@@ -27,6 +27,8 @@ def main() -> None:
         "poetry.lock",
         "articles/manifest.yml",
         "articles/manifest.schema.json",
+        "data/SHA256SUMS",
+        "scripts/check_data.py",
         "scripts/reproduce.py",
         "scripts/manifest.py",
         "tests/test_package.py",

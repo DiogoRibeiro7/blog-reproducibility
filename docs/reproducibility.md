@@ -22,7 +22,8 @@ output root. Use `--domain statistics` to reproduce a subject, or
 `--list --search pvalue --json` to search and export metadata without rendering.
 The [article catalog](articles.md) lists the current collection. Relative custom
 paths are resolved from the current directory. Each
-run validates the manifest, renders into a fresh temporary directory using the
+run validates the manifest and its inputs against `data/SHA256SUMS`, then renders
+into a fresh temporary directory using the
 non-interactive `Agg` backend, checks the expected PNG files, and copies successful
 outputs to the requested directory. Each article has its own staging directory,
 including when two articles share an entry point. A failed renderer returns a nonzero exit code
@@ -61,7 +62,8 @@ JSON listings identify their publication status; they have no published permalin
 Each invocation replaces the report for that output directory. Its figure list
 covers only that invocation; unrelated figures from earlier runs may remain in
 the directory. Use a separate `--output-dir` when comparing runs. A failed rerun
-removes the old report so it cannot be mistaken for a new successful run.
+removes the old report once rendering starts so it cannot be mistaken for a new
+successful run. Validation failures leave prior outputs untouched.
 
 The source distribution includes repository scripts and metadata. The wheel
 contains the importable scientific package and plotting resources; clone the

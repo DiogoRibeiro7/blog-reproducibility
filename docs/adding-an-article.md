@@ -44,6 +44,7 @@ local files even if some publication cleanup remains pending. Track articles tha
 have no runnable implementation yet in the roadmap.
 
 ```console
+poetry run python -m scripts.check_data --update
 poetry run python -m scripts.reproduce --check
 poetry run python -m scripts.catalog
 poetry run pytest
@@ -53,6 +54,9 @@ poetry run python -m scripts.reproduce --article YOUR-ARTICLE-ID
 The existing entries are complete working examples. When a scientific result
 changes, document why and coordinate the associated article update. Do not update
 a regression expectation solely to make a failing test pass.
+
+When adding or changing `data_inputs`, review the checksum diff in `data/SHA256SUMS`
+with the input files and provenance. See [the data policy](../data/README.md).
 
 Regenerate `docs/articles.md` after modifying the manifest. CI and the commit hook
 check it with `poetry run python -m scripts.catalog --check`. The manifest remains
