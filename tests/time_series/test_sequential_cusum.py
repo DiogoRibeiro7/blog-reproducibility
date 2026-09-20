@@ -124,7 +124,7 @@ def test_non_numeric_inputs_are_rejected() -> None:
     with pytest.raises(TypeError):
         upper_cusum(
             [0.0],
-            baseline=True,  # type: ignore[arg-type]
+            baseline=True,
             target_shift=2.0,
             threshold=5.0,
         )
