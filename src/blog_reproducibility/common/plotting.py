@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Final
 
-import matplotlib as mpl
 import matplotlib.pyplot as plt
+from cycler import cycler
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.figure import Figure
 
@@ -59,7 +59,7 @@ class FigureArtifact:
 def use_house_style() -> None:
     """Activate the shared blog figure style."""
     plt.style.use(str(STYLE_PATH))
-    mpl.rcParams["axes.prop_cycle"] = mpl.cycler(color=PALETTE)
+    plt.rcParams["axes.prop_cycle"] = cycler(color=PALETTE)
 
 
 def sequential_cmap(name: str = "house_seq") -> LinearSegmentedColormap:
