@@ -82,9 +82,13 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 
 ### Physics and scientific communication
 
-- [ ] Michelson–Morley example.
-- [ ] Quantum-observer model.
-- [ ] General science-communication numerical examples.
+- [x] Michelson–Morley example — the website file was scratch with hypothetical
+      data, so this is a new analytic model of the predicted fringe shift rather
+      than a migration.
+- [x] Quantum-observer model.
+- [x] Solar geometry and seasonal heat storage.
+- [ ] Remaining science-communication numerical examples: climate evidence,
+      coin streaks, antibiotic selection, concentration and risk.
 
 ### Data engineering
 

@@ -301,3 +301,48 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  quantum-measurement-and-the-observer-myth:
+    path: _posts/science_communication/2025-01-23-quantum_measurement_and_the_observer_myth.md
+    permalink: /science-communication/quantum_measurement_and_the_observer_myth/
+    modules:
+      - blog_reproducibility.physics.quantum_observer
+      - blog_reproducibility.physics.quantum_observer_figure
+    figure_scripts:
+      - scripts/figures/physics/quantum_observer.py
+    generated_figures:
+      - build/figures/physics/science_quantum_marker_visibility.png
+      - build/figures/physics/science_quantum_eraser_conditioning.png
+    tests:
+      - tests/physics/test_quantum_observer.py
+      - tests/physics/test_quantum_observer_figure.py
+    original_website_sources:
+      - assets/viz/generate_quantum_observer_figures.py
+      - tests/test_quantum_observer_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  why-summer-follows-earths-tilt:
+    path: _posts/science_communication/2024-07-11-why_summer_follows_earths_tilt.md
+    permalink: /science-communication/why_summer_follows_earths_tilt/
+    modules:
+      - blog_reproducibility.physics.seasons
+      - blog_reproducibility.physics.seasons_figure
+    figure_scripts:
+      - scripts/figures/physics/seasons.py
+    generated_figures:
+      - build/figures/physics/science_seasons_tilt_geometry.png
+    tests:
+      - tests/physics/test_seasons.py
+      - tests/physics/test_seasons_figure.py
+    original_website_sources:
+      - assets/viz/generate_science_communication_figures.py
+      - tests/test_science_communication_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
