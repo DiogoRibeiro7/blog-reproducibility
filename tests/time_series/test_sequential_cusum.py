@@ -24,10 +24,7 @@ def test_scores_equal_exhaustive_suffix_maxima() -> None:
         expected = [
             max(
                 [0.0]
-                + [
-                    sum(value - 1.0 - target_shift / 2.0 for value in data[k:n])
-                    for k in range(n)
-                ]
+                + [sum(value - 1.0 - target_shift / 2.0 for value in data[k:n]) for k in range(n)]
             )
             for n in range(1, len(data) + 1)
         ]
