@@ -346,3 +346,112 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  cold-days-in-a-warming-climate:
+    path: _posts/science_communication/2024-02-15-cold_days_in_a_warming_climate.md
+    permalink: /science-communication/cold_days_in_a_warming_climate/
+    modules:
+      - blog_reproducibility.statistics.climate_evidence
+      - blog_reproducibility.statistics.climate_evidence_figure
+    figure_scripts:
+      - scripts/figures/statistics/climate_evidence.py
+    generated_figures:
+      - build/figures/statistics/science_weather_climate_shift.png
+      - build/figures/statistics/science_climate_kl_evidence.png
+    tests:
+      - tests/statistics/test_climate_evidence.py
+      - tests/statistics/test_climate_evidence_figure.py
+    original_website_sources:
+      - assets/viz/generate_science_communication_figures.py
+      - tests/test_science_communication_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  randomness-does-not-owe-a-reversal:
+    path: _posts/science_communication/2025-10-09-randomness_does_not_owe_a_reversal.md
+    permalink: /science-communication/randomness_does_not_owe_a_reversal/
+    modules:
+      - blog_reproducibility.statistics.coin_streaks
+      - blog_reproducibility.statistics.coin_streaks_figure
+    figure_scripts:
+      - scripts/figures/statistics/coin_streaks.py
+    generated_figures:
+      - build/figures/statistics/science_streaks_three_mechanisms.png
+    tests:
+      - tests/statistics/test_coin_streaks.py
+      - tests/statistics/test_coin_streaks_figure.py
+    original_website_sources:
+      - assets/viz/generate_science_communication_figures.py
+      - tests/test_science_communication_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  how-antibiotic-resistance-spreads:
+    path: _posts/science_communication/2025-03-20-how_antibiotic_resistance_spreads.md
+    permalink: /science-communication/how_antibiotic_resistance_spreads/
+    modules:
+      - blog_reproducibility.health.antibiotic_resistance
+      - blog_reproducibility.health.antibiotic_resistance_figure
+    figure_scripts:
+      - scripts/figures/health/antibiotic_resistance.py
+    generated_figures:
+      - build/figures/health/science_antibiotic_selection.png
+    tests:
+      - tests/health/test_antibiotic_resistance.py
+      - tests/health/test_antibiotic_resistance_figure.py
+    original_website_sources:
+      - assets/viz/generate_science_communication_figures.py
+      - tests/test_science_communication_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  natural-origin-does-not-establish-safety:
+    path: _posts/science_communication/2026-02-12-natural_origin_does_not_establish_safety.md
+    permalink: /science-communication/natural_origin_does_not_establish_safety/
+    modules:
+      - blog_reproducibility.health.risk_communication
+      - blog_reproducibility.health.risk_communication_figure
+    figure_scripts:
+      - scripts/figures/health/risk_communication.py
+    generated_figures:
+      - build/figures/health/science_concentration_and_amount.png
+    tests:
+      - tests/health/test_risk_communication.py
+      - tests/health/test_risk_communication_figure.py
+    original_website_sources:
+      - assets/viz/generate_science_communication_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  read-the-starting-risk-before-the-percentage:
+    path: _posts/science_communication/2026-06-18-read_the_starting_risk_before_the_percentage.md
+    permalink: /science-communication/read_the_starting_risk_before_the_percentage/
+    modules:
+      - blog_reproducibility.health.risk_communication
+      - blog_reproducibility.health.risk_communication_figure
+    figure_scripts:
+      - scripts/figures/health/risk_communication.py
+    generated_figures:
+      - build/figures/health/science_relative_absolute_risk.png
+    tests:
+      - tests/health/test_risk_communication.py
+      - tests/health/test_risk_communication_figure.py
+    original_website_sources:
+      - assets/viz/generate_science_communication_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending

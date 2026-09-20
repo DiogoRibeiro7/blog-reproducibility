@@ -54,7 +54,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 ### Statistics
 
 - [x] Confidence-set examples: inversion, hull cost, Fieller sets, profile projection.
-- [ ] Coverage demonstrations.
+- [x] Coverage demonstrations — the confidence-set coverage simulation.
 - [x] P-value/evidence model, tests, and figure renderers.
 - [x] Poll-selection models.
 - [x] Results-rhetoric models — migrated under `health.results_rhetoric`.
@@ -87,7 +87,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
       than a migration.
 - [x] Quantum-observer model.
 - [x] Solar geometry and seasonal heat storage.
-- [ ] Remaining science-communication numerical examples: climate evidence,
+- [x] Remaining science-communication numerical examples: climate evidence,
       coin streaks, antibiotic selection, concentration and risk.
 
 ### Data engineering
