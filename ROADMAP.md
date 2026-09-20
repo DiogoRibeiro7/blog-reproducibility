@@ -1,0 +1,113 @@
+# Roadmap
+
+This repository is being extracted from `DiogoRibeiro7/DiogoRibeiro7.github.io` so the website can remain a publication system while computational work lives in a dedicated reproducibility project.
+
+## Phase 0 — Repository foundation
+
+- [x] Define the publication/reproducibility boundary.
+- [x] Use `main` as the only long-lived branch.
+- [x] Add Poetry packaging.
+- [x] Add Ruff, mypy, pytest, coverage, and pre-commit.
+- [x] Add CI across supported Python versions.
+- [x] Add an article-to-code manifest.
+
+## Phase 1 — Inventory and mapping
+
+- [ ] Inventory every Python file currently under `assets/viz/` in the website repository.
+- [ ] Inventory article-specific tests currently under `tests/`.
+- [ ] Inventory `code/` notebooks and standalone examples.
+- [ ] Map every computational file to one or more published articles.
+- [ ] Identify generated artefacts that must remain in the website repository.
+- [ ] Identify dead, duplicate, and superseded scripts before migration.
+
+The current website inventory includes work for:
+
+- aspartame dose calculations;
+- confidence sets and coverage;
+- p-value/evidence demonstrations;
+- poll and selection effects;
+- results rhetoric;
+- scientific communication examples;
+- hormone, inflammation, microbiome, parasite, and screening models;
+- sequential change-point/CUSUM examples;
+- quantum-observer examples;
+- data-lake and database benchmarks;
+- shared plotting/house-style utilities.
+
+## Phase 2 — Shared foundations
+
+- [ ] Migrate plotting style utilities into `blog_reproducibility.common`.
+- [ ] Separate numerical models from plotting functions.
+- [ ] Define deterministic random-number handling for simulations.
+- [ ] Define a common output directory contract for generated figures.
+- [ ] Add small typed helpers only where repeated code justifies them.
+
+## Phase 3 — Domain migration
+
+### Statistics
+
+- [ ] Confidence-set examples.
+- [ ] Coverage demonstrations.
+- [ ] P-value/evidence models.
+- [ ] Poll-selection models.
+- [ ] Results-rhetoric models.
+
+### Health and evidence communication
+
+- [ ] Aspartame dose model.
+- [ ] Hormone-testing model.
+- [ ] Inflammation-marker model.
+- [ ] Leaky-gut model.
+- [ ] Microbiome-testing model.
+- [ ] Parasite-testing model.
+- [ ] Screening/survival model.
+- [ ] Testimonial model.
+
+### Time series
+
+- [ ] Sequential CUSUM/change-point example.
+
+### Physics and scientific communication
+
+- [ ] Michelson–Morley example.
+- [ ] Quantum-observer model.
+- [ ] General science-communication numerical examples.
+
+### Data engineering
+
+- [ ] Data-lake benchmarks.
+- [ ] Database benchmarks.
+- [ ] Preserve benchmark provenance and environment metadata.
+
+## Phase 4 — Figure generation
+
+- [ ] Replace monolithic figure generation with article/domain entry points.
+- [ ] Write generated output to `build/figures/`.
+- [ ] Make every figure generation command deterministic where applicable.
+- [ ] Record the source module and article identifier in figure metadata where practical.
+- [ ] Keep publication-ready rendered assets in the website repository.
+
+## Phase 5 — Reproducibility tests
+
+- [ ] Move article-specific numerical tests from the website repository.
+- [ ] Preserve tests that verify numbers quoted in published articles.
+- [ ] Add invariant/property tests for numerical code where useful.
+- [ ] Add regression tests for benchmark summaries.
+- [ ] Keep website-layout, Markdown, theme, and link tests in the website repository.
+
+## Phase 6 — Website rewiring
+
+- [ ] Update the website `/code/` page to point here.
+- [ ] Add reproducibility links to relevant articles.
+- [ ] Remove migrated scientific Python from the website repository.
+- [ ] Remove scientific Python test dependencies from the website CI.
+- [ ] Keep rendered figures and article content in the website repository.
+- [ ] Verify that no article URL changes during the migration.
+
+## Phase 7 — Hardening
+
+- [ ] Add a manifest validation test.
+- [ ] Add provenance metadata for external datasets.
+- [ ] Add checksums for immutable small inputs.
+- [ ] Document reproducibility limitations for external APIs or changing datasets.
+- [ ] Add release tags for coherent reproducibility snapshots.

@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "blog-reproducibility"
+version = "0.1.0"
+description = "Reproducible computations and figures supporting articles on DiogoRibeiro7.github.io"
+authors = ["Diogo Ribeiro"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "blog_reproducibility", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = ">=1.14,<2.0"
+pre-commit = ">=4.0,<5.0"
+pytest = ">=8.0,<10.0"
+pytest-cov = ">=6.0,<8.0"
+ruff = ">=0.9,<1.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = []
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+mypy_path = "src"
+warn_unreachable = true
+pretty = true
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-config --strict-markers"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["blog_reproducibility"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
