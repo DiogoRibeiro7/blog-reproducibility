@@ -48,6 +48,7 @@ The current website inventory includes work for:
 
 - [x] Confidence-set examples: inversion, hull cost, Fieller sets, profile projection.
 - [x] Coverage demonstrations — the confidence-set coverage simulation.
+- [x] Randomisation balance (draft).
 - [x] P-value/evidence model, tests, and figure renderers.
 - [x] Poll-selection models.
 - [x] Results-rhetoric models — migrated under `health.results_rhetoric`.
@@ -62,6 +63,7 @@ The current website inventory includes work for:
 - [x] Microbiome-testing model.
 - [x] Parasite-testing model.
 - [x] Screening/survival model.
+- [x] Adaptive personal baseline (draft).
 - [x] Testimonial model — migrated under `statistics.testimonial_selection`,
       because the mechanism is selection on a baseline rather than anything clinical.
 
@@ -88,6 +90,7 @@ The current website inventory includes work for:
 - [x] Data-lake benchmarks.
 - [x] Database benchmarks.
 - [x] Preserve benchmark provenance and environment metadata.
+- [x] Storage dispatch ledger (draft).
 
 ## Phase 4 — Figure generation
 
