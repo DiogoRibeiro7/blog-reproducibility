@@ -1,0 +1,20 @@
+schema_version: 1
+
+website:
+  repository: DiogoRibeiro7/DiogoRibeiro7.github.io
+  branch: master
+
+# Each migrated article will be registered here.
+#
+# Example:
+#
+# articles:
+#   aspartame-fruit-true-premise-bad-argument:
+#     path: _posts/healthcare/2026-07-12-aspartame_fruit_true_premise_bad_argument.md
+#     modules:
+#       - blog_reproducibility.health.aspartame
+#     figure_scripts:
+#       - scripts/figures/health/aspartame.py
+#     tests:
+#       - tests/health/test_aspartame.py
+articles: {}
