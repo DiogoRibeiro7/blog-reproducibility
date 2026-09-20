@@ -24,6 +24,7 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- Reproduction rejects conflicting output paths before rendering or removing prior reports.
 - Tooling now accepts omitted `data_inputs` for articles without external files.
 - Coverage follows figure scripts into subprocesses; manual measurement harnesses
   are excluded from strict typing and coverage, while remaining linted.

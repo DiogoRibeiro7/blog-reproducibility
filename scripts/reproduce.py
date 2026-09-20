@@ -60,9 +60,31 @@ def git_state(root: Path) -> dict[str, str | bool | None]:
     return {"revision": revision, "dirty": bool(status.strip())}
 
 
+def _validate_output_paths(articles: list[Article], output_dir: Path) -> None:
+    """Reject file/directory collisions without changing previous outputs."""
+    targets = {output_dir / "reproduction.json"}
+    targets.update(
+        output_dir / figure.relative_to("build/figures")
+        for article in articles
+        for figure in article.figures
+    )
+    directories = {parent for target in targets for parent in target.parents}
+    if conflicts := targets & directories:
+        raise ValueError(
+            f"Output path is required as both a file and a directory: {sorted(conflicts)[0]}"
+        )
+    for directory in sorted(directories, key=lambda path: (len(path.parts), path.as_posix())):
+        if directory.exists() and not directory.is_dir():
+            raise NotADirectoryError(f"Output directory is blocked by a file: {directory}")
+    for target in sorted(targets):
+        if target.is_dir():
+            raise IsADirectoryError(f"Output file path is a directory: {target}")
+
+
 def reproduce(articles: list[Article], output_dir: Path, *, root: Path = ROOT) -> Path:
     """Render into a fresh staging directory, then save figures and a run report."""
     output_dir = output_dir.resolve()
+    _validate_output_paths(articles, output_dir)
     report_path = output_dir / "reproduction.json"
     # A failed rerun must not leave a previous success report at this location.
     report_path.unlink(missing_ok=True)
