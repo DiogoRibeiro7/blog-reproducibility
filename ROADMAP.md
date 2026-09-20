@@ -62,14 +62,15 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 
 ### Health and evidence communication
 
-- [ ] Aspartame dose model.
-- [ ] Hormone-testing model.
+- [x] Aspartame dose model.
+- [x] Hormone-testing model.
 - [ ] Inflammation-marker model.
 - [ ] Leaky-gut model.
-- [ ] Microbiome-testing model.
-- [ ] Parasite-testing model.
+- [x] Microbiome-testing model.
+- [x] Parasite-testing model.
 - [ ] Screening/survival model.
-- [ ] Testimonial model.
+- [x] Testimonial model — migrated under `statistics.testimonial_selection`,
+      because the mechanism is selection on a baseline rather than anything clinical.
 
 ### Time series
 
