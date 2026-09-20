@@ -19,7 +19,13 @@ classifiers = [
     "Topic :: Scientific/Engineering",
     "Typing :: Typed",
 ]
-dependencies = ["matplotlib>=3.9,<4.0", "cycler>=0.12.1,<0.13"]
+dependencies = [
+    "matplotlib>=3.9,<4.0",
+    "cycler>=0.12.1,<0.13",
+    # The longitudinal design article quotes simulated values produced by NumPy's
+    # PCG64 generator, so reproducing them needs NumPy and not random.Random.
+    "numpy>=2.0,<3.0",
+]
 
 [project.urls]
 Homepage = "https://diogoribeiro7.github.io/"
@@ -66,8 +72,8 @@ types-jsonschema = ">=4.23,<5.0"
 optional = true
 
 [tool.poetry.group.benchmarks.dependencies]
+# NumPy is a main dependency now, so it is not repeated here.
 duckdb = ">=1.1,<2.0"
-numpy = ">=2.0,<3.0"
 pandas = ">=2.2,<3.0"
 psutil = ">=6.0,<8.0"
 pyarrow = ">=17.0"

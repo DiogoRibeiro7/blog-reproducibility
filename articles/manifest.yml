@@ -514,6 +514,135 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  more-subjects-and-longer-trajectories:
+    path: _posts/statistics/2026-09-21-more_subjects_and_longer_trajectories.md
+    permalink: /statistics/more_subjects_and_longer_trajectories/
+    modules:
+      - blog_reproducibility.statistics.longitudinal_design
+      - blog_reproducibility.statistics.longitudinal_design_figure
+    figure_scripts:
+      - scripts/figures/statistics/longitudinal_design.py
+    generated_figures:
+      - build/figures/statistics/subjects_vs_measurements_2026.png
+    tests:
+      - tests/statistics/test_longitudinal_design.py
+      - tests/statistics/test_longitudinal_design_figure.py
+    original_website_sources:
+      - assets/viz/generate_2026_evidence_articles.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  monitoring-without-labels-identifiability:
+    path: _posts/machine_learning/2026-09-23-monitoring_without_labels_identifiability.md
+    permalink: /machine-learning/monitoring_without_labels_identifiability/
+    modules:
+      - blog_reproducibility.engineering.unlabelled_monitoring
+      - blog_reproducibility.engineering.unlabelled_monitoring_figure
+    figure_scripts:
+      - scripts/figures/engineering/unlabelled_monitoring.py
+    generated_figures:
+      - build/figures/engineering/unlabelled_monitoring_worlds_2026.png
+    tests:
+      - tests/engineering/test_unlabelled_monitoring.py
+      - tests/engineering/test_unlabelled_monitoring_figure.py
+    original_website_sources:
+      - assets/viz/generate_2026_evidence_articles.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  numerical-verification-before-optimization:
+    path: _posts/programming/2026-09-25-numerical_verification_before_optimization.md
+    permalink: /programming/numerical_verification_before_optimization/
+    modules:
+      - blog_reproducibility.engineering.numerical_verification
+      - blog_reproducibility.engineering.numerical_verification_figure
+    figure_scripts:
+      - scripts/figures/engineering/numerical_verification.py
+    generated_figures:
+      - build/figures/engineering/numerical_verification_2026.png
+    tests:
+      - tests/engineering/test_numerical_verification.py
+      - tests/engineering/test_numerical_verification_figure.py
+    original_website_sources:
+      - assets/viz/generate_2026_evidence_articles.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  what-a-wearable-heart-alert-can-tell-you:
+    path: _posts/healthcare/2026-09-28-what_a_wearable_heart_alert_can_tell_you.md
+    permalink: /healthcare/what_a_wearable_heart_alert_can_tell_you/
+    modules:
+      - blog_reproducibility.health.wearable_alerts
+      - blog_reproducibility.health.wearable_alerts_figure
+    figure_scripts:
+      - scripts/figures/health/wearable_alerts.py
+    generated_figures:
+      - build/figures/health/wearable_alert_denominators_2026.png
+    tests:
+      - tests/health/test_wearable_alerts.py
+      - tests/health/test_wearable_alerts_figure.py
+    original_website_sources:
+      - assets/viz/generate_2026_evidence_articles.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  microwaves-heat-food-without-making-it-radioactive:
+    path: _posts/science_communication/2026-09-30-microwaves_heat_food_without_making_it_radioactive.md
+    permalink: /science-communication/microwaves_heat_food_without_making_it_radioactive/
+    modules:
+      - blog_reproducibility.physics.microwave_energy
+      - blog_reproducibility.physics.microwave_energy_figure
+    figure_scripts:
+      - scripts/figures/physics/microwave_energy.py
+    generated_figures:
+      - build/figures/physics/microwave_photons_and_power_2026.png
+    tests:
+      - tests/physics/test_microwave_energy.py
+      - tests/physics/test_microwave_energy_figure.py
+    original_website_sources:
+      - assets/viz/generate_2026_evidence_articles.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  economic-data-have-two-dates:
+    path: _posts/economics/2026-10-02-economic_data_have_two_dates.md
+    permalink: /economics/economic_data_have_two_dates/
+    modules:
+      - blog_reproducibility.time_series.release_vintages
+      - blog_reproducibility.time_series.release_vintages_figure
+    figure_scripts:
+      - scripts/figures/time_series/release_vintages.py
+    generated_figures:
+      - build/figures/time_series/gdp_release_vintages_2026.png
+    tests:
+      - tests/time_series/test_release_vintages.py
+      - tests/time_series/test_release_vintages_figure.py
+    data_inputs:
+      - data/economics/gdp_q1_2025_release_vintages.csv
+    original_website_sources:
+      - assets/viz/generate_2026_evidence_articles.py
+      - assets/data/gdp_q1_2025_release_vintages.csv
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:
