@@ -513,3 +513,69 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+# Unpublished drafts. The prose is still in _drafts/ on the website, so there is
+# no permalink yet, but the models are real and their checks are worth keeping.
+drafts:
+  randomisation-and-baseline-balance:
+    path: _drafts/ideas/randomisation-and-baseline-balance.md
+    modules:
+      - blog_reproducibility.statistics.randomisation_balance
+      - blog_reproducibility.statistics.randomisation_balance_figure
+    figure_scripts:
+      - scripts/figures/statistics/randomisation_balance.py
+    generated_figures:
+      - build/figures/statistics/research_randomisation_balance.png
+    tests:
+      - tests/statistics/test_randomisation_balance.py
+      - tests/statistics/test_randomisation_balance_figure.py
+    original_website_sources:
+      - assets/viz/generate_coverage_draft_figures.py
+      - tests/test_coverage_draft_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  storage-must-balance-power-energy-and-losses:
+    path: _drafts/ideas/storage-must-balance-power-energy-and-losses.md
+    modules:
+      - blog_reproducibility.engineering.storage_ledger
+      - blog_reproducibility.engineering.storage_ledger_figure
+    figure_scripts:
+      - scripts/figures/engineering/storage_ledger.py
+    generated_figures:
+      - build/figures/engineering/environment_storage_constraints.png
+    tests:
+      - tests/engineering/test_storage_ledger.py
+      - tests/engineering/test_storage_ledger_figure.py
+    original_website_sources:
+      - assets/viz/generate_coverage_draft_figures.py
+      - tests/test_coverage_draft_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  a-personal-baseline-can-learn-the-change:
+    path: _drafts/ideas/a-personal-baseline-can-learn-the-change.md
+    modules:
+      - blog_reproducibility.health.adaptive_baseline
+      - blog_reproducibility.health.adaptive_baseline_figure
+    figure_scripts:
+      - scripts/figures/health/adaptive_baseline.py
+    generated_figures:
+      - build/figures/health/healthcare_adaptive_baseline.png
+    tests:
+      - tests/health/test_adaptive_baseline.py
+      - tests/health/test_adaptive_baseline_figure.py
+    original_website_sources:
+      - assets/viz/generate_coverage_draft_figures.py
+      - tests/test_coverage_draft_models.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending

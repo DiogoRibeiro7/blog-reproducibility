@@ -49,7 +49,6 @@ ignore = []
 docstring-code-format = true
 
 [tool.mypy]
-python_version = "3.11"
 strict = true
 mypy_path = "src"
 warn_unreachable = true
