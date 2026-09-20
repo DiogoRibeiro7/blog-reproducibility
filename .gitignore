@@ -6,8 +6,10 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .coverage
+.coverage.*
 coverage.xml
 htmlcov/
+.benchmarks/
 
 # Environments
 .venv/
@@ -21,6 +23,12 @@ poetry.lock.tmp
 
 # Generated reproducibility outputs
 build/
+dist/
+
+# Local configuration
+.env
+.env.*
+!.env.example
 
 # Editors and OS
 .vscode/

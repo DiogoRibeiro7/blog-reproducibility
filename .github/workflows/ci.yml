@@ -2,54 +2,101 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   # No branch filter: the migration is reviewed as a stack of pull requests,
   # and one whose base is another feature branch still has to be checked.
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  MPLBACKEND: Agg
+  PYTHONUTF8: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
 jobs:
   quality:
-    name: Python ${{ matrix.python-version }}
+    name: Code quality
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+        with:
+          python-version: "3.11"
+      - name: Check lint and formatting
+        run: |
+          poetry run ruff check .
+          poetry run ruff format --check .
+      - name: Check types
+        run: poetry run mypy src scripts tests
+      - name: Validate article manifest
+        run: poetry run python -m scripts.reproduce --check
+      - name: Check generated article catalog
+        run: poetry run python -m scripts.catalog --check
+
+  tests:
+    name: Tests / ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
-
+        os: [ubuntu-latest]
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        include:
+          - os: windows-latest
+            python-version: "3.13"
+          - os: macos-latest
+            python-version: "3.13"
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v5
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Run tests with coverage
+        run: poetry run pytest --cov --cov-report=term-missing --cov-report=xml
+      - name: Save coverage report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
+          path: coverage.xml
+          if-no-files-found: error
+          retention-days: 14
 
-      - name: Install Poetry
-        run: pipx install poetry
-
-      - name: Validate project metadata
-        run: poetry check
-
-      - name: Install dependencies
-        id: install
-        run: poetry install --no-interaction
-
-      - name: Ruff lint
-        if: ${{ always() && steps.install.outcome == 'success' }}
-        run: poetry run ruff check .
-
-      - name: Ruff format
-        if: ${{ always() && steps.install.outcome == 'success' }}
-        run: poetry run ruff format --check .
-
-      - name: Type check
-        if: ${{ always() && steps.install.outcome == 'success' }}
-        run: poetry run mypy src tests
-
-      - name: Test
-        if: ${{ always() && steps.install.outcome == 'success' }}
-        run: poetry run pytest --cov=blog_reproducibility --cov-report=term-missing
+  distribution:
+    name: Build and reproduce
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+        with:
+          python-version: "3.13"
+      - name: Build wheel and source distribution
+        run: poetry build
+      - name: Verify isolated wheel installation and source archive
+        run: poetry run python scripts/check_distribution.py
+      - name: Reproduce every registered article
+        run: poetry run python -m scripts.reproduce
+      - name: Save distributions and reproduction artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: distributions-and-figures
+          path: |
+            dist/
+            build/figures/
+          if-no-files-found: error
+          retention-days: 14

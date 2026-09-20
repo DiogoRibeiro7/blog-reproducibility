@@ -1,7 +1,24 @@
 # Figure entry points
 
-Article-specific figure-generation commands will live here.
+Run these commands from the repository root after `poetry sync`:
 
-Numerical models should remain importable and testable under `src/blog_reproducibility/`. These scripts should be thin entry points that load the model, render the required figure, and write generated output to `build/figures/`.
+```console
+poetry run python scripts/figures/time_series/sequential_cusum.py
+poetry run python scripts/figures/statistics/pvalue_evidence.py
+```
 
-Publication-ready copies of rendered figures remain in the website repository.
+Both scripts print a JSON calculation payload and write PNGs under
+`build/figures/<domain>/`. Use `--dry-run` for calculations only or
+`--output-dir PATH` to override the directory. Reported width and height are nominal
+canvas dimensions; the house style's tight bounding box can change saved pixel dimensions.
+
+For all registered figures and a provenance report, use:
+
+```console
+poetry run python -m scripts.reproduce
+```
+
+Keep numerical models importable and testable under `src/blog_reproducibility/`.
+These scripts are thin adapters to models and renderers. See
+[adding an article](../../docs/adding-an-article.md) for the script contract.
+Publication-ready copies remain in the website repository.
