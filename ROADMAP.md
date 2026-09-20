@@ -13,14 +13,16 @@ This repository is being extracted from `DiogoRibeiro7/DiogoRibeiro7.github.io` 
 
 ## Phase 1 — Inventory and mapping
 
-- [ ] Inventory every Python file currently under `assets/viz/` in the website repository.
-- [ ] Inventory article-specific tests currently under `tests/`.
-- [ ] Inventory `code/` notebooks and standalone examples.
-- [ ] Map every computational file to one or more published articles.
-- [ ] Identify generated artefacts that must remain in the website repository.
-- [ ] Identify dead, duplicate, and superseded scripts before migration.
+- [x] Inventory every Python file currently under `assets/viz/` in the website repository.
+- [x] Inventory article-specific tests currently under `tests/`.
+- [x] Inventory `code/` notebooks and standalone examples.
+- [x] Map every computational file to one or more published articles.
+- [x] Identify generated artefacts that must remain in the website repository.
+- [x] Identify dead, duplicate, and superseded scripts before migration.
 
-The current website inventory includes work for:
+The result is [docs/migration-inventory.md](docs/migration-inventory.md), which
+classifies every file, maps each scientific source to its articles and figures,
+and records how far each one has moved. The website inventory covers work for:
 
 - aspartame dose calculations;
 - confidence sets and coverage;
@@ -32,7 +34,12 @@ The current website inventory includes work for:
 - sequential change-point/CUSUM examples;
 - quantum-observer examples;
 - data-lake and database benchmarks;
-- shared plotting/house-style utilities.
+- shared plotting/house-style utilities;
+- one 3,826-line figure monolith holding 78 generators.
+
+Two files were classified as obsolete rather than migrated: `code/Untitled.ipynb`
+and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
+`# Hypothetical data`, with no article behind them.
 
 ## Phase 2 — Shared foundations
 
