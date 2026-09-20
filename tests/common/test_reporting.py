@@ -46,6 +46,18 @@ def test_dicts_and_paths_are_converted() -> None:
     assert isinstance(converted["1"], str)
 
 
+def test_dates_and_timestamps_become_iso_strings() -> None:
+    """A release vintage depends on its time zone, so the offset is kept."""
+    from datetime import date, datetime
+
+    moment = datetime.fromisoformat("2025-04-30T12:30:00+00:00")
+    assert to_jsonable(moment) == "2025-04-30T12:30:00+00:00"
+    assert to_jsonable(date(2025, 4, 30)) == "2025-04-30"
+    assert json.loads(json.dumps(to_jsonable({"at": moment}))) == {
+        "at": "2025-04-30T12:30:00+00:00"
+    }
+
+
 def test_scalars_pass_through_unchanged() -> None:
     """Values JSON already understands are returned as they are."""
     assert to_jsonable(3) == 3
