@@ -19,6 +19,19 @@ pytest = ">=8.0,<10.0"
 pytest-cov = ">=6.0,<8.0"
 ruff = ">=0.9,<1.0"
 
+[tool.poetry.group.benchmarks]
+# The data-engineering harnesses under scripts/benchmarks/ need these. They take
+# minutes, write about a gigabyte of temporary files, and are run by hand; the
+# models and tests read the recorded results instead, so CI does not install them.
+optional = true
+
+[tool.poetry.group.benchmarks.dependencies]
+duckdb = ">=1.1,<2.0"
+numpy = ">=2.0,<3.0"
+pandas = ">=2.2,<3.0"
+psutil = ">=6.0,<8.0"
+pyarrow = ">=17.0"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"

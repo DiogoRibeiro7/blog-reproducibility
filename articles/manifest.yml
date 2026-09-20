@@ -455,3 +455,61 @@ articles:
       reproducibility_tests: migrated
       figure_renderer: migrated
       website_cleanup: pending
+
+  a-database-for-analysis:
+    path: _posts/data_science/2026-09-19-a_database_for_analysis_rows_columns_indexes.md
+    permalink: /data-science/a_database_for_analysis_rows_columns_indexes/
+    modules:
+      - blog_reproducibility.engineering.benchmark_results
+      - blog_reproducibility.engineering.database_benchmarks
+      - blog_reproducibility.engineering.database_benchmarks_figure
+    figure_scripts:
+      - scripts/figures/engineering/database_benchmarks.py
+    benchmark_harness: scripts/benchmarks/database_benchmarks.py
+    generated_figures:
+      - build/figures/engineering/database_rows_versus_columns.png
+      - build/figures/engineering/database_index_helps_and_hurts.png
+    tests:
+      - tests/engineering/test_database_benchmarks.py
+      - tests/engineering/test_database_benchmarks_figure.py
+    data_inputs:
+      - data/engineering/database_benchmarks.json
+    original_website_sources:
+      - assets/viz/database_benchmarks.py
+      - assets/viz/database_benchmarks.json
+      - assets/viz/generate_database_figures.py
+      - tests/test_database_benchmarks.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  a-data-lake-is-a-directory-with-rules:
+    path: _posts/data_science/2026-09-19-a_data_lake_is_a_directory_with_rules.md
+    permalink: /data-science/a_data_lake_is_a_directory_with_rules/
+    modules:
+      - blog_reproducibility.engineering.benchmark_results
+      - blog_reproducibility.engineering.data_lake_benchmarks
+      - blog_reproducibility.engineering.data_lake_benchmarks_figure
+    figure_scripts:
+      - scripts/figures/engineering/data_lake_benchmarks.py
+    benchmark_harness: scripts/benchmarks/data_lake_benchmarks.py
+    generated_figures:
+      - build/figures/engineering/data_lake_formats_and_columns.png
+      - build/figures/engineering/data_lake_partition_layouts.png
+    tests:
+      - tests/engineering/test_data_lake_benchmarks.py
+      - tests/engineering/test_data_lake_benchmarks_figure.py
+    data_inputs:
+      - data/engineering/data_lake_benchmarks.json
+    original_website_sources:
+      - assets/viz/data_lake_benchmarks.py
+      - assets/viz/data_lake_benchmarks.json
+      - assets/viz/generate_data_lake_figures.py
+      - tests/test_data_lake_benchmarks.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
