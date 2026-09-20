@@ -5,8 +5,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 from blog_reproducibility.common.plotting import (
-    FigureArtifact,
     PALETTE,
+    FigureArtifact,
     save_figure,
     use_house_style,
 )
