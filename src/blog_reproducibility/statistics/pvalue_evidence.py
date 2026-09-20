@@ -46,10 +46,7 @@ def _real(value: object, *, name: str) -> float:
 def _probability(value: object, *, name: str, inclusive: bool = True) -> float:
     """Validate a finite probability."""
     probability = _real(value, name=name)
-    if inclusive:
-        valid = 0.0 <= probability <= 1.0
-    else:
-        valid = 0.0 < probability < 1.0
+    valid = 0.0 <= probability <= 1.0 if inclusive else 0.0 < probability < 1.0
 
     if not valid:
         interval = "[0, 1]" if inclusive else "(0, 1)"
@@ -104,8 +101,7 @@ def selected_studies(
         null_nonrejections=study_count * (1.0 - signal_prior) * (1.0 - significance),
         signal_given_rejection=signal_given_rejection,
         repeat_rejection_given_first_rejection=(
-            signal_given_rejection * power
-            + (1.0 - signal_given_rejection) * significance
+            signal_given_rejection * power + (1.0 - signal_given_rejection) * significance
         ),
     )
 
@@ -154,10 +150,7 @@ def example_payload() -> dict[str, object]:
         "z_2_p": two_sided_p(2.0),
         "z_2_likelihood_ratio": exp(2.0),
         "negative_z_2_likelihood_ratio": exp(-6.0),
-        "thresholds": [
-            asdict(selected_studies(alpha=alpha))
-            for alpha in (0.05, 0.01, 0.001)
-        ],
+        "thresholds": [asdict(selected_studies(alpha=alpha)) for alpha in (0.05, 0.01, 0.001)],
         "prior_sensitivity": [
             {
                 "prior": prior,
