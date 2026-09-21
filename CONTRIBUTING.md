@@ -32,6 +32,7 @@ units, and return values when they matter.
 
 ```console
 poetry check --lock --strict
+poetry run pre-commit run actionlint --all-files
 poetry run ruff check .
 poetry run ruff format --check .
 poetry run mypy src scripts tests
@@ -42,12 +43,24 @@ poetry run python -m scripts.reproduce
 ```
 
 Apply formatting with `poetry run ruff format .`. Commit hooks check formatting,
-lint, types, metadata, and the manifest. The pre-push hook runs tests with coverage.
+lint, types, metadata, the manifest, and GitHub Actions workflows. The pre-push hook
+runs tests with coverage.
 CI runs the same checks, exercises supported interpreters and operating systems,
 and verifies the built package. Archive-content regression tests run in the unit
 suite; the full packaging check also installs a built wheel in a clean environment.
 That packaging script is exercised separately by CI and excluded from the coverage
 calculation.
+
+Workflow checks use the pinned actionlint hook in `.pre-commit-config.yaml`.
+Changing workflow YAML, local action YAML, or the hook configuration checks every
+workflow, including references to local action inputs. The first hook run downloads
+and builds actionlint; pre-commit installs Go automatically if it is missing and
+reuses the resulting environment on later runs. This setup needs network access.
+See [pre-commit's Go support](https://pre-commit.com/#golang).
+
+The check covers workflow syntax, expressions, matrix references, job dependencies,
+and action inputs. Optional ShellCheck and Pyflakes integrations are disabled so
+local and CI checks use the same rules regardless of installed system tools.
 
 Manual benchmark harnesses under `scripts/benchmarks/` use optional dependencies
 and retain their original implementation. They receive lint checks; strict typing

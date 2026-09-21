@@ -77,6 +77,7 @@ reproduction. See [the data policy](data/README.md) for reviewing intentional up
 
 ```console
 poetry run pre-commit install
+poetry run pre-commit run actionlint --all-files
 poetry run ruff check .
 poetry run ruff format --check .
 poetry run mypy src scripts tests
@@ -86,8 +87,9 @@ poetry run python -m scripts.catalog --check
 ```
 
 CI checks Python 3.11–3.14 on Linux and Python 3.13 on Windows and macOS. It also
-checks the manifest, enforces 90% combined statement/branch coverage, builds both
-distribution formats, and renders figures from an isolated wheel installation.
+checks workflow definitions and the manifest, enforces 90% combined statement/branch
+coverage, builds both distribution formats, and renders figures from an isolated
+wheel installation.
 Download the distributions, figures, and run report from the CI run's artifacts.
 They also include a [snapshot ZIP](docs/reproducibility.md#save-a-reproducibility-snapshot)
 with the source archive, wheel, figures, checksums, and standalone verification command.

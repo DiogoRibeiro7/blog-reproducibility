@@ -7,6 +7,8 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Added
 
+- Pinned GitHub Actions workflow linting in CI and commit hooks, including checks
+  when local action definitions change.
 - Version-tag validation against package metadata and dated changelog notes,
   with draft GitHub releases after all CI checks pass.
 - A portable snapshot archive with verified distributions, figures, report,
