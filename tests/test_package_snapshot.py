@@ -29,6 +29,7 @@ def snapshot_root(tmp_path: Path) -> Path:
         "poetry.lock": b"# locked dependencies\n",
         "src/blog_reproducibility/__init__.py": b'__version__ = "0.1.0"\n',
         "scripts/verify_reproduction.py": (ROOT / "scripts/verify_reproduction.py").read_bytes(),
+        "scripts/verify_checksums.py": (ROOT / "scripts/verify_checksums.py").read_bytes(),
         "data/example.csv": b"value\n42\n",
     }
     for name, content in files.items():
@@ -84,6 +85,7 @@ def test_snapshot_is_complete_and_can_verify_figures_after_extraction(snapshot_r
             "README.md",
             "LICENSE",
             "SHA256SUMS",
+            "verify_checksums.py",
             "verify_reproduction.py",
             "distributions/example.whl",
             "distributions/example.tar.gz",
@@ -107,6 +109,26 @@ def test_snapshot_is_complete_and_can_verify_figures_after_extraction(snapshot_r
     )
     assert result.returncode == 0, result.stderr
     assert "Verified checksums for 1 figures" in result.stdout
+    checksums = subprocess.run(
+        [sys.executable, "-I", "-S", "verify_checksums.py", "SHA256SUMS"],
+        cwd=destination,
+        capture_output=True,
+        text=True,
+    )
+    assert checksums.returncode == 0, checksums.stderr
+    assert "Verified checksums for 8 files" in checksums.stdout
+
+    # The complete inventory catches changed distributions, which the figure-only
+    # check above does not cover.
+    (destination / "distributions/example.whl").write_bytes(b"changed download")
+    damaged = subprocess.run(
+        [sys.executable, "-I", "-S", "verify_checksums.py", "SHA256SUMS"],
+        cwd=destination,
+        capture_output=True,
+        text=True,
+    )
+    assert damaged.returncode == 1
+    assert "Checksum mismatch: distributions/example.whl" in damaged.stderr
 
 
 @pytest.mark.parametrize("change", ["changed", "missing", "extra"])

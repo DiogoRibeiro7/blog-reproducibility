@@ -110,6 +110,10 @@ jobs:
         run: poetry run python -m scripts.verify_reproduction build/figures/reproduction.json
       - name: Package a verified reproducibility snapshot
         run: poetry run python -m scripts.package_snapshot
+      - name: Verify the extracted snapshot with its bundled command
+        run: |
+          python -m zipfile -e build/snapshots/reproducibility-snapshot.zip build/snapshot-review
+          python -I -S build/snapshot-review/verify_checksums.py build/snapshot-review/SHA256SUMS
       - name: Save distributions and reproduction artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
