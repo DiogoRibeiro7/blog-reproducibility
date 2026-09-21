@@ -24,6 +24,8 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- Distribution checks compare every package file and source reproduction input
+  with the checkout, rejecting missing or changed files before installation.
 - Reproduction rejects conflicting output paths before rendering or removing prior reports.
 - Tooling now accepts omitted `data_inputs` for articles without external files.
 - Coverage follows figure scripts into subprocesses; manual measurement harnesses
