@@ -78,6 +78,31 @@ the wheel does not bundle those records. Reproducing their figures reads the
 existing JSON records and does not rerun the measurement harnesses. See
 [benchmark provenance](../data/engineering/README.md) before collecting new timings.
 
+## Verify saved figures
+
+Check an existing run or downloaded artifact without rendering it again:
+
+```console
+poetry run python -m scripts.verify_reproduction build/figures/reproduction.json
+```
+
+Keep the report and its figure directories together when copying or extracting
+outputs. Paths are resolved relative to the report, so the command works from
+another directory and does not need the original checkout or its data. The verifier
+uses only Python's standard library and can also run directly:
+
+```console
+python scripts/verify_reproduction.py path/to/download/reproduction.json
+```
+
+Verification reads each recorded figure and compares its SHA-256 checksum with the
+report. It returns a nonzero exit code for missing or changed figures, malformed
+reports, unsupported report versions, duplicate figure paths, and paths that leave
+the report directory. It changes no files. Unlisted files are ignored, since a
+directory may hold figures from other runs. This verifies recorded figure bytes;
+it does not validate the report's source or environment metadata, or rerun the
+scientific calculations. CI verifies its saved figures before uploading artifacts.
+
 ## Numerical guarantees
 
 - The CUSUM example uses `random.Random(42)`, 100 observations, and a mean shift at

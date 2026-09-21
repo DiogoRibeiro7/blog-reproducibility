@@ -35,6 +35,8 @@ not enabled by the files in this repository.
    `__version__` is read from installed package metadata.
 3. Move relevant changelog entries into a dated release section.
 4. Run the checks in `CONTRIBUTING.md` and reproduce all registered articles.
+   Verify the saved output with
+   `poetry run python -m scripts.verify_reproduction build/figures/reproduction.json`.
 5. Build into an empty `dist/` directory with `poetry build`.
 6. Run `poetry run python scripts/check_distribution.py` to compare archive files
    with the checkout and render from an isolated wheel installation. The wheel

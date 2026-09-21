@@ -90,6 +90,15 @@ checks the manifest, enforces 90% combined statement/branch coverage, builds bot
 distribution formats, and renders figures from an isolated wheel installation.
 Download the distributions, figures, and run report from the CI run's artifacts.
 
+Verify saved figures against their report without rerendering:
+
+```console
+poetry run python -m scripts.verify_reproduction build/figures/reproduction.json
+```
+
+For downloaded artifacts, pass the extracted report's path and retain its figure
+directories. See [artifact verification](docs/reproducibility.md#verify-saved-figures).
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and
 [adding an article](docs/adding-an-article.md) for the migration checklist.
 

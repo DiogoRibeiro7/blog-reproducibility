@@ -11,6 +11,7 @@ import pytest
 
 from scripts.manifest import ROOT, Article, load_manifest
 from scripts.reproduce import git_state, main, reproduce
+from scripts.verify_reproduction import verify_report
 
 
 @pytest.fixture
@@ -39,6 +40,7 @@ def test_reproduce_all_articles_and_record_provenance(tmp_path: Path) -> None:
         for figure in article.figures
     }
     assert {figure["path"] for figure in report["figures"]} == expected
+    assert verify_report(report_path) == len(expected)
     for figure in report["figures"]:
         content = (tmp_path / figure["path"]).read_bytes()
         assert content.startswith(b"\x89PNG\r\n\x1a\n")
