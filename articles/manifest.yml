@@ -48,7 +48,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   confidence-sets-are-not-just-intervals:
     path: _posts/statistics/2026-09-12-confidence_sets_are_not_just_intervals.md
@@ -70,7 +70,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   why-a-million-responses-can-still-give-the-wrong-answer:
     path: _posts/science_communication/2024-09-12-why_a_million_responses_can_still_give_the_wrong_answer.md
@@ -93,7 +93,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   what-before-and-after-testimonials-can-establish:
     path: _posts/science_communication/2026-09-19-what_before_and_after_testimonials_can_establish.md
@@ -116,7 +116,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   aspartame-fruit-true-premise-bad-argument:
     path: _posts/healthcare/2026-07-12-aspartame_fruit_true_premise_bad_argument.md
@@ -139,7 +139,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   hormone-balance-social-media-myth:
     path: _posts/healthcare/2026-02-18-hormone_balance_social_media_myth.md
@@ -162,7 +162,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   consumer-microbiome-testing-limits:
     path: _posts/healthcare/2026-03-05-consumer_microbiome_testing_limits.md
@@ -185,7 +185,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   parasite-cleanse-social-media-myth:
     path: _posts/healthcare/2026-01-24-parasite_cleanse_social_media_myth.md
@@ -208,7 +208,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   inflammation-is-not-a-diagnosis:
     path: _posts/healthcare/2026-09-02-inflammation_is_not_a_diagnosis_social_media_myths.md
@@ -231,7 +231,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   leaky-gut-social-media-myths:
     path: _posts/healthcare/2026-06-03-leaky_gut_social_media_myths.md
@@ -254,7 +254,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   results-are-not-evidence:
     path: _posts/healthcare/2026-05-11-results_are_not_evidence_influencer_science.md
@@ -277,7 +277,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   why-longer-survival-after-diagnosis-can-mislead:
     path: _posts/science_communication/2025-07-17-why_longer_survival_after_diagnosis_can_mislead.md
@@ -300,7 +300,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   quantum-measurement-and-the-observer-myth:
     path: _posts/science_communication/2025-01-23-quantum_measurement_and_the_observer_myth.md
@@ -323,7 +323,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   why-summer-follows-earths-tilt:
     path: _posts/science_communication/2024-07-11-why_summer_follows_earths_tilt.md
@@ -345,7 +345,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   cold-days-in-a-warming-climate:
     path: _posts/science_communication/2024-02-15-cold_days_in_a_warming_climate.md
@@ -368,7 +368,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   randomness-does-not-owe-a-reversal:
     path: _posts/science_communication/2025-10-09-randomness_does_not_owe_a_reversal.md
@@ -390,7 +390,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   how-antibiotic-resistance-spreads:
     path: _posts/science_communication/2025-03-20-how_antibiotic_resistance_spreads.md
@@ -412,7 +412,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   natural-origin-does-not-establish-safety:
     path: _posts/science_communication/2026-02-12-natural_origin_does_not_establish_safety.md
@@ -433,7 +433,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   read-the-starting-risk-before-the-percentage:
     path: _posts/science_communication/2026-06-18-read_the_starting_risk_before_the_percentage.md
@@ -454,7 +454,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   a-database-for-analysis:
     path: _posts/data_science/2026-09-19-a_database_for_analysis_rows_columns_indexes.md
@@ -483,7 +483,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   a-data-lake-is-a-directory-with-rules:
     path: _posts/data_science/2026-09-19-a_data_lake_is_a_directory_with_rules.md
@@ -512,7 +512,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   more-subjects-and-longer-trajectories:
     path: _posts/statistics/2026-09-21-more_subjects_and_longer_trajectories.md
@@ -533,7 +533,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   monitoring-without-labels-identifiability:
     path: _posts/machine_learning/2026-09-23-monitoring_without_labels_identifiability.md
@@ -554,7 +554,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   numerical-verification-before-optimization:
     path: _posts/programming/2026-09-25-numerical_verification_before_optimization.md
@@ -575,7 +575,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   what-a-wearable-heart-alert-can-tell-you:
     path: _posts/healthcare/2026-09-28-what_a_wearable_heart_alert_can_tell_you.md
@@ -596,7 +596,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   microwaves-heat-food-without-making-it-radioactive:
     path: _posts/science_communication/2026-09-30-microwaves_heat_food_without_making_it_radioactive.md
@@ -617,7 +617,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   economic-data-have-two-dates:
     path: _posts/economics/2026-10-02-economic_data_have_two_dates.md
@@ -641,7 +641,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
@@ -665,7 +665,7 @@ drafts:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   storage-must-balance-power-energy-and-losses:
     path: _drafts/ideas/storage-must-balance-power-energy-and-losses.md
@@ -686,7 +686,7 @@ drafts:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   a-personal-baseline-can-learn-the-change:
     path: _drafts/ideas/a-personal-baseline-can-learn-the-change.md
@@ -707,4 +707,4 @@ drafts:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete

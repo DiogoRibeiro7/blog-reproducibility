@@ -25,7 +25,11 @@ classified.
 ## Migration status vocabulary
 
 `pending` — not started. `migrated` — present and tested here. `complete` —
-migrated here *and* removed from the website repository.
+migrated here *and* removed from the website repository. `outstanding` — still
+in the website repository.
+
+As of the website cleanup, every `R` row is `complete` except
+`generate_figures.py`.
 
 ---
 
@@ -33,32 +37,32 @@ migrated here *and* removed from the website repository.
 
 | Original path | Class | Destination | Status |
 | --- | --- | --- | --- |
-| `data_lake_benchmarks.py` | R | `engineering/data_lake_benchmarks.py` | pending |
-| `data_lake_benchmarks.json` | D | `data/engineering/data_lake_benchmarks.json` | pending |
-| `database_benchmarks.py` | R | `engineering/database_benchmarks.py` | pending |
-| `database_benchmarks.json` | D | `data/engineering/database_benchmarks.json` | pending |
+| `data_lake_benchmarks.py` | R | `engineering/data_lake_benchmarks.py` | **complete** |
+| `data_lake_benchmarks.json` | D | `data/engineering/data_lake_benchmarks.json` | **complete** |
+| `database_benchmarks.py` | R | `engineering/database_benchmarks.py` | **complete** |
+| `database_benchmarks.json` | D | `data/engineering/database_benchmarks.json` | **complete** |
 | `fetch_headers.py` | W | — | stays |
-| `generate_2026_evidence_articles.py` | R | split across `statistics/`, `health/`, `physics/`, `engineering/` | pending |
-| `generate_aspartame_dose_figures.py` | R | `health/aspartame_dose*.py` | pending |
-| `generate_confidence_set_figures.py` | R | `statistics/confidence_sets*.py` | pending |
-| `generate_coverage_draft_figures.py` | R | `statistics/`, `health/`, `engineering/` (three draft models) | pending |
-| `generate_data_lake_figures.py` | R | `engineering/data_lake_figure.py` | pending |
-| `generate_database_figures.py` | R | `engineering/database_figure.py` | pending |
-| `generate_figures.py` | R | split by domain across the package | pending |
+| `generate_2026_evidence_articles.py` | R | split across `statistics/`, `health/`, `physics/`, `engineering/` | **complete** |
+| `generate_aspartame_dose_figures.py` | R | `health/aspartame_dose*.py` | **complete** |
+| `generate_confidence_set_figures.py` | R | `statistics/confidence_sets*.py` | **complete** |
+| `generate_coverage_draft_figures.py` | R | `statistics/`, `health/`, `engineering/` (three draft models) | **complete** |
+| `generate_data_lake_figures.py` | R | `engineering/data_lake_figure.py` | **complete** |
+| `generate_database_figures.py` | R | `engineering/database_figure.py` | **complete** |
+| `generate_figures.py` | R | split by domain across the package | **outstanding — see section 7** |
 | `generate_headers.py` | W | — | stays |
-| `generate_hormone_testing_figures.py` | R | `health/hormone_testing*.py` | pending |
-| `generate_inflammation_marker_figures.py` | R | `health/inflammation_markers*.py` | pending |
-| `generate_leaky_gut_figures.py` | R | `health/leaky_gut*.py` | pending |
-| `generate_microbiome_testing_figures.py` | R | `health/microbiome_testing*.py` | pending |
-| `generate_parasite_testing_figures.py` | R | `health/parasite_testing*.py` | pending |
-| `generate_poll_selection_figures.py` | R | `statistics/poll_selection*.py` | pending |
-| `generate_pvalue_evidence_figures.py` | R | `statistics/pvalue_evidence*.py` | **migrated** |
-| `generate_quantum_observer_figures.py` | R | `physics/quantum_observer*.py` | pending |
-| `generate_results_rhetoric_figures.py` | R | `health/results_rhetoric*.py` | pending |
-| `generate_science_communication_figures.py` | R | `physics/`, `statistics/`, `health/` | pending |
-| `generate_screening_survival_figures.py` | R | `health/screening_survival*.py` | pending |
+| `generate_hormone_testing_figures.py` | R | `health/hormone_testing*.py` | **complete** |
+| `generate_inflammation_marker_figures.py` | R | `health/inflammation_markers*.py` | **complete** |
+| `generate_leaky_gut_figures.py` | R | `health/leaky_gut*.py` | **complete** |
+| `generate_microbiome_testing_figures.py` | R | `health/microbiome_testing*.py` | **complete** |
+| `generate_parasite_testing_figures.py` | R | `health/parasite_testing*.py` | **complete** |
+| `generate_poll_selection_figures.py` | R | `statistics/poll_selection*.py` | **complete** |
+| `generate_pvalue_evidence_figures.py` | R | `statistics/pvalue_evidence*.py` | **complete** |
+| `generate_quantum_observer_figures.py` | R | `physics/quantum_observer*.py` | **complete** |
+| `generate_results_rhetoric_figures.py` | R | `health/results_rhetoric*.py` | **complete** |
+| `generate_science_communication_figures.py` | R | `physics/`, `statistics/`, `health/` | **complete** |
+| `generate_screening_survival_figures.py` | R | `health/screening_survival*.py` | **complete** |
 | `generate_sequential_changepoint_figure.py` | R | `time_series/sequential_cusum*.py` | **complete** |
-| `generate_testimonial_figures.py` | R | `statistics/testimonial_selection*.py` | pending |
+| `generate_testimonial_figures.py` | R | `statistics/testimonial_selection*.py` | **complete** |
 | `house.mplstyle` | W + R | `common/house.mplstyle` | **migrated**; the website keeps its own copy |
 | `housestyle.py` | W + R | `common/plotting.py` | **migrated**; the website keeps a reduced copy |
 
@@ -75,26 +79,26 @@ scientific code is duplicated.
 
 | Original path | Class | Destination | Status |
 | --- | --- | --- | --- |
-| `test_aspartame_dose_models.py` | R | `tests/health/test_aspartame_dose.py` | pending |
-| `test_coverage_draft_models.py` | R | `tests/statistics/`, `tests/health/`, `tests/engineering/` | pending |
-| `test_data_lake_benchmarks.py` | R | `tests/engineering/test_data_lake_benchmarks.py` | pending |
-| `test_database_benchmarks.py` | R | `tests/engineering/test_database_benchmarks.py` | pending |
-| `test_hormone_testing_models.py` | R | `tests/health/test_hormone_testing.py` | pending |
-| `test_inflammation_marker_models.py` | R | `tests/health/test_inflammation_markers.py` | pending |
-| `test_leaky_gut_models.py` | R | `tests/health/test_leaky_gut.py` | pending |
-| `test_microbiome_testing_models.py` | R | `tests/health/test_microbiome_testing.py` | pending |
-| `test_parasite_testing_models.py` | R | `tests/health/test_parasite_testing.py` | pending |
-| `test_poll_selection_models.py` | R | `tests/statistics/test_poll_selection.py` | pending |
+| `test_aspartame_dose_models.py` | R | `tests/health/test_aspartame_dose.py` | **complete** |
+| `test_coverage_draft_models.py` | R | `tests/statistics/`, `tests/health/`, `tests/engineering/` | **complete** |
+| `test_data_lake_benchmarks.py` | R | `tests/engineering/test_data_lake_benchmarks.py` | **complete** |
+| `test_database_benchmarks.py` | R | `tests/engineering/test_database_benchmarks.py` | **complete** |
+| `test_hormone_testing_models.py` | R | `tests/health/test_hormone_testing.py` | **complete** |
+| `test_inflammation_marker_models.py` | R | `tests/health/test_inflammation_markers.py` | **complete** |
+| `test_leaky_gut_models.py` | R | `tests/health/test_leaky_gut.py` | **complete** |
+| `test_microbiome_testing_models.py` | R | `tests/health/test_microbiome_testing.py` | **complete** |
+| `test_parasite_testing_models.py` | R | `tests/health/test_parasite_testing.py` | **complete** |
+| `test_poll_selection_models.py` | R | `tests/statistics/test_poll_selection.py` | **complete** |
 | `test_post_layout.py` | W | — | stays |
 | `test_post_math_delimiters.py` | W | — | stays |
-| `test_pvalue_evidence_models.py` | R | `tests/statistics/test_pvalue_evidence.py` | **migrated** |
-| `test_quantum_observer_models.py` | R | `tests/physics/test_quantum_observer.py` | pending |
-| `test_results_rhetoric_models.py` | R | `tests/health/test_results_rhetoric.py` | pending |
-| `test_science_communication_figures.py` | R | `tests/physics/`, `tests/statistics/`, `tests/health/` | pending |
-| `test_screening_survival_models.py` | R | `tests/health/test_screening_survival.py` | pending |
+| `test_pvalue_evidence_models.py` | R | `tests/statistics/test_pvalue_evidence.py` | **complete** |
+| `test_quantum_observer_models.py` | R | `tests/physics/test_quantum_observer.py` | **complete** |
+| `test_results_rhetoric_models.py` | R | `tests/health/test_results_rhetoric.py` | **complete** |
+| `test_science_communication_figures.py` | R | `tests/physics/`, `tests/statistics/`, `tests/health/` | **complete** |
+| `test_screening_survival_models.py` | R | `tests/health/test_screening_survival.py` | **complete** |
 | `test_sequential_cusum.py` | R | `tests/time_series/test_sequential_cusum.py` | **complete** |
 | `test_sync_theme_assets.py` | W | — | stays |
-| `test_testimonial_models.py` | R | `tests/statistics/test_testimonial_selection.py` | pending |
+| `test_testimonial_models.py` | R | `tests/statistics/test_testimonial_selection.py` | **complete** |
 
 Once every `R` row is complete, the website still needs `requirements.txt` and
 the `python-tests.yml` workflow: `test_post_layout.py`,
@@ -133,7 +137,7 @@ could resolve. That is recorded as new work, not as migrated code.
 | --- | --- | --- | --- |
 | `assets/images/figures/*.png` (123 files) | A | — | stays; article URLs must not change |
 | `assets/images/headers/*` (83 files) | A | — | stays |
-| `assets/data/gdp_q1_2025_release_vintages.csv` | R input | `data/economics/` (copy) | pending |
+| `assets/data/gdp_q1_2025_release_vintages.csv` | R input | `data/economics/` (copy) | copied; website copy stays for the download link |
 
 The GDP vintage CSV is transcribed from archived BEA releases and is linked from
 the article as a download at `/assets/data/…`. The website copy stays so the link
@@ -213,19 +217,66 @@ rewritten as each group lands.
 
 ---
 
-## 7. `generate_figures.py`
+## 7. `generate_figures.py` — the one outstanding migration
 
-One 3,826-line module holds 78 figure generators behind a `@figure(slug, alt)`
-registry, sharing a single module-level NumPy generator seeded at 20260816.
-Nothing but `README.md` references it by name; the articles reference its output
-images. It covers, among others, central-limit convergence, Kaplan–Meier
-estimation, drift monitoring, selective inference, experiment design, and
-queueing.
+Everything else in this inventory has moved. This file has not, and it is the
+only scientific Python left in the website repository.
 
-It migrates last and in thematic groups, because the seeded generator is shared
-across every figure and splitting the module changes which draws each figure
-receives. Each group takes an explicit seed of its own, and the tests record the
-values the articles quote rather than the draws.
+One 3,826-line module holds **76 figure generators** behind a `@figure(slug,
+alt)` registry, all sharing a single module-level NumPy generator seeded at
+20260816. Nothing but `README.md` refers to it by name; the articles refer to
+the images it writes.
+
+### What is in it
+
+| Article subject | Figures | Examples |
+| --- | ---: | --- |
+| Statistics | 43 | selective inference, experiment design, bootstrap coverage, propensity estimators |
+| Machine learning | 16 | drift monitoring and alerting, leakage, learning curves, permutation importance |
+| Data science | 6 | kernel density bandwidth, splines, synthetic control, outlier plots |
+| Mathematics | 5 | central-limit convergence, Kaplan–Meier, MCMC, distance concentration, queueing |
+| Economics | 3 | Lorenz/Gini, Solow steady state, Monte Carlo fan |
+| Time series | 1 | penalised change-point partitioning |
+| Referenced by no article | 2 | `acf_pacf`, `type_i_ii` |
+
+The last two rows are worth separating: `acf_pacf` and `type_i_ii` produce
+images that exist under `assets/images/figures/` but that no current article
+embeds. They should be confirmed dead before being migrated.
+
+### What it would cost
+
+| | |
+| --- | --- |
+| New dependencies | SciPy (22 figures), scikit-learn (6), statsmodels (1) |
+| Need none of those | 48 figures |
+| Slow generators | the queueing figure simulates 200,000 events five times; the change-point figure runs an O(n²) dynamic program thirteen times |
+
+### Why it is last, and how to split it
+
+Every generator draws from one module-level generator in registration order, so
+moving any figure out changes the draws every later figure receives. The
+regenerated images will therefore not be byte-identical to the published ones.
+That is acceptable — the published PNGs stay in the website repository and their
+URLs do not change — but it means the split has to be deliberate rather than
+incremental: each figure takes an explicit seed of its own as it moves.
+
+The suggested order is smallest first, so the pattern and the dependency set are
+settled before the large groups:
+
+1. **Economics, mathematics, time series** (9 figures). Establishes the pattern
+   and adds SciPy and scikit-learn. Several have real content to test: the Gini
+   coefficient against the closed form for a lognormal, the Solow steady state
+   as a fixed point, Kaplan–Meier against a hand-computed example.
+2. **Data science** (6 figures).
+3. **Machine learning** (16 figures) into a new `machine_learning/` submodule.
+4. **Statistics** (43 figures), in three or four thematic groups.
+
+Unlike the models already migrated, these figures are illustrations rather than
+evidence: they draw synthetic data to make a point, and the articles do not
+quote numbers from them. Their tests should therefore check determinism under a
+fixed seed, the invariants each illustration depends on, and the derived
+quantities that are worth stating — not published values, because there are
+none.
 
 ---
 
