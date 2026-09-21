@@ -88,8 +88,8 @@ poetry run python -m scripts.catalog --check
 
 CI checks Python 3.11–3.14 on Linux and Python 3.13 on Windows and macOS. It also
 checks workflow definitions and the manifest, enforces 90% combined statement/branch
-coverage, builds both distribution formats, and renders figures from an isolated
-wheel installation.
+coverage, and builds both distribution formats. It rebuilds a wheel from the source
+archive and renders figures from both wheels in separate isolated installations.
 Download the distributions, figures, and run report from the CI run's artifacts.
 They also include a [snapshot ZIP](docs/reproducibility.md#save-a-reproducibility-snapshot)
 with the source archive, wheel, figures, checksums, and standalone verification commands.

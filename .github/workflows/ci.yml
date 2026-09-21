@@ -102,7 +102,7 @@ jobs:
           --tag "$RELEASE_TAG" --notes-output build/release-notes.md
       - name: Build wheel and source distribution
         run: poetry build
-      - name: Verify isolated wheel installation and source archive
+      - name: Verify wheel installation and rebuild from the source archive
         run: poetry run python scripts/check_distribution.py
       - name: Reproduce every registered article
         run: poetry run python -m scripts.reproduce

@@ -1,8 +1,9 @@
-"""Check source archive contents and render from an isolated wheel installation."""
+"""Check both distributions, rebuild from source, and render from isolated installs."""
 
 import os
 import subprocess
 import tarfile
+import tomllib
 import venv
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -73,25 +74,23 @@ def find_distributions(directory: Path) -> tuple[Path, Path]:
     return wheels[0], archives[0]
 
 
-def main() -> None:
-    """Fail if packaging loses resources or relies on the editable checkout."""
-    wheel, source = find_distributions(ROOT / "dist")
-    check_contents(wheel, source, root=ROOT)
-
-    with TemporaryDirectory(prefix="blog-wheel-") as temporary:
-        directory = Path(temporary)
-        venv.EnvBuilder(with_pip=True).create(directory / "venv")
-        python = directory / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
-        subprocess.run(
-            [str(python), "-m", "pip", "install", "--disable-pip-version-check", str(wheel)],
-            check=True,
-        )
-        smoke = """
+def _smoke_install(wheel: Path, directory: Path, version: str) -> Path:
+    """Install one wheel in a fresh environment and render into a fresh directory."""
+    venv.EnvBuilder(with_pip=True).create(directory / "venv")
+    python = directory / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
+    subprocess.run(
+        [str(python), "-I", "-m", "pip", "install", "--disable-pip-version-check", str(wheel)],
+        cwd=directory,
+        check=True,
+    )
+    smoke = """
+import sys
 from importlib.resources import files
 from pathlib import Path
 from blog_reproducibility import __version__
 from blog_reproducibility.time_series.sequential_cusum_figure import render_sequential_cusum_figure
 from blog_reproducibility.statistics.pvalue_evidence_figure import render_pvalue_evidence_figures
+assert __version__ == sys.argv[1], (__version__, sys.argv[1])
 assert files('blog_reproducibility').joinpath('py.typed').is_file()
 artifacts = [render_sequential_cusum_figure(output_dir=Path('figures'))]
 artifacts.extend(render_pvalue_evidence_figures(output_dir=Path('figures')))
@@ -99,13 +98,58 @@ for artifact in artifacts:
     assert artifact.path.read_bytes().startswith(b'\\x89PNG\\r\\n\\x1a\\n')
 print(f'Installed version {__version__}: all three figures rendered successfully.')
 """
+    subprocess.run(
+        [str(python), "-I", "-c", smoke, version],
+        cwd=directory,
+        env={**os.environ, "MPLBACKEND": "Agg"},
+        check=True,
+    )
+    return python
+
+
+def main() -> None:
+    """Fail if either distribution cannot supply a working, complete installation."""
+    wheel, source = find_distributions(ROOT / "dist")
+    check_contents(wheel, source, root=ROOT)
+    version = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"][
+        "version"
+    ]
+
+    with TemporaryDirectory(prefix="blog-distributions-") as temporary:
+        directory = Path(temporary)
+        print("Checking the directly built wheel...", flush=True)
+        python = _smoke_install(wheel, directory / "wheel-install", version)
+
+        # Pass the source archive itself to pip from outside the checkout. Build
+        # isolation supplies its declared backend; disable cache reuse so this
+        # run must exercise the archive's build configuration and inputs.
+        print("Rebuilding a wheel from the source archive...", flush=True)
+        rebuilt_directory = directory / "rebuilt"
         subprocess.run(
-            [str(python), "-I", "-c", smoke],
+            [
+                str(python),
+                "-I",
+                "-m",
+                "pip",
+                "wheel",
+                "--disable-pip-version-check",
+                "--no-deps",
+                "--no-cache-dir",
+                "--wheel-dir",
+                str(rebuilt_directory),
+                str(source),
+            ],
             cwd=directory,
-            env={**os.environ, "MPLBACKEND": "Agg"},
             check=True,
         )
-    print("Wheel and source distribution checks passed.")
+        rebuilt_wheels = list(rebuilt_directory.glob("*.whl"))
+        if len(rebuilt_wheels) != 1:
+            raise RuntimeError("Expected exactly one wheel rebuilt from the source archive")
+        rebuilt_wheel = rebuilt_wheels[0]
+        check_contents(rebuilt_wheel, source, root=ROOT)
+        print("Checking the source-rebuilt wheel in a separate environment...", flush=True)
+        _smoke_install(rebuilt_wheel, directory / "source-install", version)
+    print("Wheel, source rebuild, and both isolated installation checks passed.")
 
 
 if __name__ == "__main__":
