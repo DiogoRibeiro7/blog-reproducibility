@@ -7,6 +7,8 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Added
 
+- A portable checksum-inventory verifier bundled with snapshots and exercised
+  after CI extracts the completed archive.
 - Pinned GitHub Actions workflow linting in CI and commit hooks, including checks
   when local action definitions change.
 - Version-tag validation against package metadata and dated changelog notes,

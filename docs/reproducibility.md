@@ -120,11 +120,27 @@ The report's input hashes must match the current source and data files. Rebuild
 the distributions and rerun reproduction after changing those inputs.
 
 The archive contains the distributions, report, recorded figures, license,
-standalone figure verifier, a README, and `SHA256SUMS` for every other archived
-file. Figures left over from other runs are excluded. After extraction, run
-`python verify_reproduction.py figures/reproduction.json` to check the figures;
-the bundled README explains how to check the complete checksum inventory and
-reproduce from the source archive.
+standalone checksum and figure verifiers, a README, and `SHA256SUMS` for every other
+archived file. Figures left over from other runs are excluded. After extraction,
+check the complete inventory with Python 3.11 or newer on Windows, macOS, or Linux:
+
+```console
+python verify_checksums.py SHA256SUMS
+```
+
+This verifies the distributions, report, figures, documentation, and verification
+scripts without installing dependencies. Paths are resolved relative to the
+inventory, so you can also run
+`python scripts/verify_checksums.py path/to/download/SHA256SUMS` from a checkout.
+Missing or changed files, malformed records, duplicate paths, and paths outside
+the inventory directory produce a nonzero exit code. Verification changes no files;
+unlisted files and the inventory itself are outside its scope. Records use a
+lowercase SHA-256 digest, two spaces, and a relative path with forward slashes.
+
+Run `python verify_reproduction.py figures/reproduction.json` to check just the
+figures against their report. The bundled README explains how to reproduce from
+the source archive. CI extracts each completed snapshot and runs its bundled
+checksum verifier before uploading it.
 
 Use `--report PATH` to bundle another run from the same sources and
 `--output PATH.zip` to choose a destination. Existing snapshots are never

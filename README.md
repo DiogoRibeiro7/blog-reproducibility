@@ -92,7 +92,9 @@ coverage, builds both distribution formats, and renders figures from an isolated
 wheel installation.
 Download the distributions, figures, and run report from the CI run's artifacts.
 They also include a [snapshot ZIP](docs/reproducibility.md#save-a-reproducibility-snapshot)
-with the source archive, wheel, figures, checksums, and standalone verification command.
+with the source archive, wheel, figures, checksums, and standalone verification commands.
+After extracting a snapshot, run `python verify_checksums.py SHA256SUMS` to check
+every listed file on Windows, macOS, or Linux without installing dependencies.
 
 Verify saved figures against their report without rerendering:
 

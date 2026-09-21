@@ -19,16 +19,23 @@ from scripts.verify_reproduction import verify_figures
 SNAPSHOT_README = """# Reproducibility snapshot
 
 This archive contains the wheel and source distribution, the figures recorded by
-the included reproduction report, and a standalone figure verifier.
+the included reproduction report, and standalone checksum and figure verifiers.
 
-After extracting the snapshot, verify the figures with Python 3.11 or newer:
+After extracting the snapshot, verify all listed files with Python 3.11 or newer
+on Windows, macOS, or Linux:
+
+    python verify_checksums.py SHA256SUMS
+
+This checks the distributions, report, figures, license, README, and verifiers
+against the included inventory. It leaves files unchanged and ignores unlisted
+files. The inventory itself is not checksummed.
+
+To check just the figures against their reproduction report:
 
     python verify_reproduction.py figures/reproduction.json
 
 SHA256SUMS lists every other file in this snapshot. Check all files on Linux with
 `sha256sum -c SHA256SUMS`, or on macOS with `shasum -a 256 -c SHA256SUMS`.
-On Windows, use `Get-FileHash -Algorithm SHA256 FILE` to compare a file with its
-recorded checksum.
 
 To reproduce the computations, extract the source archive in distributions/ and
 follow its README.md. It includes the dependency lock, article manifest, scripts,
@@ -70,6 +77,7 @@ def create_snapshot(output: Path, report_path: Path, *, root: Path = ROOT) -> Pa
     payloads = {
         "README.md": SNAPSHOT_README.encode("utf-8"),
         "LICENSE": (root / "LICENSE").read_bytes(),
+        "verify_checksums.py": (root / "scripts/verify_checksums.py").read_bytes(),
         "verify_reproduction.py": (root / "scripts/verify_reproduction.py").read_bytes(),
         "figures/reproduction.json": report_bytes,
         f"distributions/{wheel.name}": wheel.read_bytes(),
