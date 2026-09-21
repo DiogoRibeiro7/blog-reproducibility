@@ -91,6 +91,8 @@ jobs:
         run: poetry run python scripts/check_distribution.py
       - name: Reproduce every registered article
         run: poetry run python -m scripts.reproduce
+      - name: Verify saved figure checksums
+        run: poetry run python -m scripts.verify_reproduction build/figures/reproduction.json
       - name: Save distributions and reproduction artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:

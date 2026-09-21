@@ -7,6 +7,7 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Added
 
+- A read-only command to verify saved figure checksums, also run before CI artifact uploads.
 - A committed SHA-256 inventory for registered data inputs, checked before reproduction.
 - A data verification command with explicit checksum updates for reviewed data changes.
 - Draft manifest validation and publication status in the catalog and JSON listings.
