@@ -62,7 +62,7 @@ def create_snapshot(output: Path, report_path: Path, *, root: Path = ROOT) -> Pa
 
     report_path = report_path.resolve()
     report_bytes = report_path.read_bytes()
-    report = json.loads(report_bytes)
+    report = json.loads(report_bytes.decode("utf-8"))
     verify_figures(report, report_path.parent)
     if report.get("inputs") != input_hashes(root):
         raise ValueError("Report inputs do not match the current checkout; rerun reproduction")

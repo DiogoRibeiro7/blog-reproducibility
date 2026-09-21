@@ -253,3 +253,14 @@ def test_snapshot_paths_must_fit_checksum_inventory(snapshot_root: Path) -> None
     with pytest.raises(ValueError, match="line breaks or backslashes"):
         create_snapshot(snapshot_root / "release.zip", report, root=snapshot_root)
     assert not (snapshot_root / "release.zip").exists()
+
+
+@pytest.mark.parametrize("encoding", ["utf-8-sig", "utf-16"])
+def test_report_encoding_must_work_with_the_bundled_verifier(
+    snapshot_root: Path, encoding: str
+) -> None:
+    report = snapshot_root / "build/figures/reproduction.json"
+    report.write_bytes(report.read_text(encoding="utf-8").encode(encoding))
+    with pytest.raises(ValueError):
+        create_snapshot(snapshot_root / "release.zip", report, root=snapshot_root)
+    assert not (snapshot_root / "release.zip").exists()
