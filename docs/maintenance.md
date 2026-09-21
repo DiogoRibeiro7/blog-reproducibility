@@ -20,6 +20,21 @@ and documented setup version together after validating the new version. Code
 quality runs under the oldest supported interpreter; mypy uses the active Python
 version so dependency stubs match their installed environment.
 
+GitHub Actions workflows are checked by the same
+[actionlint](https://github.com/rhysd/actionlint/blob/v1.7.12/docs/checks.md) hook
+locally and in CI. Its full commit pin lives in `.pre-commit-config.yaml`; Dependabot
+does not update that file. To prepare a reviewed update while preserving the pin:
+
+```console
+poetry run pre-commit autoupdate --freeze --repo https://github.com/rhysd/actionlint
+poetry run pre-commit run actionlint --all-files
+```
+
+Review the upstream release notes and the resulting diff, then run all commit hooks
+and CI before merging the update. Keep the pin and its version comment together.
+The hook uses pre-commit's managed Go environment, so actionlint does not add a
+Python package or scientific dependency to `poetry.lock`.
+
 Coverage includes figure scripts launched by reproduction tests through
 [coverage.py's subprocess support](https://pytest-cov.readthedocs.io/en/latest/subprocess-support.html).
 Keep the declared coverage version compatible with `patch = ["subprocess"]` when
