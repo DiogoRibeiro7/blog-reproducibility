@@ -8,10 +8,8 @@ import sys
 from pathlib import Path, PurePosixPath
 
 
-def verify_report(report_path: Path) -> int:
-    """Check every recorded figure, resolving paths from the report's directory."""
-    report_path = report_path.resolve()
-    report = json.loads(report_path.read_text(encoding="utf-8"))
+def verify_figures(report: object, directory: Path) -> int:
+    """Check figure checksums from an already loaded report."""
     if not isinstance(report, dict):
         raise ValueError("The reproduction report must be a JSON object")
     version = report.get("schema_version")
@@ -21,7 +19,7 @@ def verify_report(report_path: Path) -> int:
     if not isinstance(figures, list) or not figures:
         raise ValueError("The reproduction report must contain a nonempty figures list")
 
-    root = report_path.parent
+    root = directory.resolve()
     seen = set()
     planned = []
     for index, figure in enumerate(figures):
@@ -55,6 +53,13 @@ def verify_report(report_path: Path) -> int:
         if actual != digest:
             raise ValueError(f"Checksum mismatch: {name}")
     return len(planned)
+
+
+def verify_report(report_path: Path) -> int:
+    """Check every recorded figure, resolving paths from the report's directory."""
+    report_path = report_path.resolve()
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    return verify_figures(report, report_path.parent)
 
 
 def main(argv: list[str] | None = None) -> int:

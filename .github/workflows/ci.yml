@@ -93,6 +93,8 @@ jobs:
         run: poetry run python -m scripts.reproduce
       - name: Verify saved figure checksums
         run: poetry run python -m scripts.verify_reproduction build/figures/reproduction.json
+      - name: Package a verified reproducibility snapshot
+        run: poetry run python -m scripts.package_snapshot
       - name: Save distributions and reproduction artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
@@ -100,5 +102,6 @@ jobs:
           path: |
             dist/
             build/figures/
+            build/snapshots/
           if-no-files-found: error
           retention-days: 14

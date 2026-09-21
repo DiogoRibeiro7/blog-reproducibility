@@ -43,8 +43,13 @@ not enabled by the files in this repository.
    must preserve every package file; the source archive must also preserve scripts,
    tests, article metadata, data, and the dependency lock. Missing or changed bytes
    fail before installation. Rebuild after changing any of these inputs.
-7. After review and a successful CI run, tag the approved commit and create a
-   GitHub release with the distributions and reproduction artifacts.
+7. Run `poetry run python -m scripts.package_snapshot` to create
+   `build/snapshots/reproducibility-snapshot.zip`. It includes the distributions,
+   recorded figures, report, license, standalone verifier, and checksum inventory.
+   The command rejects stale distributions or report inputs and preserves existing
+   snapshots. Use `--output PATH.zip` to retain multiple snapshots.
+8. After review and a successful CI run, tag the approved commit and create a
+   GitHub release with the verified snapshot archive.
 
 Tags should identify coherent computational snapshots. Retain the commit, lock
 file, interpreter version, and run report when citing a release. Release creation

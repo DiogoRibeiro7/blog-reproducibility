@@ -89,6 +89,8 @@ CI checks Python 3.11–3.14 on Linux and Python 3.13 on Windows and macOS. It a
 checks the manifest, enforces 90% combined statement/branch coverage, builds both
 distribution formats, and renders figures from an isolated wheel installation.
 Download the distributions, figures, and run report from the CI run's artifacts.
+They also include a [snapshot ZIP](docs/reproducibility.md#save-a-reproducibility-snapshot)
+with the source archive, wheel, figures, checksums, and standalone verification command.
 
 Verify saved figures against their report without rerendering:
 

@@ -62,22 +62,28 @@ def check_contents(wheel: Path, source: Path, *, root: Path = ROOT) -> None:
     _check_files("Source archive", source_files, expected)
 
 
-def main() -> None:
-    """Fail if packaging loses resources or relies on the editable checkout."""
-    wheels = list((ROOT / "dist").glob("*.whl"))
-    archives = list((ROOT / "dist").glob("*.tar.gz"))
+def find_distributions(directory: Path) -> tuple[Path, Path]:
+    """Select an unambiguous wheel and source archive from a build directory."""
+    wheels = list(directory.glob("*.whl"))
+    archives = list(directory.glob("*.tar.gz"))
     if len(wheels) != 1 or len(archives) != 1:
         raise RuntimeError(
             "Expected one wheel and one source archive; use an empty dist/ directory."
         )
-    check_contents(wheels[0], archives[0], root=ROOT)
+    return wheels[0], archives[0]
+
+
+def main() -> None:
+    """Fail if packaging loses resources or relies on the editable checkout."""
+    wheel, source = find_distributions(ROOT / "dist")
+    check_contents(wheel, source, root=ROOT)
 
     with TemporaryDirectory(prefix="blog-wheel-") as temporary:
         directory = Path(temporary)
         venv.EnvBuilder(with_pip=True).create(directory / "venv")
         python = directory / "venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
         subprocess.run(
-            [str(python), "-m", "pip", "install", "--disable-pip-version-check", str(wheels[0])],
+            [str(python), "-m", "pip", "install", "--disable-pip-version-check", str(wheel)],
             check=True,
         )
         smoke = """

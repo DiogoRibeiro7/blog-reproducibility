@@ -103,6 +103,34 @@ directory may hold figures from other runs. This verifies recorded figure bytes;
 it does not validate the report's source or environment metadata, or rerun the
 scientific calculations. CI verifies its saved figures before uploading artifacts.
 
+## Save a reproducibility snapshot
+
+Bundle a run with the code and data needed to reproduce it:
+
+```console
+poetry build
+poetry run python -m scripts.reproduce
+poetry run python -m scripts.package_snapshot
+```
+
+The command creates `build/snapshots/reproducibility-snapshot.zip`. The `dist/`
+directory must contain exactly one wheel and one source archive. Both are checked
+against the checkout; the wheel's project name and version must also match.
+The report's input hashes must match the current source and data files. Rebuild
+the distributions and rerun reproduction after changing those inputs.
+
+The archive contains the distributions, report, recorded figures, license,
+standalone figure verifier, a README, and `SHA256SUMS` for every other archived
+file. Figures left over from other runs are excluded. After extraction, run
+`python verify_reproduction.py figures/reproduction.json` to check the figures;
+the bundled README explains how to check the complete checksum inventory and
+reproduce from the source archive.
+
+Use `--report PATH` to bundle another run from the same sources and
+`--output PATH.zip` to choose a destination. Existing snapshots are never
+overwritten. CI includes this archive in its `distributions-and-figures` artifact;
+retain a copy or attach it to a reviewed release for long-term use.
+
 ## Numerical guarantees
 
 - The CUSUM example uses `random.Random(42)`, 100 observations, and a mean shift at
