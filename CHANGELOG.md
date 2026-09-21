@@ -33,6 +33,8 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- Distribution checks rebuild a wheel from the source archive and verify both
+  wheels in separate clean installations, including their versions and figures.
 - Distribution checks compare every package file and source reproduction input
   with the checkout, rejecting missing or changed files before installation.
 - Reproduction rejects conflicting output paths before rendering or removing prior reports.

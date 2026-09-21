@@ -47,9 +47,12 @@ lint, types, metadata, the manifest, and GitHub Actions workflows. The pre-push 
 runs tests with coverage.
 CI runs the same checks, exercises supported interpreters and operating systems,
 and verifies the built package. Archive-content regression tests run in the unit
-suite; the full packaging check also installs a built wheel in a clean environment.
-That packaging script is exercised separately by CI and excluded from the coverage
-calculation.
+suite; the full packaging check also rebuilds a wheel from the source archive and
+installs both wheels in separate clean environments. Each installation checks the
+package version and resources and renders three representative figures outside
+the checkout. Run it locally after `poetry build` with
+`poetry run python scripts/check_distribution.py`. That packaging script is
+exercised separately by CI and excluded from the coverage calculation.
 
 Workflow checks use the pinned actionlint hook in `.pre-commit-config.yaml`.
 Changing workflow YAML, local action YAML, or the hook configuration checks every

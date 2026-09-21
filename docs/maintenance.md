@@ -59,10 +59,17 @@ not enabled by the files in this repository.
    `poetry run python -m scripts.verify_reproduction build/figures/reproduction.json`.
 5. Build into an empty `dist/` directory with `poetry build`.
 6. Run `poetry run python scripts/check_distribution.py` to compare archive files
-   with the checkout and render from an isolated wheel installation. The wheel
+   with the checkout, rebuild a wheel from the source archive, and render from
+   both wheels in separate clean environments. The wheel
    must preserve every package file; the source archive must also preserve scripts,
    tests, article metadata, data, and the dependency lock. Missing or changed bytes
    fail before installation. Rebuild after changing any of these inputs.
+   The rebuild uses [pip's isolated build process](https://pip.pypa.io/en/stable/reference/build-system/)
+   and the archive's declared backend, with wheel caching disabled. The rebuilt
+   wheel is also checked against the checkout before installation. Both installs
+   check the package version, typing marker, and three representative figures.
+   This command needs network access for build and runtime dependencies; those
+   dependencies follow package constraints rather than the Poetry development lock.
 7. Run `poetry run python -m scripts.package_snapshot` to create
    `build/snapshots/reproducibility-snapshot.zip`. It includes the distributions,
    recorded figures, report, license, standalone verifier, and checksum inventory.
