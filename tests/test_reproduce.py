@@ -3,6 +3,7 @@
 import hashlib
 import json
 import runpy
+import subprocess
 import sys
 from pathlib import Path
 
@@ -82,13 +83,69 @@ def test_failed_render_cannot_reuse_stale_figures_or_success_report(
     assert not (output / "reproduction.json").exists()
 
 
+@pytest.fixture
+def forbid_commands(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Make an invalid output path fail the test if it starts any external command."""
+
+    def unexpected_command(*args: object, **kwargs: object) -> object:
+        pytest.fail("Invalid output paths must be rejected before starting commands")
+
+    monkeypatch.setattr(subprocess, "run", unexpected_command)
+
+
+@pytest.mark.parametrize("nested", [False, True])
 def test_command_reports_invalid_output_path(
-    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    tmp_path: Path, capsys: pytest.CaptureFixture[str], forbid_commands: None, nested: bool
 ) -> None:
-    output = tmp_path / "file"
-    output.write_text("occupied", encoding="utf-8")
+    blocked = tmp_path / "file"
+    blocked.write_text("occupied", encoding="utf-8")
+    output = blocked / "new" if nested else blocked
     assert main(["--output-dir", str(output)]) == 1
-    assert "Reproduction failed:" in capsys.readouterr().err
+    error = capsys.readouterr().err
+    assert "Output directory" in error
+    assert str(blocked) in error
+    assert blocked.read_text(encoding="utf-8") == "occupied"
+
+
+def test_blocked_figure_directory_preserves_previous_outputs(
+    reproduction_root: Path, forbid_commands: None
+) -> None:
+    output = reproduction_root / "output"
+    output.mkdir()
+    (output / "domain").write_text("occupied", encoding="utf-8")
+    report = output / "reproduction.json"
+    report.write_text("previous report\n", encoding="utf-8")
+    article = Article("example", (), (Path("build/figures/domain/figure.png"),))
+    with pytest.raises(NotADirectoryError, match="domain"):
+        reproduce([article], output, root=reproduction_root)
+    assert report.read_text(encoding="utf-8") == "previous report\n"
+    assert (output / "domain").read_text(encoding="utf-8") == "occupied"
+
+
+@pytest.mark.parametrize("target", ["domain/figure.png", "reproduction.json"])
+def test_output_files_cannot_replace_directories(
+    reproduction_root: Path, forbid_commands: None, target: str
+) -> None:
+    output = reproduction_root / "output"
+    blocked = output / target
+    blocked.mkdir(parents=True)
+    article = Article("example", (), (Path("build/figures/domain/figure.png"),))
+    with pytest.raises(IsADirectoryError, match="Output file"):
+        reproduce([article], output, root=reproduction_root)
+    assert blocked.is_dir()
+
+
+def test_output_plan_cannot_require_a_path_to_be_both_file_and_directory(
+    reproduction_root: Path, forbid_commands: None
+) -> None:
+    articles = [
+        Article("outer", (), (Path("build/figures/outer.png"),)),
+        Article("inner", (), (Path("build/figures/outer.png/inner.png"),)),
+    ]
+    output = reproduction_root / "output"
+    with pytest.raises(ValueError, match="both a file and a directory"):
+        reproduce(articles, output, root=reproduction_root)
+    assert not output.exists()
 
 
 def test_source_archive_has_no_git_revision(tmp_path: Path) -> None:

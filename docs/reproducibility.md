@@ -21,13 +21,16 @@ Use `--article IDENTIFIER` to run one article or `--output-dir PATH` to change t
 output root. Use `--domain statistics` to reproduce a subject, or
 `--list --search pvalue --json` to search and export metadata without rendering.
 The [article catalog](articles.md) lists the current collection. Relative custom
-paths are resolved from the current directory. Each
-run validates the manifest and its inputs against `data/SHA256SUMS`, then renders
-into a fresh temporary directory using the
-non-interactive `Agg` backend, checks the expected PNG files, and copies successful
-outputs to the requested directory. Each article has its own staging directory,
-including when two articles share an entry point. A failed renderer returns a nonzero exit code
-and cannot satisfy output checks with files left by an earlier run.
+paths are resolved from the current directory. Each run validates the manifest,
+its inputs against `data/SHA256SUMS`, and the output paths before rendering.
+Files blocking output directories, directories occupying figure or report paths,
+and conflicting file/directory requirements cause an immediate error, leaving
+previous figures and reports untouched. The runner renders into a fresh temporary
+directory using the non-interactive `Agg` backend, checks the expected PNG files,
+and copies successful outputs to the requested directory. Each article has its own
+staging directory, including when two articles share an entry point. A failed
+renderer returns a nonzero exit code and cannot satisfy output checks with files
+left by an earlier run.
 
 ## Outputs
 
