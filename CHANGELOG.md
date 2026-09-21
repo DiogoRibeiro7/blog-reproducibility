@@ -7,6 +7,8 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Added
 
+- Version-tag validation against package metadata and dated changelog notes,
+  with draft GitHub releases after all CI checks pass.
 - A portable snapshot archive with verified distributions, figures, report,
   standalone verifier, and checksum inventory, produced locally and by CI.
 - A read-only command to verify saved figure checksums, also run before CI artifact uploads.
