@@ -41,8 +41,10 @@ against a network service during testing.
 2. Renderer and command tests verify usable PNGs and JSON calculation payloads.
 3. Manifest tests prevent broken mappings and conflicting output names.
 4. Reproduction tests verify report hashes and failure behavior.
-5. CI builds distributions, installs the wheel in a clean environment outside the
-   checkout, and renders all figures to catch missing package resources.
+5. CI checks distribution contents against the checkout, including all package
+   files and the source archive's reproduction inputs. It then renders smoke-test
+   figures from a clean wheel installation and every registered figure from the
+   checkout.
 
 The project is an article reproducibility collection. Shared abstractions should
 be introduced when multiple examples need them; domain-specific models remain

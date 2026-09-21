@@ -36,8 +36,11 @@ not enabled by the files in this repository.
 3. Move relevant changelog entries into a dated release section.
 4. Run the checks in `CONTRIBUTING.md` and reproduce all registered articles.
 5. Build into an empty `dist/` directory with `poetry build`.
-6. Run `poetry run python scripts/check_distribution.py` to check archive contents
-   and render from an isolated wheel installation.
+6. Run `poetry run python scripts/check_distribution.py` to compare archive files
+   with the checkout and render from an isolated wheel installation. The wheel
+   must preserve every package file; the source archive must also preserve scripts,
+   tests, article metadata, data, and the dependency lock. Missing or changed bytes
+   fail before installation. Rebuild after changing any of these inputs.
 7. After review and a successful CI run, tag the approved commit and create a
    GitHub release with the distributions and reproduction artifacts.
 

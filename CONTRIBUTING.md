@@ -44,8 +44,10 @@ poetry run python -m scripts.reproduce
 Apply formatting with `poetry run ruff format .`. Commit hooks check formatting,
 lint, types, metadata, and the manifest. The pre-push hook runs tests with coverage.
 CI runs the same checks, exercises supported interpreters and operating systems,
-and verifies the built package. The packaging smoke check is exercised separately
-by CI and excluded from the unit-test coverage calculation.
+and verifies the built package. Archive-content regression tests run in the unit
+suite; the full packaging check also installs a built wheel in a clean environment.
+That packaging script is exercised separately by CI and excluded from the coverage
+calculation.
 
 Manual benchmark harnesses under `scripts/benchmarks/` use optional dependencies
 and retain their original implementation. They receive lint checks; strict typing
