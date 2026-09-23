@@ -1109,6 +1109,111 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  censored-labels-supervised-learning:
+    path: _posts/machine_learning/2026-02-01-censored_labels_supervised_learning.md
+    permalink: /machine-learning/censored_labels_supervised_learning/
+    modules:
+      - blog_reproducibility.machine_learning.censored_labels
+      - blog_reproducibility.machine_learning.censored_labels_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/censored_labels.py
+    generated_figures:
+      - build/figures/machine_learning/censored_labels_cohorts.png
+    tests:
+      - tests/machine_learning/test_censored_labels.py
+      - tests/machine_learning/test_censored_labels_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  feature-selection-before-cross-validation-leakage:
+    path: _posts/machine_learning/2026-03-10-feature_selection_before_cross_validation_leakage.md
+    permalink: /machine-learning/feature_selection_before_cross_validation_leakage/
+    modules:
+      - blog_reproducibility.machine_learning.selection_leakage
+      - blog_reproducibility.machine_learning.selection_leakage_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/selection_leakage.py
+    generated_figures:
+      - build/figures/machine_learning/cv_selection_leakage.png
+    tests:
+      - tests/machine_learning/test_selection_leakage.py
+      - tests/machine_learning/test_selection_leakage_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  learning-curves-more-data:
+    path: _posts/machine_learning/2026-01-28-learning_curves_more_data.md
+    permalink: /machine-learning/learning_curves_more_data/
+    modules:
+      - blog_reproducibility.machine_learning.learning_curves
+      - blog_reproducibility.machine_learning.learning_curves_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/learning_curves.py
+    generated_figures:
+      - build/figures/machine_learning/learning_curves_extrapolation.png
+    tests:
+      - tests/machine_learning/test_learning_curves.py
+      - tests/machine_learning/test_learning_curves_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  permutation-importance-correlated-features:
+    path: _posts/machine_learning/2026-05-28-permutation_importance_correlated_features.md
+    permalink: /machine-learning/permutation_importance_correlated_features/
+    modules:
+      - blog_reproducibility.machine_learning.permutation_importance
+      - blog_reproducibility.machine_learning.permutation_importance_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/permutation_importance.py
+    generated_figures:
+      - build/figures/machine_learning/permutation_importance_methods.png
+    tests:
+      - tests/machine_learning/test_permutation_importance.py
+      - tests/machine_learning/test_permutation_importance_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  test-set-size-model-evaluation:
+    path: _posts/machine_learning/2025-10-02-test_set_size_model_evaluation.md
+    permalink: /machine-learning/test_set_size_model_evaluation/
+    modules:
+      - blog_reproducibility.machine_learning.test_set_size
+      - blog_reproducibility.machine_learning.test_set_size_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/test_set_size.py
+    generated_figures:
+      - build/figures/machine_learning/test_set_size_ranking.png
+    tests:
+      - tests/machine_learning/test_test_set_size.py
+      - tests/machine_learning/test_test_set_size_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:

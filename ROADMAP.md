@@ -142,9 +142,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
   - [x] Economics: Lorenz/Gini, Solow steady state, Monte Carlo fan.
   - [x] Mathematics and time series.
   - [x] Data science.
-  - [ ] Machine learning.
-    - [x] Drift, monitoring, selection, and bandit figures (11).
-    - [ ] Figures that train scikit-learn models (5).
+  - [x] Machine learning.
   - [ ] Statistics.
 
 ## Phase 7 — Hardening

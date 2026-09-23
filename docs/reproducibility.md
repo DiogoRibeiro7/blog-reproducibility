@@ -160,6 +160,12 @@ retain a copy or attach it to a reviewed release for long-term use.
   identify an artifact; they are not a promise of identical pixels across systems.
 - Random-number algorithms and floating-point behavior can differ across future
   Python versions. Record the interpreter as well as the seed and lock file.
+- Fitted estimators can change between library releases even with fixed seeds.
+  Values from scikit-learn fits are pinned with a tolerance of one unit in the
+  last printed digit. The learning-curves article's gradient-boosting numbers were
+  produced with scikit-learn 1.6.1 and move under the locked 1.9 series, which
+  1.6 cannot replace because it has no Python 3.14 wheels; those numbers are
+  therefore not pinned, and the tests check the article's claims instead.
 
 For external inputs, follow [the data policy](../data/README.md). A changing API or
 unversioned source cannot provide an exact historical snapshot; record those
