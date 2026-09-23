@@ -239,6 +239,23 @@ the images it writes.
 | Time series | 1 | penalised change-point partitioning |
 | Referenced by no article | 2 | `acf_pacf`, `type_i_ii` |
 
+### Progress
+
+| Group | Figures | Status |
+| --- | ---: | --- |
+| Economics | 3 | **migrated** to `economics/inequality*.py`, `solow_growth*.py`, `gdp_fan*.py` |
+| Mathematics, time series | 6 | pending |
+| Data science | 6 | pending |
+| Machine learning | 16 | pending |
+| Statistics | 43 | pending |
+
+Migrated figures keep their website slugs, so a regenerated PNG replaces the
+published one under the same name. Each takes its own seed, 20260816, the value
+the shared generator used; its draws therefore differ from the published image,
+which the tests accept because they check the model, not pixels. The website
+copies of `generate_figures.py` generators stay until every group has moved, so
+`website_cleanup` remains `pending` for these articles.
+
 The last two rows are worth separating: `acf_pacf` and `type_i_ii` produce
 images that exist under `assets/images/figures/` but that no current article
 embeds. They should be confirmed dead before being migrated.

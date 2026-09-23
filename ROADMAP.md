@@ -139,6 +139,11 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
       the website repository. See
       [docs/migration-inventory.md](docs/migration-inventory.md#7-generate_figurespy--the-one-outstanding-migration)
       for its contents, its cost, and the suggested order.
+  - [x] Economics: Lorenz/Gini, Solow steady state, Monte Carlo fan.
+  - [ ] Mathematics and time series.
+  - [ ] Data science.
+  - [ ] Machine learning.
+  - [ ] Statistics.
 
 ## Phase 7 — Hardening
 

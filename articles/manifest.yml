@@ -643,6 +643,69 @@ articles:
       figure_renderer: migrated
       website_cleanup: complete
 
+  mathematical-models-inequality-understanding-lorenz-curves-gini-coefficients:
+    path: _posts/economics/2020-01-01-mathematical_models_inequality_understanding_lorenz_curves_gini_coefficients.md
+    permalink: /economics/mathematical_models_inequality_understanding_lorenz_curves_gini_coefficients/
+    modules:
+      - blog_reproducibility.economics.inequality
+      - blog_reproducibility.economics.inequality_figure
+    figure_scripts:
+      - scripts/figures/economics/inequality.py
+    generated_figures:
+      - build/figures/economics/lorenz_gini.png
+    tests:
+      - tests/economics/test_inequality.py
+      - tests/economics/test_inequality_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  solow-growth-model-extensions:
+    path: _posts/economics/2024-07-26-solow_growth_model_extensions.md
+    permalink: /economics/solow_growth_model_extensions/
+    modules:
+      - blog_reproducibility.economics.solow_growth
+      - blog_reproducibility.economics.solow_growth_figure
+    figure_scripts:
+      - scripts/figures/economics/solow_growth.py
+    generated_figures:
+      - build/figures/economics/solow_steady_state.png
+    tests:
+      - tests/economics/test_solow_growth.py
+      - tests/economics/test_solow_growth_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  monte-carlo-simulations-macroeconomic-modeling:
+    path: _posts/economics/2025-04-18-monte_carlo_simulations_macroeconomic_modeling.md
+    permalink: /economics/monte_carlo_simulations_macroeconomic_modeling/
+    modules:
+      - blog_reproducibility.economics.gdp_fan
+      - blog_reproducibility.economics.gdp_fan_figure
+    figure_scripts:
+      - scripts/figures/economics/gdp_fan.py
+    generated_figures:
+      - build/figures/economics/monte_carlo_fan.png
+    tests:
+      - tests/economics/test_gdp_fan.py
+      - tests/economics/test_gdp_fan_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:
