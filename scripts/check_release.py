@@ -1,4 +1,4 @@
-"""Validate a version tag and extract its dated changelog entry for a draft release."""
+"""Validate a version tag and extract its dated changelog entry for a GitHub release."""
 
 import argparse
 import re

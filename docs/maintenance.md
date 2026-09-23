@@ -8,7 +8,7 @@ dependencies. Commit the regenerated lock file. Monthly Dependabot configuration
 covers Python dependencies and GitHub Actions; it does not automatically merge updates.
 
 CI checks use read-only repository permissions, full commit pins for external
-actions, timeouts, and cancellation of superseded runs. Only the draft release job,
+actions, timeouts, and cancellation of superseded runs. Only the release job,
 which runs after successful checks on version-tag pushes, has repository write
 permission. See GitHub's
 [secure-use guidance](https://docs.github.com/en/actions/reference/security/secure-use)
@@ -79,7 +79,7 @@ not enabled by the files in this repository.
    `poetry run python -m scripts.check_release --tag v0.1.0`. Replace `v0.1.0`
    with `v` followed by the exact version in `pyproject.toml`.
 
-## Create a reviewed GitHub release
+## Publish a GitHub release
 
 After the release preparation changes are reviewed, merged, and passing CI,
 a maintainer can create an annotated version tag on the approved commit and push
@@ -94,19 +94,18 @@ Pushing a `v*` tag runs the full CI workflow, including release metadata validat
 The tag must exactly match the package version and have a dated changelog entry;
 the current `Unreleased` section alone is insufficient. Once quality checks, every
 test matrix entry, and distribution/reproduction checks pass, CI downloads the
-verified snapshot and extracted release notes from that same run and creates a
-**draft** GitHub release. Ordinary branch pushes, pull requests, and manual workflow
-runs do not create releases.
+verified snapshot and extracted release notes from that same run and publishes the
+GitHub release. Ordinary branch pushes, pull requests, and manual workflow runs do
+not create releases.
 
 The workflow uses GitHub CLI's
-[`--verify-tag` and `--draft` options](https://cli.github.com/manual/gh_release_create)
-to require an existing tag and leave publication to a maintainer. Review the notes,
-download and verify the attached snapshot, then publish the draft in GitHub when
-ready. CI does not overwrite an existing draft or published release for that tag.
-If an upload fails after creating a draft, inspect the draft and complete its
-missing asset upload using the successful run's artifact before publishing.
+[`--verify-tag` option](https://cli.github.com/manual/gh_release_create) to require
+an existing tag. CI does not overwrite an existing draft or published release for
+that tag. GitHub CLI uploads the snapshot to a draft and publishes it only after the
+upload succeeds, so a failed upload leaves a draft: complete its missing asset
+upload using the successful run's artifact, then publish it.
 
-Tags should identify coherent computational snapshots. Retain the commit, lock
-file, interpreter version, and run report when citing a release. Tag creation and
-release publication are deliberate maintainer actions; CI produces reviewable
-drafts without publishing packages to an index.
+Tags should identify coherent computational snapshots, and pushing one publishes
+it, so review the release preparation before tagging. Retain the commit, lock
+file, interpreter version, and run report when citing a release. CI publishes
+GitHub releases only, not packages to an index.

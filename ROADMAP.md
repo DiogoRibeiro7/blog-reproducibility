@@ -150,5 +150,5 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 - [x] Add checksums for immutable small inputs.
 - [x] Document reproducibility limitations for the benchmark records.
 - [x] Build verified snapshot archives for retention and reviewed releases.
-- [x] Validate version tags and automate draft releases after successful CI checks.
-- [ ] Add release tags for coherent reproducibility snapshots.
+- [x] Validate version tags and publish releases after successful CI checks.
+- [x] Add release tags for coherent reproducibility snapshots (first: `v0.1.0`).

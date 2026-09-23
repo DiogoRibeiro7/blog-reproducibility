@@ -5,6 +5,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ## Unreleased
 
+### Changed
+
+- Version-tag pushes publish the GitHub release once all CI checks pass, rather
+  than leaving a draft for manual publication.
+
 ## 0.1.0 - 2026-09-23
 
 ### Added
