@@ -23,8 +23,25 @@ def reproduction_root(tmp_path: Path) -> Path:
     return tmp_path
 
 
-def test_reproduce_all_articles_and_record_provenance(tmp_path: Path) -> None:
-    articles = list(load_manifest().values())
+# The report contract is checked on articles that between them exercise each kind
+# of manifest entry: data inputs, a benchmark harness, several figures from one
+# script, and a draft. Every article is reproduced on its own below, so the
+# reproductions can run in parallel instead of in one long test.
+PROVENANCE_ARTICLES = (
+    "advanced-sequential-changepoint",
+    "a-database-for-analysis",
+    "economic-data-have-two-dates",
+    "drift",
+    "randomisation-and-baseline-balance",
+)
+
+
+def test_reproduce_articles_and_record_provenance(tmp_path: Path) -> None:
+    manifest = load_manifest()
+    articles = [manifest[identifier] for identifier in PROVENANCE_ARTICLES]
+    assert any(article.inputs for article in articles)
+    assert any(article.publication_status != "published" for article in articles)
+    assert any(len(article.figures) > 2 for article in articles)
     report_path = reproduce(articles, tmp_path)
     report = json.loads(report_path.read_text(encoding="utf-8"))
     assert report["articles"] == [article.identifier for article in articles]
@@ -45,6 +62,15 @@ def test_reproduce_all_articles_and_record_provenance(tmp_path: Path) -> None:
         content = (tmp_path / figure["path"]).read_bytes()
         assert content.startswith(b"\x89PNG\r\n\x1a\n")
         assert figure["sha256"] == hashlib.sha256(content).hexdigest()
+
+
+@pytest.mark.parametrize("identifier", list(load_manifest()))
+def test_every_article_reproduces(identifier: str, tmp_path: Path) -> None:
+    """Each registered article renders all of its figures, and they verify."""
+    article = load_manifest()[identifier]
+    report_path = reproduce([article], tmp_path)
+
+    assert verify_report(report_path) == len(article.figures)
 
 
 @pytest.mark.parametrize("mode", ["--check", "--list"])

@@ -73,7 +73,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Run tests with coverage
-        run: poetry run pytest --cov --cov-report=term-missing --cov-report=xml
+        run: poetry run pytest -n auto --cov --cov-report=term-missing --cov-report=xml
       - name: Save coverage report
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:

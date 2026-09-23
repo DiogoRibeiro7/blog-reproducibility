@@ -36,11 +36,18 @@ poetry run pre-commit run actionlint --all-files
 poetry run ruff check .
 poetry run ruff format --check .
 poetry run mypy src scripts tests
-poetry run pytest --cov --cov-report=term-missing
+poetry run pytest -n 4 --cov --cov-report=term-missing
 poetry run python -m scripts.reproduce --check
 poetry run python -m scripts.catalog --check
 poetry run python -m scripts.reproduce
 ```
+
+`-n 4` runs the tests in four parallel pytest-xdist processes, leaving the rest
+of the machine usable; raise it on a machine you can dedicate to the run, or omit
+it to run serially, for example when debugging a single test. Avoid `-n auto` on
+a workstation: it starts one process per logical core. Each worker is limited to
+one BLAS, OpenMP, and joblib thread so that the processes do not compete for the
+same cores. CI uses `-n auto`, since its runners have only a few cores.
 
 Apply formatting with `poetry run ruff format .`. Commit hooks check formatting,
 lint, types, metadata, the manifest, and GitHub Actions workflows. The pre-push hook

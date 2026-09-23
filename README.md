@@ -81,7 +81,7 @@ poetry run pre-commit run actionlint --all-files
 poetry run ruff check .
 poetry run ruff format --check .
 poetry run mypy src scripts tests
-poetry run pytest --cov --cov-report=term-missing
+poetry run pytest -n 4 --cov --cov-report=term-missing
 poetry check --lock --strict
 poetry run python -m scripts.catalog --check
 ```
