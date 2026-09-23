@@ -156,7 +156,7 @@ def test_persistence_formula_by_enumeration() -> None:
     days, alpha = 6, 0.3
     expected = 0.0
     for fails in product((False, True), repeat=days):
-        weight = np.prod([alpha if f else 1 - alpha for f in fails])
+        weight = float(np.prod([alpha if f else 1 - alpha for f in fails]))
         windows = sum(all(fails[t - 2 : t + 1]) for t in range(2, days))
         expected += weight * windows
     assert persistence_false_alerts(days, 1, alpha) == pytest.approx(expected)
