@@ -32,6 +32,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- Tests run in parallel with pytest-xdist, on every core in CI and on four
+  workers in the pre-push hook, with one
+  BLAS, OpenMP, and joblib thread per worker. Each article is reproduced by its
+  own test, so the reproductions run in parallel too; the report-provenance test
+  covers five articles that exercise every kind of manifest entry.
 - Version-tag pushes publish the GitHub release once all CI checks pass, rather
   than leaving a draft for manual publication.
 

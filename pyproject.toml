@@ -70,6 +70,7 @@ pyyaml = ">=6.0,<7.0"
 jsonschema = ">=4.23,<5.0"
 types-pyyaml = ">=6.0,<7.0"
 types-jsonschema = ">=4.23,<5.0"
+pytest-xdist = ">=3.6,<4.0"
 
 [tool.poetry.group.benchmarks]
 # The data-engineering harnesses under scripts/benchmarks/ need these. They take
