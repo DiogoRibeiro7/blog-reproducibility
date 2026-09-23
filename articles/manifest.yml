@@ -958,6 +958,157 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  drift:
+    path: _posts/machine_learning/2024-07-30-Drift.md
+    permalink: /machine-learning/Drift/
+    modules:
+      - blog_reproducibility.machine_learning.drift
+      - blog_reproducibility.machine_learning.drift_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/drift.py
+    generated_figures:
+      - build/figures/machine_learning/drift_monitoring_architecture.png
+      - build/figures/machine_learning/feature_drift_distribution.png
+      - build/figures/machine_learning/concept_drift_boundary.png
+      - build/figures/machine_learning/prediction_drift_threshold.png
+    tests:
+      - tests/machine_learning/test_drift.py
+      - tests/machine_learning/test_drift_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  multiple-comparisons-model-monitoring:
+    path: _posts/machine_learning/2026-03-05-multiple_comparisons_model_monitoring.md
+    permalink: /machine-learning/multiple_comparisons_model_monitoring/
+    modules:
+      - blog_reproducibility.machine_learning.monitoring_alerts
+      - blog_reproducibility.machine_learning.monitoring_alerts_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/monitoring_alerts.py
+    generated_figures:
+      - build/figures/machine_learning/drift_alert_power_curves.png
+      - build/figures/machine_learning/drift_alert_bursts.png
+    tests:
+      - tests/machine_learning/test_monitoring_alerts.py
+      - tests/machine_learning/test_monitoring_alerts_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  how-often-to-retrain-a-model:
+    path: _posts/machine_learning/2026-09-13-how_often_to_retrain_a_model.md
+    permalink: /machine-learning/how_often_to_retrain_a_model/
+    modules:
+      - blog_reproducibility.machine_learning.retraining
+      - blog_reproducibility.machine_learning.retraining_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/retraining.py
+    generated_figures:
+      - build/figures/machine_learning/retraining_cost_curve.png
+    tests:
+      - tests/machine_learning/test_retraining.py
+      - tests/machine_learning/test_retraining_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  annotator-agreement-accuracy-ceiling:
+    path: _posts/machine_learning/2025-12-15-annotator_agreement_accuracy_ceiling.md
+    permalink: /machine-learning/annotator_agreement_accuracy_ceiling/
+    modules:
+      - blog_reproducibility.machine_learning.annotator_ceiling
+      - blog_reproducibility.machine_learning.annotator_ceiling_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/annotator_ceiling.py
+    generated_figures:
+      - build/figures/machine_learning/annotator_noise_ceiling.png
+    tests:
+      - tests/machine_learning/test_annotator_ceiling.py
+      - tests/machine_learning/test_annotator_ceiling_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  winners-curse-model-selection:
+    path: _posts/machine_learning/2026-04-16-winners_curse_model_selection.md
+    permalink: /machine-learning/winners_curse_model_selection/
+    modules:
+      - blog_reproducibility.machine_learning.winners_curse
+      - blog_reproducibility.machine_learning.winners_curse_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/winners_curse.py
+    generated_figures:
+      - build/figures/machine_learning/winners_curse_optimism.png
+    tests:
+      - tests/machine_learning/test_winners_curse.py
+      - tests/machine_learning/test_winners_curse_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  bandits-vs-ab-tests-cost-of-learning:
+    path: _posts/machine_learning/2025-11-12-bandits_vs_ab_tests_cost_of_learning.md
+    permalink: /machine-learning/bandits_vs_ab_tests_cost_of_learning/
+    modules:
+      - blog_reproducibility.machine_learning.bandit_regret
+      - blog_reproducibility.machine_learning.bandit_regret_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/bandit_regret.py
+    generated_figures:
+      - build/figures/machine_learning/bandit_cumulative_regret.png
+    tests:
+      - tests/machine_learning/test_bandit_regret.py
+      - tests/machine_learning/test_bandit_regret_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  proxy-metrics-goodhart-optimisation-pressure:
+    path: _posts/machine_learning/2026-09-12-proxy_metrics_goodhart_optimisation_pressure.md
+    permalink: /machine-learning/proxy_metrics_goodhart_optimisation_pressure/
+    modules:
+      - blog_reproducibility.machine_learning.proxy_selection
+      - blog_reproducibility.machine_learning.proxy_selection_figure
+    figure_scripts:
+      - scripts/figures/machine_learning/proxy_selection.py
+    generated_figures:
+      - build/figures/machine_learning/proxy_goodhart_selection.png
+    tests:
+      - tests/machine_learning/test_proxy_selection.py
+      - tests/machine_learning/test_proxy_selection_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:
