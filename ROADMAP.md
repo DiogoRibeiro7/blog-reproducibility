@@ -141,7 +141,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
       for its contents, its cost, and the suggested order.
   - [x] Economics: Lorenz/Gini, Solow steady state, Monte Carlo fan.
   - [x] Mathematics and time series.
-  - [ ] Data science.
+  - [x] Data science.
   - [ ] Machine learning.
   - [ ] Statistics.
 

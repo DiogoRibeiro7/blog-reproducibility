@@ -28,6 +28,9 @@ dependencies = [
     # The distance-concentration article reports k-NN, PCA, and logistic regression
     # accuracies computed with scikit-learn's estimators.
     "scikit-learn>=1.7,<2.0",
+    # Savitzky-Golay filtering, smoothing splines, and the synthetic-control weights
+    # use SciPy directly; scikit-learn would install it anyway.
+    "scipy>=1.13,<2.0",
 ]
 
 [project.urls]
@@ -108,9 +111,9 @@ pretty = true
 # Manual benchmark harnesses retain their original untyped implementation.
 exclude = ["^scripts/benchmarks/"]
 
-# scikit-learn ships no type information; its estimators are typed as Any here.
+# scikit-learn and SciPy ship no type information; their objects are typed as Any here.
 [[tool.mypy.overrides]]
-module = ["sklearn.*"]
+module = ["scipy.*", "sklearn.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]

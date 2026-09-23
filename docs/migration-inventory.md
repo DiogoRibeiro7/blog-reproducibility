@@ -231,13 +231,13 @@ the images it writes.
 
 | Article subject | Figures | Examples |
 | --- | ---: | --- |
-| Statistics | 43 | selective inference, experiment design, bootstrap coverage, propensity estimators |
+| Statistics | 42 | selective inference, experiment design, bootstrap coverage, propensity estimators |
 | Machine learning | 16 | drift monitoring and alerting, leakage, learning curves, permutation importance |
-| Data science | 6 | kernel density bandwidth, splines, synthetic control, outlier plots |
+| Data science | 6 | kernel density bandwidth, splines, synthetic control, outlier plots, null-rate monitoring |
 | Mathematics | 5 | central-limit convergence, Kaplan–Meier, MCMC, distance concentration, queueing |
 | Economics | 3 | Lorenz/Gini, Solow steady state, Monte Carlo fan |
 | Time series | 1 | penalised change-point partitioning |
-| Referenced by no article | 2 | `acf_pacf`, `type_i_ii` |
+| Referenced by no article | 3 | `acf_pacf`, `type_i_ii`, `linear_vs_logistic` |
 
 ### Progress
 
@@ -245,9 +245,9 @@ the images it writes.
 | --- | ---: | --- |
 | Economics | 3 | **migrated** to `economics/inequality*.py`, `solow_growth*.py`, `gdp_fan*.py` |
 | Mathematics, time series | 6 | **migrated** to `mathematics/` and `time_series/optimal_partition*.py` |
-| Data science | 6 | pending |
+| Data science | 6 | **migrated** to `data_science/` |
 | Machine learning | 16 | pending |
-| Statistics | 43 | pending |
+| Statistics | 42 | pending |
 
 Migrated figures keep their website slugs, so a regenerated PNG replaces the
 published one under the same name. Each takes its own seed, 20260816, the value
@@ -255,13 +255,24 @@ the shared generator used; its draws therefore differ from the published image,
 which the tests accept because they check the model, not pixels. The exception
 is a generator that already built its own seeded generator: the queueing,
 change-point, and distance-concentration figures keep their draws exactly, and
-their tests pin the numbers those articles print. The website
+their tests pin the numbers those articles print. Synthetic control does too.
+
+One figure's claim does not survive migration. `splines_fit` is titled "a spline
+bends locally; a high-degree polynomial wobbles globally", but with its design
+(a smooth curve, 90 points, smoothing factor 0.09 per point) the degree-10
+polynomial is closer to the true curve than the spline for 169 of 200 seeds,
+at the edges as well as the interior. The figure is migrated unchanged and its
+tests check only the fits' guarantees; the article needs a design that shows
+the effect, such as a sharper feature or a higher degree, or a different claim. The website
 copies of `generate_figures.py` generators stay until every group has moved, so
 `website_cleanup` remains `pending` for these articles.
 
-The last two rows are worth separating: `acf_pacf` and `type_i_ii` produce
-images that exist under `assets/images/figures/` but that no current article
-embeds. They should be confirmed dead before being migrated.
+The last row is worth separating: `acf_pacf`, `type_i_ii`, and
+`linear_vs_logistic` produce images that exist under `assets/images/figures/`
+but that no current article embeds. `linear_vs_logistic` joined them after the
+original survey, when its article stopped embedding the image; the
+`null_monitor_detection` generator was added for a September 2026 article, which
+keeps the total at 76. They should be confirmed dead before being migrated.
 
 ### What it would cost
 
@@ -289,7 +300,7 @@ settled before the large groups:
    as a fixed point, Kaplan–Meier against a hand-computed example.
 2. **Data science** (6 figures).
 3. **Machine learning** (16 figures) into a new `machine_learning/` submodule.
-4. **Statistics** (43 figures), in three or four thematic groups.
+4. **Statistics** (42 figures), in three or four thematic groups.
 
 Unlike the models already migrated, these figures are illustrations rather than
 evidence: they draw synthetic data to make a point, and the articles do not
