@@ -246,7 +246,7 @@ the images it writes.
 | Economics | 3 | **migrated** to `economics/inequality*.py`, `solow_growth*.py`, `gdp_fan*.py` |
 | Mathematics, time series | 6 | **migrated** to `mathematics/` and `time_series/optimal_partition*.py` |
 | Data science | 6 | **migrated** to `data_science/` |
-| Machine learning | 16 | pending |
+| Machine learning | 16 | 11 **migrated** to `machine_learning/`; 5 scikit-learn figures pending |
 | Statistics | 42 | pending |
 
 Migrated figures keep their website slugs, so a regenerated PNG replaces the

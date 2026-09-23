@@ -21,6 +21,10 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   prints.
 - SciPy as an explicit runtime dependency, used directly for filtering, splines,
   and constrained optimisation.
+- A machine-learning domain with eleven figures across seven articles: drift
+  monitoring, multiple comparisons in alerting, retraining frequency, annotator
+  agreement, the winner's curse in model selection, bandits against A/B tests,
+  and proxy metrics under optimisation pressure.
 
 ### Changed
 

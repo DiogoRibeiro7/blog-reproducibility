@@ -143,6 +143,8 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
   - [x] Mathematics and time series.
   - [x] Data science.
   - [ ] Machine learning.
+    - [x] Drift, monitoring, selection, and bandit figures (11).
+    - [ ] Figures that train scikit-learn models (5).
   - [ ] Statistics.
 
 ## Phase 7 — Hardening
