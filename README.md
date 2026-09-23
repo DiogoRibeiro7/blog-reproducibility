@@ -86,7 +86,8 @@ poetry check --lock --strict
 poetry run python -m scripts.catalog --check
 ```
 
-CI checks Python 3.11–3.14 on Linux and Python 3.13 on Windows and macOS. It also
+CI checks Python 3.11–3.14 on Linux for every pull request, and adds Python 3.13 on
+Windows and macOS for merges to `main`, version tags, and manual runs. It also
 checks workflow definitions and the manifest, enforces 90% combined statement/branch
 coverage, and builds both distribution formats. It rebuilds a wheel from the source
 archive and renders figures from both wheels in separate isolated installations.
