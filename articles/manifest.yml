@@ -1214,6 +1214,237 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  unequal-allocation-experiments:
+    path: _posts/statistics/2025-03-06-unequal_allocation_experiments.md
+    permalink: /statistics/unequal_allocation_experiments/
+    modules:
+      - blog_reproducibility.statistics.unequal_allocation
+      - blog_reproducibility.statistics.unequal_allocation_figure
+    figure_scripts:
+      - scripts/figures/statistics/unequal_allocation.py
+    generated_figures:
+      - build/figures/statistics/allocation_variance_cost.png
+    tests:
+      - tests/statistics/test_unequal_allocation.py
+      - tests/statistics/test_unequal_allocation_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  cuped-variance-reduction-ab-tests:
+    path: _posts/statistics/2025-10-12-cuped_variance_reduction_ab_tests.md
+    permalink: /statistics/cuped_variance_reduction_ab_tests/
+    modules:
+      - blog_reproducibility.statistics.cuped
+      - blog_reproducibility.statistics.cuped_figure
+    figure_scripts:
+      - scripts/figures/statistics/cuped.py
+    generated_figures:
+      - build/figures/statistics/cuped_variance_reduction.png
+    tests:
+      - tests/statistics/test_cuped.py
+      - tests/statistics/test_cuped_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  trigger-dilution-feature-experiments:
+    path: _posts/statistics/2025-03-12-trigger_dilution_feature_experiments.md
+    permalink: /statistics/trigger_dilution_feature_experiments/
+    modules:
+      - blog_reproducibility.statistics.trigger_dilution
+      - blog_reproducibility.statistics.trigger_dilution_figure
+    figure_scripts:
+      - scripts/figures/statistics/trigger_dilution.py
+    generated_figures:
+      - build/figures/statistics/trigger_dilution_cost.png
+    tests:
+      - tests/statistics/test_trigger_dilution.py
+      - tests/statistics/test_trigger_dilution_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  percentile-metrics-latency-experiments:
+    path: _posts/statistics/2025-11-21-percentile_metrics_latency_experiments.md
+    permalink: /statistics/percentile_metrics_latency_experiments/
+    modules:
+      - blog_reproducibility.statistics.percentile_metrics
+      - blog_reproducibility.statistics.percentile_metrics_figure
+    figure_scripts:
+      - scripts/figures/statistics/percentile_metrics.py
+    generated_figures:
+      - build/figures/statistics/percentile_precision.png
+    tests:
+      - tests/statistics/test_percentile_metrics.py
+      - tests/statistics/test_percentile_metrics_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  switchback-experiments-randomising-time:
+    path: _posts/statistics/2025-03-24-switchback_experiments_randomising_time.md
+    permalink: /statistics/switchback_experiments_randomising_time/
+    modules:
+      - blog_reproducibility.statistics.switchback
+      - blog_reproducibility.statistics.switchback_figure
+    figure_scripts:
+      - scripts/figures/statistics/switchback.py
+    generated_figures:
+      - build/figures/statistics/switchback_period_length.png
+    tests:
+      - tests/statistics/test_switchback.py
+      - tests/statistics/test_switchback_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  optional-stopping-sequential-experiment-tests:
+    path: _posts/statistics/2025-02-24-optional_stopping_sequential_experiment_tests.md
+    permalink: /statistics/optional_stopping_sequential_experiment_tests/
+    modules:
+      - blog_reproducibility.statistics.sequential_testing
+      - blog_reproducibility.statistics.sequential_testing_figure
+    figure_scripts:
+      - scripts/figures/statistics/sequential_testing.py
+    generated_figures:
+      - build/figures/statistics/sequential_boundaries.png
+    tests:
+      - tests/statistics/test_sequential_testing.py
+      - tests/statistics/test_sequential_testing_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  novelty-primacy-effects-experiment-duration:
+    path: _posts/statistics/2025-10-07-novelty_primacy_effects_experiment_duration.md
+    permalink: /statistics/novelty_primacy_effects_experiment_duration/
+    modules:
+      - blog_reproducibility.statistics.novelty_effects
+      - blog_reproducibility.statistics.novelty_effects_figure
+    figure_scripts:
+      - scripts/figures/statistics/novelty_effects.py
+    generated_figures:
+      - build/figures/statistics/novelty_tenure_vs_calendar.png
+    tests:
+      - tests/statistics/test_novelty_effects.py
+      - tests/statistics/test_novelty_effects_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  interference-marketplace-experiments-shared-inventory:
+    path: _posts/statistics/2026-05-13-interference_marketplace_experiments_shared_inventory.md
+    permalink: /statistics/interference_marketplace_experiments_shared_inventory/
+    modules:
+      - blog_reproducibility.statistics.marketplace_interference
+      - blog_reproducibility.statistics.marketplace_interference_figure
+    figure_scripts:
+      - scripts/figures/statistics/marketplace_interference.py
+    generated_figures:
+      - build/figures/statistics/marketplace_interference_lift.png
+    tests:
+      - tests/statistics/test_marketplace_interference.py
+      - tests/statistics/test_marketplace_interference_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  ratio-metrics-delta-method-ab-tests:
+    path: _posts/statistics/2026-09-03-ratio_metrics_delta_method_ab_tests.md
+    permalink: /statistics/ratio_metrics_delta_method_ab_tests/
+    modules:
+      - blog_reproducibility.statistics.ratio_metrics
+      - blog_reproducibility.statistics.ratio_metrics_figure
+    figure_scripts:
+      - scripts/figures/statistics/ratio_metrics.py
+    generated_figures:
+      - build/figures/statistics/ratio_metric_false_positives.png
+    tests:
+      - tests/statistics/test_ratio_metrics.py
+      - tests/statistics/test_ratio_metrics_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  sample-ratio-mismatch-experiment-diagnostic:
+    path: _posts/statistics/2026-09-01-sample_ratio_mismatch_experiment_diagnostic.md
+    permalink: /statistics/sample_ratio_mismatch_experiment_diagnostic/
+    modules:
+      - blog_reproducibility.statistics.sample_ratio_mismatch
+      - blog_reproducibility.statistics.sample_ratio_mismatch_figure
+    figure_scripts:
+      - scripts/figures/statistics/sample_ratio_mismatch.py
+    generated_figures:
+      - build/figures/statistics/srm_detection_and_bias.png
+    tests:
+      - tests/statistics/test_sample_ratio_mismatch.py
+      - tests/statistics/test_sample_ratio_mismatch_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  cluster-randomised-experiments-stores-not-customers:
+    path: _posts/statistics/2026-04-02-cluster_randomised_experiments_stores_not_customers.md
+    permalink: /statistics/cluster_randomised_experiments_stores_not_customers/
+    modules:
+      - blog_reproducibility.statistics.cluster_randomisation
+      - blog_reproducibility.statistics.cluster_randomisation_figure
+    figure_scripts:
+      - scripts/figures/statistics/cluster_randomisation.py
+    generated_figures:
+      - build/figures/statistics/cluster_randomisation_false_positives.png
+    tests:
+      - tests/statistics/test_cluster_randomisation.py
+      - tests/statistics/test_cluster_randomisation_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:
