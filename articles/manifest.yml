@@ -706,6 +706,132 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  clt:
+    path: _posts/mathematics/2024-07-13-CLT.md
+    permalink: /mathematics/CLT/
+    modules:
+      - blog_reproducibility.mathematics.central_limit
+      - blog_reproducibility.mathematics.central_limit_figure
+    figure_scripts:
+      - scripts/figures/mathematics/central_limit.py
+    generated_figures:
+      - build/figures/mathematics/clt_convergence.png
+    tests:
+      - tests/mathematics/test_central_limit.py
+      - tests/mathematics/test_central_limit_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  survival-analysis:
+    path: _posts/mathematics/2024-06-11-survival_analysis.md
+    permalink: /mathematics/survival_analysis/
+    modules:
+      - blog_reproducibility.mathematics.kaplan_meier
+      - blog_reproducibility.mathematics.kaplan_meier_figure
+    figure_scripts:
+      - scripts/figures/mathematics/kaplan_meier.py
+    generated_figures:
+      - build/figures/mathematics/kaplan_meier.png
+    tests:
+      - tests/mathematics/test_kaplan_meier.py
+      - tests/mathematics/test_kaplan_meier_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  understanding-markov-chain-monte-carlo:
+    path: _posts/mathematics/2020-08-01-understanding_markov_chain_monte_carlo.md
+    permalink: /mathematics/understanding_markov_chain_monte_carlo/
+    modules:
+      - blog_reproducibility.mathematics.metropolis
+      - blog_reproducibility.mathematics.metropolis_figure
+    figure_scripts:
+      - scripts/figures/mathematics/metropolis.py
+    generated_figures:
+      - build/figures/mathematics/mcmc_trace.png
+    tests:
+      - tests/mathematics/test_metropolis.py
+      - tests/mathematics/test_metropolis_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  queueing-utilisation-waiting-time:
+    path: _posts/mathematics/2025-10-25-queueing_utilisation_waiting_time.md
+    permalink: /mathematics/queueing_utilisation_waiting_time/
+    modules:
+      - blog_reproducibility.mathematics.queueing
+      - blog_reproducibility.mathematics.queueing_figure
+    figure_scripts:
+      - scripts/figures/mathematics/queueing.py
+    generated_figures:
+      - build/figures/mathematics/queue_wait_vs_utilisation.png
+    tests:
+      - tests/mathematics/test_queueing.py
+      - tests/mathematics/test_queueing_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  distance-concentration-high-dimensions:
+    path: _posts/mathematics/2026-02-09-distance_concentration_high_dimensions.md
+    permalink: /mathematics/distance_concentration_high_dimensions/
+    modules:
+      - blog_reproducibility.mathematics.distance_concentration
+      - blog_reproducibility.mathematics.distance_concentration_figure
+    figure_scripts:
+      - scripts/figures/mathematics/distance_concentration.py
+    generated_figures:
+      - build/figures/mathematics/distance_concentration.png
+    tests:
+      - tests/mathematics/test_distance_concentration.py
+      - tests/mathematics/test_distance_concentration_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  offline-change-point-detection-segmentation:
+    path: _posts/time_series/2025-12-19-offline_change_point_detection_segmentation.md
+    permalink: /time-series/offline_change_point_detection_segmentation/
+    modules:
+      - blog_reproducibility.time_series.optimal_partition
+      - blog_reproducibility.time_series.optimal_partition_figure
+    figure_scripts:
+      - scripts/figures/time_series/optimal_partition.py
+    generated_figures:
+      - build/figures/time_series/changepoint_segmentation_penalty.png
+    tests:
+      - tests/time_series/test_optimal_partition.py
+      - tests/time_series/test_optimal_partition_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:

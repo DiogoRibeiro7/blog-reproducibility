@@ -244,7 +244,7 @@ the images it writes.
 | Group | Figures | Status |
 | --- | ---: | --- |
 | Economics | 3 | **migrated** to `economics/inequality*.py`, `solow_growth*.py`, `gdp_fan*.py` |
-| Mathematics, time series | 6 | pending |
+| Mathematics, time series | 6 | **migrated** to `mathematics/` and `time_series/optimal_partition*.py` |
 | Data science | 6 | pending |
 | Machine learning | 16 | pending |
 | Statistics | 43 | pending |
@@ -252,7 +252,10 @@ the images it writes.
 Migrated figures keep their website slugs, so a regenerated PNG replaces the
 published one under the same name. Each takes its own seed, 20260816, the value
 the shared generator used; its draws therefore differ from the published image,
-which the tests accept because they check the model, not pixels. The website
+which the tests accept because they check the model, not pixels. The exception
+is a generator that already built its own seeded generator: the queueing,
+change-point, and distance-concentration figures keep their draws exactly, and
+their tests pin the numbers those articles print. The website
 copies of `generate_figures.py` generators stay until every group has moved, so
 `website_cleanup` remains `pending` for these articles.
 
@@ -264,7 +267,7 @@ embeds. They should be confirmed dead before being migrated.
 
 | | |
 | --- | --- |
-| New dependencies | SciPy (22 figures), scikit-learn (6), statsmodels (1) |
+| New dependencies | SciPy (22 figures), scikit-learn (6, now added), statsmodels (1) |
 | Need none of those | 48 figures |
 | Slow generators | the queueing figure simulates 200,000 events five times; the change-point figure runs an O(n²) dynamic program thirteen times |
 
