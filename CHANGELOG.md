@@ -25,6 +25,10 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   monitoring, multiple comparisons in alerting, retraining frequency, annotator
   agreement, the winner's curse in model selection, bandits against A/B tests,
   and proxy metrics under optimisation pressure.
+- The five machine-learning figures that train scikit-learn models: censored
+  labels, feature selection leaking into cross-validation, learning-curve
+  extrapolation, permutation importance with correlated features, and test-set
+  size in model ranking.
 
 ### Changed
 
