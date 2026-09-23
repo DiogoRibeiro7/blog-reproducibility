@@ -52,7 +52,8 @@ same cores. CI uses `-n auto`, since its runners have only a few cores.
 Apply formatting with `poetry run ruff format .`. Commit hooks check formatting,
 lint, types, metadata, the manifest, and GitHub Actions workflows. The pre-push hook
 runs tests with coverage.
-CI runs the same checks, exercises supported interpreters and operating systems,
+CI runs the same checks, exercises supported interpreters on Linux (and, after a
+merge to `main` or for a version tag, on Windows and macOS),
 and verifies the built package. Archive-content regression tests run in the unit
 suite; the full packaging check also rebuilds a wheel from the source archive and
 installs both wheels in separate clean environments. Each installation checks the

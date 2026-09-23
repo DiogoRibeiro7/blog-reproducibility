@@ -32,6 +32,9 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- Pull requests run the test matrix on Linux only; Windows and macOS run on merges
+  to `main`, version tags, and manual runs, so releases are still checked on all
+  three platforms.
 - Tests run in parallel with pytest-xdist, on every core in CI and on four
   workers in the pre-push hook, with one
   BLAS, OpenMP, and joblib thread per worker. Each article is reproduced by its
