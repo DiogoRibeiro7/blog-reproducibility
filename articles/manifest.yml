@@ -832,6 +832,132 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  savitzky-golay:
+    path: _posts/data_science/2024-07-05-savitzky_golay.md
+    permalink: /data-science/savitzky_golay/
+    modules:
+      - blog_reproducibility.data_science.savitzky_golay
+      - blog_reproducibility.data_science.savitzky_golay_figure
+    figure_scripts:
+      - scripts/figures/data_science/savitzky_golay.py
+    generated_figures:
+      - build/figures/data_science/savitzky_golay.png
+    tests:
+      - tests/data_science/test_savitzky_golay.py
+      - tests/data_science/test_savitzky_golay_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  understanding-splines-what-they-how-they-used-data-analysis:
+    path: _posts/data_science/2019-12-29-understanding_splines_what_they_how_they_used_data_analysis.md
+    permalink: /data-science/understanding_splines_what_they_how_they_used_data_analysis/
+    modules:
+      - blog_reproducibility.data_science.splines
+      - blog_reproducibility.data_science.splines_figure
+    figure_scripts:
+      - scripts/figures/data_science/splines.py
+    generated_figures:
+      - build/figures/data_science/splines_fit.png
+    tests:
+      - tests/data_science/test_splines.py
+      - tests/data_science/test_splines_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  exploring-kernel-density-estimation-powerful-tool-data-analysis:
+    path: _posts/data_science/2024-12-08-exploring_kernel_density_estimation_powerful_tool_data_analysis.md
+    permalink: /data-science/exploring_kernel_density_estimation_powerful_tool_data_analysis/
+    modules:
+      - blog_reproducibility.data_science.kernel_density
+      - blog_reproducibility.data_science.kernel_density_figure
+    figure_scripts:
+      - scripts/figures/data_science/kernel_density.py
+    generated_figures:
+      - build/figures/data_science/kde_bandwidth.png
+    tests:
+      - tests/data_science/test_kernel_density.py
+      - tests/data_science/test_kernel_density_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  outlier-algo:
+    path: _posts/data_science/2024-07-17-outlier_algo.md
+    permalink: /data-science/outlier_algo/
+    modules:
+      - blog_reproducibility.data_science.histogram_outliers
+      - blog_reproducibility.data_science.histogram_outliers_figure
+    figure_scripts:
+      - scripts/figures/data_science/histogram_outliers.py
+    generated_figures:
+      - build/figures/data_science/hist2d_outliers.png
+    tests:
+      - tests/data_science/test_histogram_outliers.py
+      - tests/data_science/test_histogram_outliers_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  synthetic-control-single-unit-interventions:
+    path: _posts/data_science/2025-11-29-synthetic_control_single_unit_interventions.md
+    permalink: /data-science/synthetic_control_single_unit_interventions/
+    modules:
+      - blog_reproducibility.data_science.synthetic_control
+      - blog_reproducibility.data_science.synthetic_control_figure
+    figure_scripts:
+      - scripts/figures/data_science/synthetic_control.py
+    generated_figures:
+      - build/figures/data_science/synthetic_control_paths.png
+    tests:
+      - tests/data_science/test_synthetic_control.py
+      - tests/data_science/test_synthetic_control_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  silent-data-quality-failures:
+    path: _posts/data_science/2026-09-09-silent_data_quality_failures.md
+    permalink: /statistics/silent_data_quality_failures/
+    modules:
+      - blog_reproducibility.data_science.null_monitoring
+      - blog_reproducibility.data_science.null_monitoring_figure
+    figure_scripts:
+      - scripts/figures/data_science/null_monitoring.py
+    generated_figures:
+      - build/figures/data_science/null_monitor_detection.png
+    tests:
+      - tests/data_science/test_null_monitoring.py
+      - tests/data_science/test_null_monitoring_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:

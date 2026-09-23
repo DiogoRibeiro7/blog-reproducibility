@@ -15,6 +15,12 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   partitioning under time series. The queueing, change-point, and distance
   models reproduce every table those articles print.
 - scikit-learn as a runtime dependency, for the distance-concentration classifiers.
+- A data-science domain with the Savitzky-Golay, spline, kernel density, 2D
+  histogram outlier, synthetic control, and null-rate monitoring figures. The
+  synthetic-control model reproduces every estimate and placebo check its article
+  prints.
+- SciPy as an explicit runtime dependency, used directly for filtering, splines,
+  and constrained optimisation.
 
 ### Changed
 
