@@ -10,6 +10,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 - An economics domain with the Lorenz curve and Gini coefficient, Solow steady
   state, and Monte Carlo GDP fan chart from the website's `generate_figures.py`,
   each with an explicit seed and checks against closed forms.
+- A mathematics domain with the central limit theorem, Kaplan-Meier, Metropolis,
+  queueing, and distance-concentration figures, and penalised change-point
+  partitioning under time series. The queueing, change-point, and distance
+  models reproduce every table those articles print.
+- scikit-learn as a runtime dependency, for the distance-concentration classifiers.
 
 ### Changed
 

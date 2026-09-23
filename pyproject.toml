@@ -25,6 +25,9 @@ dependencies = [
     # The longitudinal design article quotes simulated values produced by NumPy's
     # PCG64 generator, so reproducing them needs NumPy and not random.Random.
     "numpy>=2.0,<3.0",
+    # The distance-concentration article reports k-NN, PCA, and logistic regression
+    # accuracies computed with scikit-learn's estimators.
+    "scikit-learn>=1.7,<2.0",
 ]
 
 [project.urls]
@@ -104,6 +107,11 @@ warn_unreachable = true
 pretty = true
 # Manual benchmark harnesses retain their original untyped implementation.
 exclude = ["^scripts/benchmarks/"]
+
+# scikit-learn ships no type information; its estimators are typed as Any here.
+[[tool.mypy.overrides]]
+module = ["sklearn.*"]
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 addopts = "-ra --strict-config --strict-markers"
