@@ -79,7 +79,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
 ### Time series
 
 - [x] Point-in-time release vintages.
-- [ ] Sequential CUSUM/change-point example.
+- [x] Sequential CUSUM/change-point example.
   - [x] Numerical model and deterministic simulation.
   - [x] Reproducibility tests and article manifest.
   - [x] Figure renderer and shared plotting style.
