@@ -5,6 +5,12 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ## Unreleased
 
+### Added
+
+- An economics domain with the Lorenz curve and Gini coefficient, Solow steady
+  state, and Monte Carlo GDP fan chart from the website's `generate_figures.py`,
+  each with an explicit seed and checks against closed forms.
+
 ### Changed
 
 - Version-tag pushes publish the GitHub release once all CI checks pass, rather
