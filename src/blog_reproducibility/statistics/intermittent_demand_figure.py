@@ -56,6 +56,10 @@ def render_intermittent_demand_figure(
     axis.set_yticks(positions)
     axis.set_yticklabels([row.method for row in rows])
     axis.set_xlabel("average weekly forecast, units")
-    axis.set_title("Only one method is wrong about the rate, and it wins on error")
+    # Undebiased Croston is 3.5 percent above the rate too, so "only one method is
+    # wrong" overstated it; the forecast of zero is the one that is far off. The
+    # title is kept short enough to fit the axes in DejaVu Sans, the fallback font
+    # wherever the house style's Segoe UI is not installed.
+    axis.set_title("Zero misses the rate but has the least absolute error")
 
     return save_figure(figure, slug="intermittent_forecast_bias", output_dir=output_dir)

@@ -52,6 +52,10 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- The intermittent-demand figure's title no longer says only one method is wrong
+  about the rate (undebiased Croston is 3.5 percent high too); the censored-labels
+  figure draws its true curve dashed and on top, so the hazard model no longer
+  hides it.
 - The censored-labels model builds customer-month rows only from fully observed
   months; counting the month the extract falls in as survived biased every
   monthly hazard down by about 1.2 points. The lasso figure's penalty axis now

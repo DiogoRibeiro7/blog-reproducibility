@@ -12,14 +12,16 @@ against 0.8 and 1.949), the smoothing forecasts' squared errors (1.789 and
 1.818 against 1.795 and 1.824), and the absolute errors of the others, which
 for a forecast of level ``F`` below one unit are ``0.6 F + 0.8``.
 
-The figure's claims hold except in one respect. The forecast of zero is far
-below the rate and has the lowest absolute error (and the highest squared
-error), and the three usable methods are within two percent of the truth.
-But "only one method is wrong about the rate" is not quite what the bars show:
+The figure's claims hold. The forecast of zero is far below the rate and has
+the lowest absolute error (and the highest squared error), and the three usable
+methods are within two percent of the truth. The published title said "only one
+method is wrong about the rate", which is not quite what the bars show:
 undebiased Croston is 3.5 percent above the truth, 2.8 standard errors, with an
 interval (0.809 to 0.848) that excludes 0.8; it agrees with the second-order
-closed form of 0.834. The article's own table gives it as 3.6 percent, and its
-debiased form as 1.5 percent below, against 1.0 percent below in closed form.
+closed form of 0.834. The title now says only the zero forecast is far off the
+rate, which the bars do show. The article's own table gives Croston as 3.6
+percent above, and its debiased form as 1.5 percent below, against 1.0 percent
+below in closed form.
 """
 
 from collections.abc import Callable
@@ -152,7 +154,9 @@ def test_the_figure_claims() -> None:
     # Croston is above the truth by 3.5 percent, and its interval excludes it.
     assert round(CROSTON.average_forecast / truth - 1, 3) == 0.035
     assert CROSTON.average_forecast - 1.96 * CROSTON.standard_error > truth
-    # "It wins on error": the lowest absolute error, and the highest squared error.
+    # "Zero misses the rate": every other bar is within 4 percent of it.
+    assert max(abs(row.average_forecast / truth - 1) for row in SUMMARY.rows[1:]) < 0.04
+    # "The least absolute error", though the highest squared error.
     maes = [row.mean_absolute_error for row in SUMMARY.rows]
     rmses = [row.root_mean_squared_error for row in SUMMARY.rows]
     assert min(maes) == ZERO.mean_absolute_error
