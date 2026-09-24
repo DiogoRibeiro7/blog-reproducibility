@@ -13,12 +13,13 @@ least squares at the smallest penalty, and against an independent algorithm
 (least angle regression in its lasso form), whose knots fix the order and the
 penalties at which the coefficients leave zero.
 
-One claim does not hold in the simulation. The bias-variance alt text says
-"training error falls monotonically". Its expectation does, at every degree,
-but the simulated mean rises once, from degree 5 to 6 by 0.0006, about a third
-of its standard error: each degree draws fresh noise, and the expected fall
-there is only sigma^2 / n = 0.0026. The published image appears to rise once too
-(degree 7 to 8). The title's weaker "keeps falling" holds overall.
+The article's alt text and the figure's title say training error "keeps
+falling", which holds; the website's old figure caption said it "falls
+monotonically", which does not. Its expectation falls at every degree, but the
+simulated mean rises once, from degree 5 to 6 by 0.0006, about a third of its
+standard error: each degree draws fresh noise, and the expected fall there is
+only sigma^2 / n = 0.0026. The published image appears to rise once too (degree
+7 to 8).
 """
 
 import numpy as np

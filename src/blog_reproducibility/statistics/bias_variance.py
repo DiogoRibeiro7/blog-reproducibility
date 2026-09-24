@@ -36,8 +36,10 @@ Both published images drew from the site's shared global generator, whose
 state depended on the figures generated before them. Each simulation here has
 its own generator seeded with ``SEED``, so the bias-variance draws differ from
 the published image. The published lasso image shows the same paths as these
-draws, so it appears to have been drawn from a fresh generator. The article
-prints no numbers from either simulation.
+draws, so it appears to have been drawn from a fresh generator; its penalty axis
+grew to the right although its label says "decreasing", and the figure here runs
+it from the largest penalty on the left to the smallest on the right. The
+article prints no numbers from either simulation.
 """
 
 from dataclasses import dataclass
