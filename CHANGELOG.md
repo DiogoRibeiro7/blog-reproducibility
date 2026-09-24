@@ -40,6 +40,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   the block bootstrap, exact post-selection intervals, and the bias-variance and
   regularisation-path figures.
 
+- Ten causal-inference and observational-data figures under statistics:
+  non-compliance, regression discontinuity, staggered difference-in-differences,
+  propensity scores, negative controls, Berkson's paradox, regression to the
+  mean, the ecological fallacy, left truncation, and measurement error.
+
 ### Changed
 
 - Pull requests run the test matrix on Linux only; Windows and macOS run on merges

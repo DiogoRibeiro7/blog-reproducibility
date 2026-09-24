@@ -166,6 +166,12 @@ retain a copy or attach it to a reviewed release for long-term use.
   produced with scikit-learn 1.6.1 and move under the locked 1.9 series, which
   1.6 cannot replace because it has no Python 3.14 wheels; those numbers are
   therefore not pinned, and the tests check the article's claims instead.
+- NumPy's default sort is not stable, and the order it gives tied values can
+  depend on the CPU's vectorised sort kernel. Where ties decide a result, the
+  models sort stably so that every machine agrees. The regression-to-the-mean
+  article's deciles were chosen by an unstable sort on the machine that wrote it;
+  its tests record those deciles and reproduce the tie-dependent numbers from
+  them, while the model itself breaks ties by machine index.
 
 For external inputs, follow [the data policy](../data/README.md). A changing API or
 unversioned source cannot provide an exact historical snapshot; record those
