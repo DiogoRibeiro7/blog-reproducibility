@@ -14,7 +14,11 @@ calibrated boundaries) are reproduced exactly on the article's own grid. On the
 figure's fixed grid the O'Brien-Fleming calibration lands on a grid jump at a
 first critical value of exactly 5.46 and spends 5.02 percent rather than 5; the
 crossing probability is a step function of the scale on any grid, so bisection
-can only get within one jump of the target.
+can only get within one jump of the target. The same steps make the third
+printed decimal platform-dependent: a last-bit difference in the normal CDF can
+move the calibration across a jump, and macOS gives 4.997 percent where Linux
+and Windows give the article's 5.000, so those values are compared within 0.01
+percentage points.
 """
 
 import numpy as np
@@ -123,8 +127,10 @@ def test_the_boundary_table_matches_the_article() -> None:
 
 def test_both_boundaries_spend_five_percent() -> None:
     """The article's grid gives 5.000 and 4.995 percent; the figure's is within a grid jump."""
-    assert round(100 * SUMMARY.article_pocock.crossing_probability, 3) == 5.000
-    assert round(100 * SUMMARY.article_obrien_fleming.crossing_probability, 3) == 4.995
+    assert 100 * SUMMARY.article_pocock.crossing_probability == pytest.approx(5.000, abs=0.01)
+    assert 100 * SUMMARY.article_obrien_fleming.crossing_probability == pytest.approx(
+        4.995, abs=0.01
+    )
     assert FIGURE.pocock.crossing_probability == pytest.approx(0.05, abs=1e-4)
     assert FIGURE.obrien_fleming.crossing_probability == pytest.approx(0.05, abs=3e-4)
     for figure, article in (
