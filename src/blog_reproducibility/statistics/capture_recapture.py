@@ -5,8 +5,8 @@ with probability ``q_i = min(p_i e, 1)``, where the ease ``e`` of a defect is
 lognormal with mean one and log standard deviation ``s``, the spread. With
 ``n_1`` and ``n_2`` found by two passes and ``m`` by both, Lincoln-Petersen
 estimates ``n_1 n_2 / m`` and Chapman ``(n_1 + 1)(n_2 + 1) / (m + 1) - 1``.
-With three passes, Chao's estimator adds ``f_1^2 / (2 f_2)`` to the number seen,
-from the defects seen exactly once and exactly twice.
+With ``t = 3`` passes, Chao's lower bound adds ``((t - 1) / t) f_1^2 / (2 f_2)``
+to the number seen, from the defects seen exactly once and exactly twice.
 
 Defects are independent, so every count has a closed form in the moments of the
 detection probabilities over the ease, one integral over a standard normal
@@ -21,21 +21,22 @@ the overlap ``E[q_1 q_2]`` then exceeds ``E[q_1] E[q_2]``. The correlation this
 induces between the passes is ``(E[q_1 q_2] - E[q_1] E[q_2]) / sqrt(E[q_1](1 -
 E[q_1]) E[q_2](1 - E[q_2]))``.
 
-Chao's estimator tends to ``N (1 - P_0 + P_1^2 / (2 P_2))``. When each defect
-is equally likely to be found on every one of ``t`` passes, Cauchy-Schwarz puts
-the expected number missed at no less than ``(t - 1) / t`` times
-``E[f_1]^2 / (2 E[f_2])``, the bound of Chao (1987). The figure and the article
-use the form without that factor, the limit for many passes; with three passes
-it overstates the correction by half, so with every defect equally easy it is
-543 rather than a bound near 500.
+Chao's bound tends to ``N (1 - P_0 + ((t - 1) / t) P_1^2 / (2 P_2))``. When
+each defect is equally likely to be found on every one of ``t`` passes,
+Cauchy-Schwarz puts the expected number missed at no less than ``(t - 1) / t``
+times ``E[f_1]^2 / (2 E[f_2])``, the bound of Chao (1987). Without the factor,
+the form for many passes, three passes overstate the correction by half: with
+every defect equally easy the limit is 543 rather than 501.
 
 The figure reseeds a generator at 17 for each of 15 spreads from 0 to 1.4 and
 runs 200 replications of three passes with detection 0.5, 0.45 and 0.4, drawing
 the ease (except at zero spread) and then the three passes; it plots the median
-two-pass Chapman estimate from the first two passes, the median of Chao's
-estimate from all three, and the mean number found by at least one pass. It is
-reproduced draw for draw. The article's tables use other seeds and designs, so
-they are compared with the closed forms rather than reproduced.
+two-pass Chapman estimate from the first two passes, the median of Chao's bound
+from all three, and the mean number found by at least one pass. It is
+reproduced draw for draw. The article's three-pass table runs the same loop
+reseeded at 13 with 1,000 replications at four spreads, so its seen, two-pass
+and Chao columns are reproduced too; its other tables use other designs, so they
+are compared with the closed forms rather than reproduced.
 """
 
 from dataclasses import dataclass
@@ -108,7 +109,6 @@ class ExpectedCapture:
     two_pass_limit: float
     pass_correlation: float
     chao_limit: float | None
-    chao_bound: float | None
 
 
 @dataclass(frozen=True, slots=True)
@@ -208,21 +208,17 @@ def capture_frequencies(passes: tuple[NDArray[np.bool_], ...]) -> tuple[int, ...
     return tuple(int(np.count_nonzero(times == k)) for k in range(len(passes) + 1))
 
 
-def chao_estimate(seen: int, once: int, twice: int, *, occasions: int | None = None) -> float:
-    """Items seen plus ``f_1^2 / (2 f_2)``, times ``(t - 1) / t`` for ``t`` occasions if given.
+def chao_estimate(seen: int, once: int, twice: int, *, occasions: int) -> float:
+    """Chao's lower bound: items seen plus ``((t - 1) / t) f_1^2 / (2 f_2)`` for ``t`` occasions.
 
-    Without ``occasions`` this is the website's form; it is not a number when
-    nothing was seen twice, as there.
+    It is not a number when nothing was seen twice, as on the website.
     """
     d = count(seen, name="seen")
     f1, f2 = count(once, name="once"), count(twice, name="twice")
     if f1 + f2 > d:
         raise ValueError("once and twice cannot exceed seen")
-    factor = 1.0
-    if occasions is not None:
-        t = count(occasions, name="occasions", minimum=2)
-        factor = (t - 1) / t
-    return d + factor * f1**2 / (2 * f2) if f2 else nan
+    t = count(occasions, name="occasions", minimum=2)
+    return d + (t - 1) / t * f1**2 / (2 * f2) if f2 else nan
 
 
 def two_pass_standard_deviation(
@@ -278,11 +274,9 @@ def expected_capture(
     missed = float(shares[0])
     correlation = (e12 - e1 * e2) / sqrt(e1 * (1 - e1) * e2 * (1 - e2))
     chao: float | None = None
-    bound: float | None = None
     if len(ps) >= 3:
         correction = float(shares[1] ** 2 / (2 * shares[2]))
-        chao = n * (1 - missed + correction)
-        bound = n * (1 - missed + (len(ps) - 1) / len(ps) * correction)
+        chao = n * (1 - missed + (len(ps) - 1) / len(ps) * correction)
     return ExpectedCapture(
         spread=s,
         detection=ps,
@@ -292,7 +286,6 @@ def expected_capture(
         two_pass_limit=float(n * e1 * e2 / e12),
         pass_correlation=float(correlation),
         chao_limit=chao,
-        chao_bound=bound,
     )
 
 
@@ -341,7 +334,7 @@ def heterogeneity_curve(
             pair.append(chapman(*overlap(passes[0], passes[1])))
             _, once, twice, *_ = capture_frequencies(passes)
             union.append(int(np.logical_or.reduce(passes).sum()))
-            three.append(chao_estimate(union[-1], once, twice))
+            three.append(chao_estimate(union[-1], once, twice, occasions=len(passes)))
             smallest_twice = min(smallest_twice, twice)
         two_pass.append(float(np.median(pair)))
         chao.append(float(np.median(three)))
