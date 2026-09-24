@@ -20,16 +20,32 @@ Three models are trained on the rest:
 * naive: gradient boosting on the snapshot label, with tenure as a feature;
 * fixed horizon: gradient boosting on churn within twelve months, restricted to
   customers observed for at least twelve months;
-* discrete-time hazard: logistic regression on one row per customer-month up to
-  churn, censoring, or month twelve, with a dummy per month; the twelve-month
-  probability is one minus the product of the monthly survival probabilities.
+* discrete-time hazard: logistic regression on one row per customer-month
+  observed to its end, up to the month of churn or month twelve, with a dummy
+  per month; the twelve-month probability is one minus the product of the
+  monthly survival probabilities.
+
+A fourth model, the naive one without tenure, checks the article's claim about
+what dropping the feature does: it still learns the snapshot label, whose
+positive rate is above the true twelve-month rate because the average customer
+has been observed for eighteen months.
+
+The article first built the customer-month rows up to
+``ceil(min(churn, follow-up, 12))``, which kept the month in which a customer
+was censored and counted it as survived. That pulls every monthly hazard down:
+the hazard model sat 0.006 to 0.007 below the truth in every cohort. A month
+now enters only once the customer has been observed to its end, which is
+unbiased because censoring (the signup date) is independent of churn here; the
+month in which the extract falls is left out whatever happened in it, since
+keeping only its churns would bias the hazard up instead. The article's code
+and its hazard numbers were corrected to match.
 
 The article's code and the figure generator share the design and one generator
 seeded at 0, drawn in the same order (signup, both features, Weibull times,
-test split), and both boosting models use ``random_state=0``, so the figure and
-every number the article prints come from this one simulation. The customer-
-month rows are built with array operations rather than the article's Python
-loop, in the same order, so the hazard fit is unchanged.
+test split), and every boosting model uses ``random_state=0``, so the figure
+and every number the article prints come from this one simulation. The
+customer-month rows are built with array operations rather than the article's
+Python loop, in the same order, so the hazard fit is the same.
 """
 
 from dataclasses import dataclass
@@ -82,7 +98,6 @@ BOOSTING_ITERATIONS: Final[int] = 200
 BOOSTING_LEARNING_RATE: Final[float] = 0.05
 HAZARD_C: Final[float] = 10.0
 HAZARD_MAX_ITER: Final[int] = 2000
-_FOLLOWUP_TOLERANCE: Final[float] = 1e-9
 
 
 @dataclass(frozen=True, slots=True, eq=False)
@@ -115,6 +130,7 @@ class ModelPredictions:
     naive: NDArray[np.float64]
     fixed_horizon: NDArray[np.float64]
     hazard: NDArray[np.float64]
+    tenure_free: NDArray[np.float64]
     naive_new_customer: float
     person_month_rows: int
 
@@ -163,6 +179,8 @@ class CensoredLabelsSummary:
     naive_new_customer: float
     true_new_customer: float
     test_rates: ChurnRates
+    snapshot_positive_rate: float
+    tenure_free_mean: float
 
 
 def weibull_scale(
@@ -217,28 +235,27 @@ def person_months(
     *,
     horizon: int = HORIZON,
 ) -> PersonMonths:
-    """One row per customer per month up to ``ceil(min(churn, follow-up, horizon))``.
+    """One row per month observed to its end: ``min(ceil(churn), floor(follow-up), horizon)``.
 
-    Each customer contributes at least one row. Month ``m`` is labelled 1 when
-    churn falls in ``(m - 1, m]`` and the customer was observed through month
-    ``m``; a customer censored part-way through a month is counted as having
-    survived it, as in the article's code. Rows are ordered customer by customer,
-    months ascending.
+    A customer is at risk in month ``m`` once they have survived ``m - 1``
+    months, and the month enters only if the follow-up covers all of it, so
+    the rows stop at the month of churn, the last complete month before the
+    extract, or the horizon. Month ``m`` is labelled 1 when churn falls in
+    ``(m - 1, m]``. A customer observed for less than a month contributes no
+    rows. Rows are ordered customer by customer, months ascending.
     """
     limit = count(horizon, name="horizon", minimum=1)
     if not (x1.shape == x2.shape == churn_time.shape == followup.shape) or x1.ndim != 1:
         raise ValueError("x1, x2, churn_time and followup must be vectors of one length")
     if np.any(churn_time < 0) or np.any(followup < 0):
         raise ValueError("churn times and follow-up must be non-negative")
-    last = np.ceil(np.minimum(np.minimum(churn_time, followup), limit)).astype(np.int64)
-    months_per_customer = np.maximum(last, 1)
+    months_per_customer = np.minimum(
+        np.minimum(np.ceil(churn_time), np.floor(followup)), limit
+    ).astype(np.int64)
     owner = np.repeat(np.arange(x1.size), months_per_customer)
     starts = np.cumsum(months_per_customer) - months_per_customer
     month = np.arange(owner.size) - np.repeat(starts, months_per_customer) + 1
-    time = churn_time[owner]
-    churned = (
-        (time <= month) & (time > month - 1) & (month <= followup[owner] + _FOLLOWUP_TOLERANCE)
-    )
+    churned = churn_time[owner] <= month
     return PersonMonths(
         x1=x1[owner],
         x2=x2[owner],
@@ -280,7 +297,10 @@ def _boosting() -> HistGradientBoostingClassifier:
 
 
 def fit_models(base: CustomerBase) -> ModelPredictions:
-    """Fit the naive, fixed-horizon and hazard models; predict for held-out customers."""
+    """Fit the naive, fixed-horizon and hazard models; predict for held-out customers.
+
+    The naive model is also refitted without tenure, on the same snapshot label.
+    """
     horizon = base.horizon
     train, test = ~base.test, base.test
     churned_by_extract = base.churn_time <= base.followup
@@ -291,6 +311,7 @@ def fit_models(base: CustomerBase) -> ModelPredictions:
     naive = _boosting().fit(naive_features[train], churned_by_extract[train])
     fixed_features = np.column_stack([base.x1, base.x2])
     fixed = _boosting().fit(fixed_features[train & full], event[train & full])
+    tenure_free = _boosting().fit(fixed_features[train], churned_by_extract[train])
 
     rows = person_months(
         base.x1[train],
@@ -312,6 +333,7 @@ def fit_models(base: CustomerBase) -> ModelPredictions:
         naive=naive.predict_proba(naive_features[test])[:, 1],
         fixed_horizon=fixed.predict_proba(fixed_features[test])[:, 1],
         hazard=1.0 - survival,
+        tenure_free=tenure_free.predict_proba(fixed_features[test])[:, 1],
         naive_new_customer=float(naive.predict_proba([[0.0, 0.0, 0.0]])[0, 1]),
         person_month_rows=int(rows.month.size),
     )
@@ -382,4 +404,6 @@ def example_payload() -> CensoredLabelsSummary:
             observed_all=float(np.mean(churned_by_extract & event)),
             observed_full_followup=float(np.mean(event[full])),
         ),
+        snapshot_positive_rate=float(np.mean(base.churn_time[train] <= base.followup[train])),
+        tenure_free_mean=float(np.mean(predictions.tenure_free)),
     )
