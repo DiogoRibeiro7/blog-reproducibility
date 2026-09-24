@@ -48,7 +48,7 @@ As of the website cleanup, every `R` row is `complete` except
 | `generate_coverage_draft_figures.py` | R | `statistics/`, `health/`, `engineering/` (three draft models) | **complete** |
 | `generate_data_lake_figures.py` | R | `engineering/data_lake_figure.py` | **complete** |
 | `generate_database_figures.py` | R | `engineering/database_figure.py` | **complete** |
-| `generate_figures.py` | R | split by domain across the package | **outstanding — see section 7** |
+| `generate_figures.py` | R | split by domain across the package | **migrated** (73 of 76 generators); website copy **outstanding** — see section 7 |
 | `generate_headers.py` | W | — | stays |
 | `generate_hormone_testing_figures.py` | R | `health/hormone_testing*.py` | **complete** |
 | `generate_inflammation_marker_figures.py` | R | `health/inflammation_markers*.py` | **complete** |
@@ -239,6 +239,13 @@ the images it writes.
 | Time series | 1 | penalised change-point partitioning |
 | Referenced by no article | 3 | `acf_pacf`, `type_i_ii`, `linear_vs_logistic` |
 
+The last row is worth separating: `acf_pacf`, `type_i_ii`, and
+`linear_vs_logistic` produce images that exist under `assets/images/figures/`
+but that no current article embeds. `linear_vs_logistic` joined them after the
+original survey, when its article stopped embedding the image; the
+`null_monitor_detection` generator was added for a September 2026 article, which
+keeps the total at 76. They should be confirmed dead before being migrated.
+
 ### Progress
 
 | Group | Figures | Status |
@@ -247,15 +254,22 @@ the images it writes.
 | Mathematics, time series | 6 | **migrated** to `mathematics/` and `time_series/optimal_partition*.py` |
 | Data science | 6 | **migrated** to `data_science/` |
 | Machine learning | 16 | **migrated** to `machine_learning/` |
-| Statistics | 42 | 30 **migrated** (experiment design, inference, causal and observational); 12 pending |
+| Statistics | 42 | **migrated** to `statistics/` |
+| Referenced by no article | 3 | not migrated; to be confirmed dead |
 
-Migrated figures keep their website slugs, so a regenerated PNG replaces the
-published one under the same name. Each takes its own seed, 20260816, the value
-the shared generator used; its draws therefore differ from the published image,
-which the tests accept because they check the model, not pixels. The exception
-is a generator that already built its own seeded generator: the queueing,
-change-point, and distance-concentration figures keep their draws exactly, and
-their tests pin the numbers those articles print. Synthetic control does too.
+All 73 figures that an article embeds are migrated. They keep their website
+slugs, so a regenerated PNG replaces the published one under the same name. Most
+generators already built their own seeded generator; those keep their seed and
+draw order, are checked against a transcription of the website loop, and pin
+the numbers their articles print from the same computation. The thirteen that
+drew from the module-level shared generator take its seed, 20260816, as their
+own; their draws differ from the published images, which the tests accept
+because they check the model, not pixels.
+
+Migration checked every article against its computation. Where a printed number
+or a claim in the prose, title, or alt text does not hold, the figure is migrated
+unchanged, the tests check what is true, and the test module's docstring records
+the discrepancy for the article to be corrected.
 
 One figure's claim does not survive migration. `splines_fit` is titled "a spline
 bends locally; a high-degree polynomial wobbles globally", but with its design
@@ -267,18 +281,11 @@ the effect, such as a sharper feature or a higher degree, or a different claim. 
 copies of `generate_figures.py` generators stay until every group has moved, so
 `website_cleanup` remains `pending` for these articles.
 
-The last row is worth separating: `acf_pacf`, `type_i_ii`, and
-`linear_vs_logistic` produce images that exist under `assets/images/figures/`
-but that no current article embeds. `linear_vs_logistic` joined them after the
-original survey, when its article stopped embedding the image; the
-`null_monitor_detection` generator was added for a September 2026 article, which
-keeps the total at 76. They should be confirmed dead before being migrated.
-
 ### What it would cost
 
 | | |
 | --- | --- |
-| New dependencies | SciPy (22 figures), scikit-learn (6, now added), statsmodels (1) |
+| New dependencies | SciPy and scikit-learn, both now added; statsmodels was not needed, since the one quantile-regression figure solves the same linear program with SciPy |
 | Need none of those | 48 figures |
 | Slow generators | the queueing figure simulates 200,000 events five times; the change-point figure runs an O(n²) dynamic program thirteen times |
 
