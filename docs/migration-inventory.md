@@ -28,8 +28,7 @@ classified.
 migrated here *and* removed from the website repository. `outstanding` — still
 in the website repository.
 
-As of the website cleanup, every `R` row is `complete` except
-`generate_figures.py`.
+As of the website cleanup, every `R` row is `complete`.
 
 ---
 
@@ -48,7 +47,7 @@ As of the website cleanup, every `R` row is `complete` except
 | `generate_coverage_draft_figures.py` | R | `statistics/`, `health/`, `engineering/` (three draft models) | **complete** |
 | `generate_data_lake_figures.py` | R | `engineering/data_lake_figure.py` | **complete** |
 | `generate_database_figures.py` | R | `engineering/database_figure.py` | **complete** |
-| `generate_figures.py` | R | split by domain across the package | **migrated** (73 of 76 generators); website copy **outstanding** — see section 7 |
+| `generate_figures.py` | R | split by domain across the package | **complete** — see section 7 |
 | `generate_headers.py` | W | — | stays |
 | `generate_hormone_testing_figures.py` | R | `health/hormone_testing*.py` | **complete** |
 | `generate_inflammation_marker_figures.py` | R | `health/inflammation_markers*.py` | **complete** |
@@ -217,10 +216,13 @@ rewritten as each group lands.
 
 ---
 
-## 7. `generate_figures.py` — the one outstanding migration
+## 7. `generate_figures.py` — the last migration
 
-Everything else in this inventory has moved. This file has not, and it is the
-only scientific Python left in the website repository.
+This was the last file to move and the last scientific Python in the website
+repository. All 73 figures an article embeds are migrated, the 67 articles they
+belong to link to their figure generators here, and the file was removed from
+the website together with its three unreferenced generators and their images
+(DiogoRibeiro7/DiogoRibeiro7.github.io#597).
 
 One 3,826-line module holds **76 figure generators** behind a `@figure(slug,
 alt)` registry, all sharing a single module-level NumPy generator seeded at
@@ -244,7 +246,7 @@ The last row is worth separating: `acf_pacf`, `type_i_ii`, and
 but that no current article embeds. `linear_vs_logistic` joined them after the
 original survey, when its article stopped embedding the image; the
 `null_monitor_detection` generator was added for a September 2026 article, which
-keeps the total at 76. They should be confirmed dead before being migrated.
+keeps the total at 76. They were confirmed dead and deleted, not migrated.
 
 ### Progress
 
@@ -255,7 +257,7 @@ keeps the total at 76. They should be confirmed dead before being migrated.
 | Data science | 6 | **migrated** to `data_science/` |
 | Machine learning | 16 | **migrated** to `machine_learning/` |
 | Statistics | 42 | **migrated** to `statistics/` |
-| Referenced by no article | 3 | not migrated; to be confirmed dead |
+| Referenced by no article | 3 | deleted from the website with their images |
 
 All 73 figures that an article embeds are migrated. They keep their website
 slugs, so a regenerated PNG replaces the published one under the same name. Most

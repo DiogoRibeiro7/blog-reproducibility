@@ -662,7 +662,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   solow-growth-model-extensions:
     path: _posts/economics/2024-07-26-solow_growth_model_extensions.md
@@ -683,7 +683,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   monte-carlo-simulations-macroeconomic-modeling:
     path: _posts/economics/2025-04-18-monte_carlo_simulations_macroeconomic_modeling.md
@@ -704,7 +704,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   clt:
     path: _posts/mathematics/2024-07-13-CLT.md
@@ -725,7 +725,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   survival-analysis:
     path: _posts/mathematics/2024-06-11-survival_analysis.md
@@ -746,7 +746,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   understanding-markov-chain-monte-carlo:
     path: _posts/mathematics/2020-08-01-understanding_markov_chain_monte_carlo.md
@@ -767,7 +767,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   queueing-utilisation-waiting-time:
     path: _posts/mathematics/2025-10-25-queueing_utilisation_waiting_time.md
@@ -788,7 +788,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   distance-concentration-high-dimensions:
     path: _posts/mathematics/2026-02-09-distance_concentration_high_dimensions.md
@@ -809,7 +809,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   offline-change-point-detection-segmentation:
     path: _posts/time_series/2025-12-19-offline_change_point_detection_segmentation.md
@@ -830,7 +830,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   savitzky-golay:
     path: _posts/data_science/2024-07-05-savitzky_golay.md
@@ -851,7 +851,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   understanding-splines-what-they-how-they-used-data-analysis:
     path: _posts/data_science/2019-12-29-understanding_splines_what_they_how_they_used_data_analysis.md
@@ -872,7 +872,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   exploring-kernel-density-estimation-powerful-tool-data-analysis:
     path: _posts/data_science/2024-12-08-exploring_kernel_density_estimation_powerful_tool_data_analysis.md
@@ -893,7 +893,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   outlier-algo:
     path: _posts/data_science/2024-07-17-outlier_algo.md
@@ -914,7 +914,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   synthetic-control-single-unit-interventions:
     path: _posts/data_science/2025-11-29-synthetic_control_single_unit_interventions.md
@@ -935,7 +935,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   silent-data-quality-failures:
     path: _posts/data_science/2026-09-09-silent_data_quality_failures.md
@@ -956,7 +956,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   drift:
     path: _posts/machine_learning/2024-07-30-Drift.md
@@ -980,7 +980,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   multiple-comparisons-model-monitoring:
     path: _posts/machine_learning/2026-03-05-multiple_comparisons_model_monitoring.md
@@ -1002,7 +1002,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   how-often-to-retrain-a-model:
     path: _posts/machine_learning/2026-09-13-how_often_to_retrain_a_model.md
@@ -1023,7 +1023,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   annotator-agreement-accuracy-ceiling:
     path: _posts/machine_learning/2025-12-15-annotator_agreement_accuracy_ceiling.md
@@ -1044,7 +1044,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   winners-curse-model-selection:
     path: _posts/machine_learning/2026-04-16-winners_curse_model_selection.md
@@ -1065,7 +1065,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   bandits-vs-ab-tests-cost-of-learning:
     path: _posts/machine_learning/2025-11-12-bandits_vs_ab_tests_cost_of_learning.md
@@ -1086,7 +1086,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   proxy-metrics-goodhart-optimisation-pressure:
     path: _posts/machine_learning/2026-09-12-proxy_metrics_goodhart_optimisation_pressure.md
@@ -1107,7 +1107,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   censored-labels-supervised-learning:
     path: _posts/machine_learning/2026-02-01-censored_labels_supervised_learning.md
@@ -1128,7 +1128,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   feature-selection-before-cross-validation-leakage:
     path: _posts/machine_learning/2026-03-10-feature_selection_before_cross_validation_leakage.md
@@ -1149,7 +1149,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   learning-curves-more-data:
     path: _posts/machine_learning/2026-01-28-learning_curves_more_data.md
@@ -1170,7 +1170,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   permutation-importance-correlated-features:
     path: _posts/machine_learning/2026-05-28-permutation_importance_correlated_features.md
@@ -1191,7 +1191,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   test-set-size-model-evaluation:
     path: _posts/machine_learning/2025-10-02-test_set_size_model_evaluation.md
@@ -1212,7 +1212,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   unequal-allocation-experiments:
     path: _posts/statistics/2025-03-06-unequal_allocation_experiments.md
@@ -1233,7 +1233,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   cuped-variance-reduction-ab-tests:
     path: _posts/statistics/2025-10-12-cuped_variance_reduction_ab_tests.md
@@ -1254,7 +1254,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   trigger-dilution-feature-experiments:
     path: _posts/statistics/2025-03-12-trigger_dilution_feature_experiments.md
@@ -1275,7 +1275,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   percentile-metrics-latency-experiments:
     path: _posts/statistics/2025-11-21-percentile_metrics_latency_experiments.md
@@ -1296,7 +1296,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   switchback-experiments-randomising-time:
     path: _posts/statistics/2025-03-24-switchback_experiments_randomising_time.md
@@ -1317,7 +1317,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   optional-stopping-sequential-experiment-tests:
     path: _posts/statistics/2025-02-24-optional_stopping_sequential_experiment_tests.md
@@ -1338,7 +1338,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   novelty-primacy-effects-experiment-duration:
     path: _posts/statistics/2025-10-07-novelty_primacy_effects_experiment_duration.md
@@ -1359,7 +1359,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   interference-marketplace-experiments-shared-inventory:
     path: _posts/statistics/2026-05-13-interference_marketplace_experiments_shared_inventory.md
@@ -1380,7 +1380,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   ratio-metrics-delta-method-ab-tests:
     path: _posts/statistics/2026-09-03-ratio_metrics_delta_method_ab_tests.md
@@ -1401,7 +1401,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   sample-ratio-mismatch-experiment-diagnostic:
     path: _posts/statistics/2026-09-01-sample_ratio_mismatch_experiment_diagnostic.md
@@ -1422,7 +1422,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   cluster-randomised-experiments-stores-not-customers:
     path: _posts/statistics/2026-04-02-cluster_randomised_experiments_stores_not_customers.md
@@ -1443,7 +1443,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   design-analysis-type-s-type-m-errors:
     path: _posts/statistics/2025-03-19-design_analysis_type_s_type_m_errors.md
@@ -1464,7 +1464,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   equivalence-testing-no-worse-than:
     path: _posts/statistics/2026-03-16-equivalence_testing_no_worse_than.md
@@ -1485,7 +1485,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   zero-failures-small-counts-rule-of-three:
     path: _posts/statistics/2026-06-25-zero_failures_small_counts_rule_of_three.md
@@ -1506,7 +1506,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   empirical-bayes-across-experiments:
     path: _posts/statistics/2026-04-29-empirical_bayes_across_experiments.md
@@ -1527,7 +1527,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   bootstrap-dependent-data-when-it-fails:
     path: _posts/statistics/2026-05-18-bootstrap_dependent_data_when_it_fails.md
@@ -1548,7 +1548,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   why-exact-post-selection-confidence-intervals-can-be-enormous:
     path: _posts/statistics/2026-09-16-why_exact_post_selection_confidence_intervals_can_be_enormous.md
@@ -1570,7 +1570,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   machine-learning-statistics-bridging-gap:
     path: _posts/statistics/2019-12-31-machine_learning_statistics_bridging_gap.md
@@ -1592,7 +1592,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   non-compliance-experiments-intention-to-treat-complier-effect:
     path: _posts/statistics/2026-02-25-non_compliance_experiments_intention_to_treat_complier_effect.md
@@ -1613,7 +1613,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   regression-discontinuity-design-cutoff-effects:
     path: _posts/statistics/2026-01-08-regression_discontinuity_design_cutoff_effects.md
@@ -1634,7 +1634,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   staggered-difference-in-differences-two-way-fixed-effects:
     path: _posts/statistics/2026-09-07-staggered_difference_in_differences_two_way_fixed_effects.md
@@ -1655,7 +1655,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   propensity-scores-matching-weighting-doubly-robust:
     path: _posts/statistics/2026-09-05-propensity_scores_matching_weighting_doubly_robust.md
@@ -1676,7 +1676,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   negative-controls-finding-bias-you-cannot-see:
     path: _posts/statistics/2026-03-19-negative_controls_finding_bias_you_cannot_see.md
@@ -1697,7 +1697,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   berksons-paradox-collider-bias-operational-data:
     path: _posts/statistics/2026-09-10-berksons_paradox_collider_bias_operational_data.md
@@ -1718,7 +1718,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   regression-to-the-mean-operational-analytics:
     path: _posts/statistics/2025-12-28-regression_to_the_mean_operational_analytics.md
@@ -1739,7 +1739,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   group-averages-ecological-fallacy:
     path: _posts/statistics/2025-07-09-group_averages_ecological_fallacy.md
@@ -1760,7 +1760,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   survivorship-bias-left-truncation-operational-data:
     path: _posts/statistics/2026-06-11-survivorship_bias_left_truncation_operational_data.md
@@ -1781,7 +1781,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   measurement-error-predictors-regression-dilution:
     path: _posts/statistics/2026-06-04-measurement_error_predictors_regression_dilution.md
@@ -1802,7 +1802,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   acceptance-sampling-what-a-clean-sample-proves:
     path: _posts/statistics/2026-02-12-acceptance_sampling_what_a_clean_sample_proves.md
@@ -1823,7 +1823,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   extreme-value-theory-operational-risk:
     path: _posts/statistics/2025-11-03-extreme_value_theory_operational_risk.md
@@ -1844,7 +1844,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   run-length-how-long-a-monitor-takes:
     path: _posts/statistics/2025-02-06-run_length_how_long_a_monitor_takes.md
@@ -1865,7 +1865,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   recurrent-events-maintenance-mean-cumulative-function:
     path: _posts/statistics/2025-12-08-recurrent_events_maintenance_mean_cumulative_function.md
@@ -1886,7 +1886,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   benfords-law-screening-not-proof:
     path: _posts/statistics/2025-02-11-benfords_law_screening_not_proof.md
@@ -1907,7 +1907,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   digit-heaping-rounded-entries-thresholds:
     path: _posts/statistics/2026-06-19-digit_heaping_rounded_entries_thresholds.md
@@ -1928,7 +1928,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   capture-recapture-estimating-what-was-missed:
     path: _posts/statistics/2025-05-13-capture_recapture_estimating_what_was_missed.md
@@ -1949,7 +1949,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   post-stratification-weighting-a-survey:
     path: _posts/statistics/2026-05-21-post_stratification_weighting_a_survey.md
@@ -1970,7 +1970,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   quantile-regression-predicting-the-range:
     path: _posts/statistics/2026-04-23-quantile_regression_predicting_the_range.md
@@ -1991,7 +1991,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   intermittent-demand-forecasting-mostly-zeros:
     path: _posts/statistics/2026-01-05-intermittent_demand_forecasting_mostly_zeros.md
@@ -2012,7 +2012,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   week-over-week-comparisons:
     path: _posts/statistics/2026-09-11-week_over_week_comparisons.md
@@ -2033,7 +2033,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
   one-factor-at-a-time-vs-factorial-designs:
     path: _posts/statistics/2026-01-21-one_factor_at_a_time_vs_factorial_designs.md
@@ -2054,7 +2054,7 @@ articles:
       numerical_model: migrated
       reproducibility_tests: migrated
       figure_renderer: migrated
-      website_cleanup: pending
+      website_cleanup: complete
 
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.

@@ -135,18 +135,18 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
       that used to sit inside the migrated model tests.
 - [x] Keep rendered figures and article content in the website repository.
 - [x] Verify that no article URL changes during the migration.
-- [ ] Migrate `assets/viz/generate_figures.py`, the last scientific Python in
+- [x] Migrate `assets/viz/generate_figures.py`, the last scientific Python in
       the website repository. See
-      [docs/migration-inventory.md](docs/migration-inventory.md#7-generate_figurespy--the-one-outstanding-migration)
+      [docs/migration-inventory.md](docs/migration-inventory.md#7-generate_figurespy--the-last-migration)
       for its contents, its cost, and the suggested order.
   - [x] Economics: Lorenz/Gini, Solow steady state, Monte Carlo fan.
   - [x] Mathematics and time series.
   - [x] Data science.
   - [x] Machine learning.
   - [x] Statistics.
-  - [ ] Confirm that `acf_pacf`, `type_i_ii`, and `linear_vs_logistic`, which no
-        article embeds, can be deleted rather than migrated.
-  - [ ] Remove `generate_figures.py` from the website repository and mark the
+  - [x] Delete `acf_pacf`, `type_i_ii`, and `linear_vs_logistic`, which no
+        article embeds, rather than migrate them.
+  - [x] Remove `generate_figures.py` from the website repository and mark the
         migrated articles' `website_cleanup` complete.
 
 ## Phase 7 — Hardening
