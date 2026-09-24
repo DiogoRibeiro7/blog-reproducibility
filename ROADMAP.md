@@ -145,7 +145,7 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
   - [x] Machine learning.
   - [ ] Statistics.
     - [x] Experiment design and analysis (11).
-    - [ ] Inference and evidence (9).
+    - [x] Inference and evidence (9).
     - [ ] Causal inference and observational data (10).
     - [ ] Operational data and measurement (12).
 

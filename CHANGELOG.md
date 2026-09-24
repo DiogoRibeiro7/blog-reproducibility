@@ -35,6 +35,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   boundaries, novelty effects, marketplace interference, ratio metrics, sample
   ratio mismatch, and cluster randomisation.
 
+- Nine inference figures under statistics: design analysis (type S and M
+  errors), equivalence testing, small-count intervals, empirical Bayes shrinkage,
+  the block bootstrap, exact post-selection intervals, and the bias-variance and
+  regularisation-path figures.
+
 ### Changed
 
 - Pull requests run the test matrix on Linux only; Windows and macOS run on merges

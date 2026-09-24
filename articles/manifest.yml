@@ -1445,6 +1445,155 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  design-analysis-type-s-type-m-errors:
+    path: _posts/statistics/2025-03-19-design_analysis_type_s_type_m_errors.md
+    permalink: /statistics/design_analysis_type_s_type_m_errors/
+    modules:
+      - blog_reproducibility.statistics.design_analysis
+      - blog_reproducibility.statistics.design_analysis_figure
+    figure_scripts:
+      - scripts/figures/statistics/design_analysis.py
+    generated_figures:
+      - build/figures/statistics/design_analysis_type_sm.png
+    tests:
+      - tests/statistics/test_design_analysis.py
+      - tests/statistics/test_design_analysis_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  equivalence-testing-no-worse-than:
+    path: _posts/statistics/2026-03-16-equivalence_testing_no_worse_than.md
+    permalink: /statistics/equivalence_testing_no_worse_than/
+    modules:
+      - blog_reproducibility.statistics.equivalence_testing
+      - blog_reproducibility.statistics.equivalence_testing_figure
+    figure_scripts:
+      - scripts/figures/statistics/equivalence_testing.py
+    generated_figures:
+      - build/figures/statistics/equivalence_testing_power.png
+    tests:
+      - tests/statistics/test_equivalence_testing.py
+      - tests/statistics/test_equivalence_testing_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  zero-failures-small-counts-rule-of-three:
+    path: _posts/statistics/2026-06-25-zero_failures_small_counts_rule_of_three.md
+    permalink: /statistics/zero_failures_small_counts_rule_of_three/
+    modules:
+      - blog_reproducibility.statistics.small_count_intervals
+      - blog_reproducibility.statistics.small_count_intervals_figure
+    figure_scripts:
+      - scripts/figures/statistics/small_count_intervals.py
+    generated_figures:
+      - build/figures/statistics/small_count_interval_coverage.png
+    tests:
+      - tests/statistics/test_small_count_intervals.py
+      - tests/statistics/test_small_count_intervals_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  empirical-bayes-across-experiments:
+    path: _posts/statistics/2026-04-29-empirical_bayes_across_experiments.md
+    permalink: /statistics/empirical_bayes_across_experiments/
+    modules:
+      - blog_reproducibility.statistics.empirical_bayes
+      - blog_reproducibility.statistics.empirical_bayes_figure
+    figure_scripts:
+      - scripts/figures/statistics/empirical_bayes.py
+    generated_figures:
+      - build/figures/statistics/empirical_bayes_shrinkage.png
+    tests:
+      - tests/statistics/test_empirical_bayes.py
+      - tests/statistics/test_empirical_bayes_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  bootstrap-dependent-data-when-it-fails:
+    path: _posts/statistics/2026-05-18-bootstrap_dependent_data_when_it_fails.md
+    permalink: /statistics/bootstrap_dependent_data_when_it_fails/
+    modules:
+      - blog_reproducibility.statistics.block_bootstrap
+      - blog_reproducibility.statistics.block_bootstrap_figure
+    figure_scripts:
+      - scripts/figures/statistics/block_bootstrap.py
+    generated_figures:
+      - build/figures/statistics/block_bootstrap_coverage.png
+    tests:
+      - tests/statistics/test_block_bootstrap.py
+      - tests/statistics/test_block_bootstrap_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  why-exact-post-selection-confidence-intervals-can-be-enormous:
+    path: _posts/statistics/2026-09-16-why_exact_post_selection_confidence_intervals_can_be_enormous.md
+    permalink: /statistics/why_exact_post_selection_confidence_intervals_can_be_enormous/
+    modules:
+      - blog_reproducibility.statistics.post_selection_intervals
+      - blog_reproducibility.statistics.post_selection_intervals_figure
+    figure_scripts:
+      - scripts/figures/statistics/post_selection_intervals.py
+    generated_figures:
+      - build/figures/statistics/selective_interval_runaway.png
+      - build/figures/statistics/selective_width_by_procedure.png
+    tests:
+      - tests/statistics/test_post_selection_intervals.py
+      - tests/statistics/test_post_selection_intervals_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  machine-learning-statistics-bridging-gap:
+    path: _posts/statistics/2019-12-31-machine_learning_statistics_bridging_gap.md
+    permalink: /statistics/machine_learning_statistics_bridging_gap/
+    modules:
+      - blog_reproducibility.statistics.bias_variance
+      - blog_reproducibility.statistics.bias_variance_figure
+    figure_scripts:
+      - scripts/figures/statistics/bias_variance.py
+    generated_figures:
+      - build/figures/statistics/bias_variance.png
+      - build/figures/statistics/regularization_paths.png
+    tests:
+      - tests/statistics/test_bias_variance.py
+      - tests/statistics/test_bias_variance_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:
