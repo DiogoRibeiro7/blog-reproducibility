@@ -17,6 +17,9 @@ from blog_reproducibility.machine_learning.censored_labels import (
     example_payload,
 )
 
+# Above matplotlib's default of 2 for lines, so the truth is drawn over the models.
+TRUTH_ZORDER = 3
+
 
 def render_cohorts_figure(
     *, output_dir: Path, summary: CensoredLabelsSummary | None = None
@@ -28,11 +31,16 @@ def render_cohorts_figure(
     positions = np.arange(len(cohorts))
 
     figure, axis = plt.subplots()
+    # The hazard model sits on the truth, so the truth is dashed and drawn over the
+    # models' lines: the hazard line shows through the gaps. Plotted first, it keeps
+    # its place at the top of the legend.
     axis.plot(
         positions,
         [row.true for row in cohorts],
         color=INK_PRIMARY,
         lw=1.6,
+        ls="--",
+        zorder=TRUTH_ZORDER,
         label="True 12-month probability",
     )
     for values, colour, label in (
