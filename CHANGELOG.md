@@ -30,6 +30,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   extrapolation, permutation importance with correlated features, and test-set
   size in model ranking.
 
+- Eleven experiment-design figures under statistics: unequal allocation, CUPED,
+  trigger dilution, percentile metrics, switchback periods, sequential stopping
+  boundaries, novelty effects, marketplace interference, ratio metrics, sample
+  ratio mismatch, and cluster randomisation.
+
 ### Changed
 
 - Pull requests run the test matrix on Linux only; Windows and macOS run on merges
