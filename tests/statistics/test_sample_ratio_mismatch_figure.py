@@ -9,7 +9,7 @@ from blog_reproducibility.statistics.sample_ratio_mismatch_figure import render_
 ROWS = tuple(
     DropRow(
         drop=drop,
-        relative_error=0.47 + 25 * drop,
+        relative_bias=50 * drop,
         alarm_rate=min(1.0, 100 * drop),
         mean_lift=0.01 * (1 + 50 * drop),
         mean_treated_share=(1 - drop) / (2 - drop),

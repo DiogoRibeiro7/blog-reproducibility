@@ -19,8 +19,10 @@ where ``r`` is the slow users' conversion relative to the average, and the
 logged treated share to ``(1 - d) / (2 - d)``. The check sees ``D`` with mean
 ``-d n / 2`` and standard deviation close to ``sqrt(n)``, which gives its
 detection probability. The measured lift also has sampling error, about 0.6 of
-the true lift at a million users, so the mean absolute error the figure plots is
-a folded normal: it is not zero even when nothing is lost.
+the true lift at a million users. The figure plots the bias, the mean signed
+error ``(measured - lift) / lift`` over its experiments, in which that sampling
+error averages out; a mean absolute error would keep it, and would sit near half
+the effect even when nothing is lost.
 
 The figure runs 60 experiments at each of six drop shares from one generator
 seeded at 0, and is reproduced draw for draw. The article's tables run their
@@ -31,7 +33,7 @@ example are.
 """
 
 from dataclasses import dataclass
-from math import exp, pi, sqrt
+from math import sqrt
 from typing import Final
 
 import numpy as np
@@ -64,7 +66,6 @@ __all__ = [
     "drop_theory",
     "example_payload",
     "expected_lift",
-    "expected_relative_error",
     "expected_treated_share",
     "lift_standard_error",
     "run_experiment",
@@ -133,7 +134,7 @@ class DropRow:
     """Simulated experiments at one drop share: the figure's two series and two means."""
 
     drop: float
-    relative_error: float
+    relative_bias: float
     alarm_rate: float
     mean_lift: float
     mean_treated_share: float
@@ -148,7 +149,6 @@ class DropTheory:
     relative_bias: float
     treated_share: float
     lift_standard_error: float
-    expected_relative_error: float
     alarm_probability: float
 
 
@@ -248,12 +248,12 @@ def simulate_drops(
     rows = []
     for drop in shares:
         outcomes = [run_experiment(rng, drop, design) for _ in range(reps)]
-        errors = np.array([abs(o.measured_lift - design.lift) / design.lift for o in outcomes])
+        errors = np.array([(o.measured_lift - design.lift) / design.lift for o in outcomes])
         alarms = np.array([o.p_value < alpha for o in outcomes], dtype=np.float64)
         rows.append(
             DropRow(
                 drop=drop,
-                relative_error=float(errors.mean()),
+                relative_bias=float(errors.mean()),
                 alarm_rate=float(alarms.mean()),
                 mean_lift=float(np.mean([o.measured_lift for o in outcomes])),
                 mean_treated_share=float(np.mean([o.treated_share for o in outcomes])),
@@ -292,16 +292,6 @@ def lift_standard_error(drop: float, design: Design = DEFAULT_DESIGN) -> float:
     return treated_rate / control_rate * sqrt(relative_variance)
 
 
-def expected_relative_error(drop: float, design: Design = DEFAULT_DESIGN) -> float:
-    """Mean of ``|measured - lift| / lift`` for a normal measured lift: a folded normal."""
-    bias = expected_lift(drop, design) - design.lift
-    sd = lift_standard_error(drop, design)
-    folded = sd * sqrt(2 / pi) * exp(-(bias**2) / (2 * sd**2)) + bias * (
-        1 - 2 * float(stats.norm.cdf(-bias / sd))
-    )
-    return folded / design.lift
-
-
 def alarm_probability(
     drop: float, design: Design = DEFAULT_DESIGN, *, threshold: float = ALARM_THRESHOLD
 ) -> float:
@@ -331,7 +321,6 @@ def drop_theory(drop: float, design: Design = DEFAULT_DESIGN) -> DropTheory:
         relative_bias=(lift - design.lift) / design.lift,
         treated_share=expected_treated_share(drop, design),
         lift_standard_error=lift_standard_error(drop, design),
-        expected_relative_error=expected_relative_error(drop, design),
         alarm_probability=alarm_probability(drop, design),
     )
 

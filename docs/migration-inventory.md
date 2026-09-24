@@ -273,15 +273,18 @@ or a claim in the prose, title, or alt text does not hold, the figure is migrate
 unchanged, the tests check what is true, and the test module's docstring records
 the discrepancy for the article to be corrected.
 
-One figure's claim does not survive migration. `splines_fit` is titled "a spline
-bends locally; a high-degree polynomial wobbles globally", but with its design
-(a smooth curve, 90 points, smoothing factor 0.09 per point) the degree-10
-polynomial is closer to the true curve than the spline for 169 of 200 seeds,
-at the edges as well as the interior. The figure is migrated unchanged and its
-tests check only the fits' guarantees; the article needs a design that shows
-the effect, such as a sharper feature or a higher degree, or a different claim. The website
-copies of `generate_figures.py` generators stay until every group has moved, so
-`website_cleanup` remains `pending` for these articles.
+Three figures showed something other than what their articles claimed, and were
+corrected after migration. `splines_fit` is titled "a spline bends locally; a
+high-degree polynomial wobbles globally", but its smooth sine-and-trend data let
+the degree-10 polynomial beat the spline in 169 of 200 seeds; it now uses a
+sharp peak on a trend, which the polynomial undershoots while wobbling across
+the flat stretches, and the spline is closer in 200 of 200 seeds.
+`srm_detection_and_bias` plotted mean absolute error, which includes sampling
+noise, while its text describes the bias; it now plots the signed bias.
+`capture_recapture_heterogeneity` omitted the (t - 1)/t factor in Chao's
+three-pass bound, which put the bound 8.6 percent above the truth with no
+heterogeneity; with the factor it starts at the truth. The corrected images
+replace the published ones under the same names.
 
 ### What it would cost
 

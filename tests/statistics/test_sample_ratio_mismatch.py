@@ -4,26 +4,23 @@ The chi-square check is compared with SciPy's goodness-of-fit test and with the
 equivalent two-sided z-test, and the article's table of detectable deviations
 and the arithmetic of its opening example are pinned. The large-sample
 expectations of the measured lift, the logged treated share, the alarm rate and
-the mean absolute error are checked against a simulation of 50,000-user
-experiments.
+the relative bias are checked against a simulation of 50,000-user experiments.
 
 The full figure run (360 experiments of a million users) takes 7 seconds or
 more, so it is not repeated here. Its first experiment is pinned exactly,
 the experiment is checked against a direct transcription of the website's, and
 the figure's claims are checked with the closed forms at a million users. The
-full run reproduces the published figure exactly: mean absolute relative errors
-of 0.460, 0.479, 0.486, 0.471, 0.631 and 0.994, and alarms in 0, 0, 1, 8, 58 and
-60 of 60 experiments.
+full run gives relative biases of -0.017, -0.013, 0.093, 0.255, 0.480 and 0.954,
+and alarms in 0, 0, 1, 8, 58 and 60 of 60 experiments.
 
-The alt text's claim holds for the bias but not for the plotted series. The
-check is nearly silent (alarm probability 0.1 to 1.1 percent) at drops up to
-0.2 percent, where the bias is 5 to 10 percent of the effect, and it fires
-reliably (96 percent, then certainly) at 1 and 2 percent, where the bias is 51
-and 103 percent of the effect. But the figure plots the mean absolute relative
-error, which includes the sampling error of the lift itself: its standard error
-is 0.6 of the true lift at a million users, so the plotted error is about 48
-percent (46 to 49 percent in the figure) even where nothing is lost, not "a few
-percent of the effect".
+The figure plots the bias, the mean signed error of the measured lift, so the
+alt text's claim is tested as it reads. The check is nearly silent (alarm
+probability 0.1 to 1.1 percent) at drops up to 0.2 percent, where the bias is a
+tenth of the effect or less, and it fires reliably (96 percent, then certainly)
+at 1 and 2 percent, where the bias is 51 and 103 percent of the effect. The
+lift's own sampling error, 0.6 of the effect at a million users, averages out of
+the bias; it would dominate a mean absolute error, which sits near half the
+effect even when nothing is lost.
 
 The article's own table (200 replications, drops 0 to 2 percent) runs from a
 different stream and is not pinned; its measured lifts (1.03, 1.12, 1.27, 1.52,
@@ -31,7 +28,7 @@ different stream and is not pinned; its measured lifts (1.03, 1.12, 1.27, 1.52,
 (1.00, 1.10, 1.25, 1.51, 2.03 percent) within its simulation noise.
 """
 
-from math import pi, sqrt
+from math import sqrt
 
 import numpy as np
 import pytest
@@ -39,6 +36,7 @@ from scipy import stats
 
 from blog_reproducibility.statistics.sample_ratio_mismatch import (
     DROP_SHARES,
+    REPLICATIONS,
     SEED,
     TRUE_LIFT,
     Design,
@@ -47,9 +45,7 @@ from blog_reproducibility.statistics.sample_ratio_mismatch import (
     detectable_deviation,
     drop_theory,
     expected_lift,
-    expected_relative_error,
     expected_treated_share,
-    lift_standard_error,
     run_experiment,
     simulate_drops,
     srm_p_value,
@@ -140,9 +136,7 @@ def test_the_closed_forms_at_no_drop_and_without_selection() -> None:
     assert expected_lift(0.0) == pytest.approx(TRUE_LIFT)
     assert expected_treated_share(0.0) == 0.5
     assert alarm_probability(0.0) == pytest.approx(0.001, abs=1e-12)
-    assert expected_relative_error(0.0) == pytest.approx(
-        sqrt(2 / pi) * lift_standard_error(0.0) / TRUE_LIFT
-    )
+    assert drop_theory(0.0).relative_bias == pytest.approx(0.0, abs=1e-12)
     # When the lost users convert like everyone else, losing them biases nothing.
     unselective = Design(slow_ratio=1.0)
     for drop in (0.01, 0.1):
@@ -158,46 +152,52 @@ def test_one_percent_lost_inflates_the_lift_by_half() -> None:
 
 
 def test_the_closed_forms_match_a_simulation() -> None:
-    """Mean lift, treated share, alarm rate and absolute error at 50,000 users, 150 runs."""
+    """Mean lift, treated share, alarm rate and relative bias at 50,000 users, 150 runs."""
     design = Design(users=50_000)
     rows = simulate_drops(7, drops=(0.0, 0.03), design=design, replications=150)
     for row in rows:
         theory = drop_theory(row.drop, design)
         share_se = sqrt(0.25 / (design.users * (1 - row.drop / 2))) / sqrt(150)
         alarm_se = sqrt(max(theory.alarm_probability * (1 - theory.alarm_probability), 1e-3) / 150)
-        error_se = theory.lift_standard_error / TRUE_LIFT / sqrt(150)
+        bias_se = theory.lift_standard_error / TRUE_LIFT / sqrt(150)
         assert row.mean_lift == pytest.approx(
             theory.expected_lift, abs=4 * theory.lift_standard_error / sqrt(150)
         )
         assert row.mean_treated_share == pytest.approx(theory.treated_share, abs=4 * share_se)
         assert row.alarm_rate == pytest.approx(theory.alarm_probability, abs=4 * alarm_se)
-        assert row.relative_error == pytest.approx(theory.expected_relative_error, abs=4 * error_se)
+        assert row.relative_bias == pytest.approx(theory.relative_bias, abs=4 * bias_se)
+
+
+def test_the_plotted_series_is_the_signed_bias() -> None:
+    """The mean signed relative error is the mean lift's error, so noise cancels in it."""
+    design = Design(users=20_000)
+    rows = simulate_drops(5, drops=(0.0, 0.05), design=design, replications=30)
+    for row in rows:
+        assert row.relative_bias == pytest.approx((row.mean_lift - TRUE_LIFT) / TRUE_LIFT)
+    # One experiment's error is 0.6 of the effect; the mean of the figure's 60 is 0.08.
+    assert THEORY[0.0].lift_standard_error / TRUE_LIFT == pytest.approx(0.6, abs=0.01)
+    assert THEORY[0.0].lift_standard_error / TRUE_LIFT / sqrt(REPLICATIONS) < 0.08
 
 
 def test_the_alarm_is_quiet_while_the_bias_is_small() -> None:
-    """The alt text: at drops up to 0.2 percent the check almost never fires; bias 5 to 10%."""
+    """The alt text: up to 0.2 percent lost the check almost never fires; bias a tenth or less."""
     for drop in (0.0, 0.001, 0.002):
         assert THEORY[drop].alarm_probability < 0.012
+        assert round(THEORY[drop].relative_bias, 2) <= 0.10
     assert THEORY[0.001].relative_bias == pytest.approx(0.05, abs=0.005)
     assert round(THEORY[0.002].relative_bias, 1) == 0.1
 
 
-def test_the_alarm_fires_once_the_bias_approaches_the_effect() -> None:
-    """The title: 96 percent at 1 percent lost, where the bias is half the effect; certain at 2."""
+def test_the_alarm_fires_once_the_bias_is_half_the_effect() -> None:
+    """The alt text and title: 96 percent at 1 percent lost, bias half the effect; certain at 2."""
     assert THEORY[0.01].alarm_probability > 0.95
     assert THEORY[0.01].relative_bias == pytest.approx(0.51, abs=0.01)
     assert THEORY[0.02].alarm_probability > 0.9999
     assert THEORY[0.02].relative_bias == pytest.approx(1.03, abs=0.01)
     alarms = [THEORY[drop].alarm_probability for drop in DROP_SHARES]
+    biases = [THEORY[drop].relative_bias for drop in DROP_SHARES]
     assert alarms == sorted(alarms)
-
-
-def test_the_plotted_error_includes_sampling_noise() -> None:
-    """Where the alarm is quiet the plotted mean absolute error is about half the effect."""
-    for drop in (0.0, 0.001, 0.002):
-        assert 0.45 < THEORY[drop].expected_relative_error < 0.5
-    assert THEORY[0.0].lift_standard_error / TRUE_LIFT == pytest.approx(0.6, abs=0.01)
-    assert THEORY[0.02].expected_relative_error == pytest.approx(1.05, abs=0.01)
+    assert biases == sorted(biases)
 
 
 def test_simulation_is_deterministic_under_a_seed() -> None:

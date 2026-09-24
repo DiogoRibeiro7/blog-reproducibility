@@ -6,27 +6,27 @@ quadrature behind the closed forms is checked against the lognormal's
 piecewise moments in closed form and against a million simulated defects, and
 the figure's medians and means sit within four standard errors of the limits.
 
-The article's tables use generators seeded at 3, 5, 7, 11 and 13, and are not
-reproduced. Its first table is arithmetic on its own counts and is pinned: 397
-seen, 103 missed, Lincoln-Petersen 485, Chapman 484 with a standard error of 17.
-Every other printed number lies within its Monte Carlo error of the closed
-forms: 390, 290 and 200 seen when every defect is equally easy, the estimates
-of 439, 359 and 288 (12, 28 and 42 percent low) and correlations of 0.149 to
-0.441 as the spread grows, the 110 and 210 defects left, and the three-pass
-table, including Chao's 543 at zero spread. The spread of the two-pass estimate
-is the delta method's 20, 42 and 77 to within six percent (printed 20, 43, 81).
+The article's three-pass table runs the figure's loop reseeded at 13, with
+1,000 replications at spreads 0, 0.4, 0.8 and 1.2, and its seen, two-pass and
+Chao columns are reproduced exactly: 418, 393, 338 and 276 seen; 497, 434, 348
+and 277 from two passes; 501, 470, 419 and 359 from Chao's bound. Its other
+tables use generators seeded at 3, 5, 7 and 11, and are not reproduced. Its
+first table is arithmetic on its own counts and is pinned: 397 seen, 103 missed,
+Lincoln-Petersen 485, Chapman 484 with a standard error of 17. Every other
+printed number lies within its Monte Carlo error of the closed forms: 390, 290
+and 200 seen when every defect is equally easy, the estimates of 439, 359 and
+288 (12, 28 and 42 percent low) and correlations of 0.149 to 0.441 as the spread
+grows, and the 110 and 210 defects left. The spread of the two-pass estimate is
+the delta method's 20, 42 and 77 to within six percent (printed 20, 43, 81).
 
-One claim does not hold as written. The figure says Chao's bound "stays much
-closer and errs low". It does both only once the spread reaches 0.5; below 0.3
-it is further from the truth than the two-pass estimate, and at zero spread it
-is 540 in the figure (543 in the limit), 8.6 percent high. The figure and the
-article use ``S + f_1^2 / (2 f_2)``, the many-pass form of Chao's estimator;
 Chao's bound for three passes carries a factor ``(t - 1) / t = 2/3`` on the
-correction, and with it the limit at zero spread is 501.
-
-The other claims hold: the two-pass estimate falls from 499 to 245, below the
-truth at every spread, and ends level with the number actually found, while
-Chao's estimate stays closer from a spread of 0.3 on.
+correction ``f_1^2 / (2 f_2)``. The website first used the many-pass form
+without it, which is 543 at zero spread, 8.6 percent high; with the factor the
+limit is 501, and the figure's claims hold. The two-pass estimate falls from 499
+to 245, below the truth at every spread, and ends level with the number actually
+found. Chao's bound starts at the truth (500.5 in the figure), is below it from
+a spread of 0.1 on, and is closer to it than the two-pass estimate at every
+spread, with at most 0.7 of its error.
 """
 
 from math import erf, exp, inf, isnan, log, sqrt
@@ -69,7 +69,7 @@ def _phi(x: float) -> float:
 
 
 def _website_curve() -> tuple[list[float], list[float], list[float]]:
-    """Transcribe the website generator's loop."""
+    """Transcribe the website generator's loop, with Chao's factor for three passes."""
     true_n = 500
 
     def passes(
@@ -85,7 +85,8 @@ def _website_curve() -> tuple[list[float], list[float], list[float]]:
     def chao(a: NDArray[np.bool_], b: NDArray[np.bool_], c: NDArray[np.bool_]) -> float:
         times = a.astype(int) + b.astype(int) + c.astype(int)
         f1, f2 = (times == 1).sum(), (times == 2).sum()
-        return float((times > 0).sum() + (f1**2 / (2 * f2) if f2 else np.nan))
+        # The website's loop left out the (t - 1) / t = 2/3 on the correction.
+        return float((times > 0).sum() + (2 / 3 * f1**2 / (2 * f2) if f2 else np.nan))
 
     spreads = np.linspace(0, 1.4, 15)
     two, three, union = [], [], []
@@ -164,25 +165,41 @@ def test_uneven_difficulty_pulls_the_two_pass_estimate_down() -> None:
     assert abs(EXPECTED[-1].two_pass_limit - EXPECTED[-1].seen) < 1
 
 
-def test_where_chaos_estimate_is_closer_and_low() -> None:
-    """Closer than two passes from a spread of 0.3, below the truth only from 0.5."""
-    closer = np.abs(CHAO - TRUE_POPULATION) < np.abs(TWO - TRUE_POPULATION)
-    assert SPREADS[closer].min() == pytest.approx(0.3)
-    assert np.all(closer[SPREADS > 0.25])
-    low = CHAO < TRUE_POPULATION
-    assert SPREADS[low].min() == pytest.approx(0.5)
-    assert np.all(low[SPREADS > 0.45])
+def test_chaos_bound_stays_much_closer_and_errs_low() -> None:
+    """Alt text: at the truth with no spread, then low, and always much closer than two passes."""
+    chao_error = np.abs(CHAO - TRUE_POPULATION)
+    two_error = np.abs(TWO - TRUE_POPULATION)
+    assert np.all(chao_error < 0.7 * two_error)
+    assert chao_error[0] < 1
+    assert np.all(CHAO[SPREADS > 0.05] < TRUE_POPULATION)
+    # The limits agree: closer and lower as soon as the ease varies.
     chao_limits = np.array([e.chao_limit for e in EXPECTED], dtype=float)
     two_limits = np.array([e.two_pass_limit for e in EXPECTED])
-    assert np.all((np.abs(chao_limits - 500) < np.abs(two_limits - 500)) == (SPREADS > 0.25))
-    assert np.all((chao_limits < 500) == (SPREADS > 0.45))
-    # At zero spread the many-pass form is 8.6 percent high; with (t - 1) / t it is 501.
+    varied = SPREADS > 0.05
+    assert np.all(np.abs(chao_limits - 500)[varied] < np.abs(two_limits - 500)[varied])
+    assert np.all(chao_limits[varied] < 500)
+
+
+def test_chaos_factor_for_three_passes() -> None:
+    """With ``(t - 1) / t`` the limit at zero spread is 501; without it, 543, 8.6% high."""
     zero = EXPECTED[0]
-    assert round(CHAO[0]) == 540
-    assert zero.chao_limit is not None and zero.chao_bound is not None
-    assert zero.chao_limit == pytest.approx(500 * (1 - 0.165 + 0.41**2 / (2 * 0.335)), rel=1e-12)
-    assert round(zero.chao_limit / TRUE_POPULATION - 1, 3) == 0.086
-    assert round(zero.chao_bound) == 501
+    f0, f1, f2, _ = zero.frequencies
+    assert (f0, f1, f2) == pytest.approx((0.165, 0.41, 0.335), rel=1e-12)
+    assert zero.chao_limit is not None
+    assert zero.chao_limit == pytest.approx(500 * (1 - f0 + 2 / 3 * f1**2 / (2 * f2)), rel=1e-12)
+    assert round(zero.chao_limit) == 501
+    many_pass = 500 * (1 - f0 + f1**2 / (2 * f2))
+    assert round(many_pass) == 543
+    assert round(many_pass / TRUE_POPULATION - 1, 3) == 0.086
+
+
+def test_chaos_bound_holds_when_the_passes_are_alike() -> None:
+    """Equal detection on every pass: exact with no spread, below the truth with any."""
+    alike = (0.45, 0.45, 0.45)
+    assert expected_capture(0.0, alike).chao_limit == pytest.approx(TRUE_POPULATION, rel=1e-12)
+    for spread in (0.2, 0.6, 1.0, 1.4):
+        limit = expected_capture(spread, alike).chao_limit
+        assert limit is not None and limit < TRUE_POPULATION
 
 
 def test_the_quadrature_against_the_lognormal_moments() -> None:
@@ -221,7 +238,7 @@ def test_equally_easy_defects_in_closed_form() -> None:
     assert zero.seen == pytest.approx(500 * (1 - missed), rel=1e-14)
     assert zero.pass_correlation == pytest.approx(0.0, abs=1e-15)
     two = expected_capture(0.0, TWO_PASS_DETECTION)
-    assert two.chao_limit is None and two.chao_bound is None
+    assert two.chao_limit is None
     assert two.seen == pytest.approx(390.0, rel=1e-14)
 
 
@@ -279,17 +296,24 @@ def test_the_article_remaining_table() -> None:
 
 
 def test_the_article_three_pass_table() -> None:
-    """Seen 418, 393, 338, 276; two passes 497, 434, 348, 277; Chao 543, 509, 460, 400."""
-    rows = SUMMARY.three_pass
-    printed = ((418, 497, 543), (393, 434, 509), (338, 348, 460), (276, 277, 400))
-    for row, (seen, two, chao) in zip(rows, printed, strict=True):
+    """Seen 418, 393, 338, 276; two passes 497, 434, 348, 277; Chao 501, 470, 419, 359."""
+    printed = ((418, 497, 501), (393, 434, 470), (338, 348, 419), (276, 277, 359))
+    # The article's loop: reseeded at 13 for each spread, 1,000 runs of three passes.
+    table = heterogeneity_curve(13, replications=1000, spreads=ARTICLE_SPREADS)
+    assert [round(x) for x in table.seen] == [row[0] for row in printed]
+    assert [round(x) for x in table.two_pass] == [row[1] for row in printed]
+    assert [round(x) for x in table.chao] == [row[2] for row in printed]
+    # And the closed forms, within the Monte Carlo error of a median of 1,000 runs.
+    for row, (seen, two, chao) in zip(SUMMARY.three_pass, printed, strict=True):
         i = int(np.argmin(np.abs(SPREADS - row.spread)))
         assert round(row.seen) == seen
         assert row.chao_limit is not None
-        # Medians of 1,000 runs; the spread of single runs comes from the figure's 200.
         assert abs(two - row.two_pass_limit) < 4 * _median_error(CURVE.two_pass_sd[i], 1000) + 0.5
         assert abs(chao - row.chao_limit) < 4 * _median_error(CURVE.chao_sd[i], 1000) + 0.5
-    assert round(rows[0].chao_limit or 0) == 543
+        # Chao's bound is the closest of the two, and low once the ease varies.
+        assert abs(chao - TRUE_POPULATION) <= abs(two - TRUE_POPULATION)
+        assert chao < TRUE_POPULATION or row.spread == 0.0
+    assert round(SUMMARY.three_pass[0].chao_limit or 0) == 501
 
 
 def test_estimators_by_hand() -> None:
@@ -299,9 +323,9 @@ def test_estimators_by_hand() -> None:
     assert chapman(10, 8, 0) == 98.0
     assert chapman(10, 8, 4) == pytest.approx(11 * 9 / 5 - 1)
     assert chapman_standard_error(10, 8, 8) == 0.0
-    assert chao_estimate(10, 4, 2) == 14.0
+    assert chao_estimate(10, 4, 2, occasions=2) == 12.0
     assert chao_estimate(10, 4, 2, occasions=3) == pytest.approx(10 + 2 / 3 * 4)
-    assert isnan(chao_estimate(10, 4, 0))
+    assert isnan(chao_estimate(10, 4, 0, occasions=3))
     a = np.array([True, True, False, False, True])
     b = np.array([True, False, False, True, True])
     c = np.array([False, False, False, True, True])
@@ -325,7 +349,7 @@ def test_invalid_inputs_are_rejected() -> None:
     with pytest.raises(ValueError):
         chapman(10, 8, 9)
     with pytest.raises(ValueError):
-        chao_estimate(5, 4, 2)
+        chao_estimate(5, 4, 2, occasions=3)
     with pytest.raises(ValueError):
         chao_estimate(10, 4, 2, occasions=1)
     with pytest.raises(ValueError):
