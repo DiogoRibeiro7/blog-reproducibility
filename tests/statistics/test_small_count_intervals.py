@@ -128,13 +128,22 @@ def test_the_draws_and_intervals_match_the_website() -> None:
 
 
 def test_intervals_match_scipy_and_a_hand_worked_case() -> None:
-    """Wilson and Clopper-Pearson are SciPy's; Wald at 10 in 100 is 0.1 -+ 1.96 x 0.03."""
+    """Wilson and Clopper-Pearson are SciPy's; Wald at 10 in 100 is 0.1 -+ 1.96 x 0.03.
+
+    The comparison is relative: SciPy releases differ in the last few digits of
+    the beta quantiles behind the exact interval (2e-14 absolute on Python 3.11's
+    locked SciPy), far below anything the article prints.
+    """
     for k, n in ((0, 10), (0, 300), (1, 1000), (7, 50), (50, 50), (13, 200)):
         result = stats.binomtest(k, n)
         wilson = result.proportion_ci(method="wilson")
         exact = result.proportion_ci(method="exact")
-        assert wilson_interval(k, n) == pytest.approx((wilson.low, wilson.high), abs=1e-14)
-        assert clopper_pearson_interval(k, n) == pytest.approx((exact.low, exact.high), abs=1e-14)
+        assert wilson_interval(k, n) == pytest.approx(
+            (wilson.low, wilson.high), rel=1e-10, abs=1e-15
+        )
+        assert clopper_pearson_interval(k, n) == pytest.approx(
+            (exact.low, exact.high), rel=1e-10, abs=1e-15
+        )
     z = stats.norm.ppf(0.975)
     assert wald_interval(10, 100) == pytest.approx((0.1 - z * 0.03, 0.1 + z * 0.03), abs=1e-15)
     assert wald_interval(0, 300) == (0.0, 0.0)
