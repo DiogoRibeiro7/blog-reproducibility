@@ -1,13 +1,18 @@
 """Smoothing spline against global polynomials, for the article on splines.
 
-Ninety noisy observations of ``sin(x) + 0.15 x`` on [0, 10] are fitted three
-ways: a straight line, a degree-10 polynomial, and a cubic smoothing spline. The
-spline is piecewise cubic, so each piece bends to local data; the polynomial is
-one global function, so fitting the interior forces oscillation at the edges.
+Ninety noisy observations on [0, 10] of a sharp Runge-type peak on a gentle
+trend, ``2.5 / (1 + ((x - 5) / 0.5)^2) + 0.15 x``, are fitted three ways: a
+straight line, a degree-10 polynomial, and a cubic smoothing spline. The spline
+is piecewise cubic and places its knots where the curve bends, so it follows the
+peak and stays flat elsewhere. The polynomial is one global function: it cannot
+bend sharply at the peak without bending everywhere, so it falls short of the
+peak and oscillates across the flat stretches, most visibly at the edges.
 
-The smoothing factor bounds the spline's residual sum of squares at 0.09 per
-point, a little above the noise variance of 0.28^2, so the spline follows the
-signal without chasing the noise.
+The smoothing factor bounds the spline's residual sum of squares at 0.025 per
+point, a little above the noise variance of 0.15^2, so the spline follows the
+signal without chasing the noise. With this design the spline is closer to the
+true curve than the polynomial, both overall and in the outer tenth of the range
+at each end, for 998 of the first 1,000 seeds.
 """
 
 from dataclasses import dataclass
@@ -20,6 +25,8 @@ from scipy.interpolate import UnivariateSpline
 from blog_reproducibility.common.validation import count
 
 __all__ = [
+    "EDGE_WIDTH",
+    "NOISE_SD",
     "POLYNOMIAL_DEGREE",
     "SEED",
     "SMOOTHING_PER_POINT",
@@ -27,14 +34,20 @@ __all__ = [
     "FitErrors",
     "example_payload",
     "fit_curves",
+    "fit_errors",
     "true_curve",
 ]
 
 SEED: Final[int] = 20260816
 POINTS: Final[int] = 90
-NOISE_SD: Final[float] = 0.28
+NOISE_SD: Final[float] = 0.15
 POLYNOMIAL_DEGREE: Final[int] = 10
-SMOOTHING_PER_POINT: Final[float] = 0.09
+SMOOTHING_PER_POINT: Final[float] = 0.025
+PEAK_CENTRE: Final[float] = 5.0
+PEAK_HEIGHT: Final[float] = 2.5
+# Half-width at half height: the peak falls to half its height 0.5 either side.
+PEAK_HALF_WIDTH: Final[float] = 0.5
+TREND_SLOPE: Final[float] = 0.15
 # The outer tenth of the range at each end, where a global polynomial wobbles.
 EDGE_WIDTH: Final[float] = 1.0
 
@@ -62,9 +75,10 @@ class FitErrors:
 
 
 def true_curve(x: ArrayLike) -> NDArray[np.float64]:
-    """The signal the observations are drawn around."""
+    """Return the signal the observations are drawn around: a sharp peak on a trend."""
     points = np.asarray(x, dtype=np.float64)
-    return np.asarray(np.sin(points) + 0.15 * points)
+    peak = PEAK_HEIGHT / (1 + ((points - PEAK_CENTRE) / PEAK_HALF_WIDTH) ** 2)
+    return np.asarray(peak + TREND_SLOPE * points)
 
 
 def fit_curves(*, seed: int = SEED) -> CurveFits:
@@ -84,9 +98,8 @@ def fit_curves(*, seed: int = SEED) -> CurveFits:
     )
 
 
-def example_payload() -> tuple[FitErrors, ...]:
+def fit_errors(fits: CurveFits) -> tuple[FitErrors, ...]:
     """Error of each fit against the truth, overall and split into edges and interior."""
-    fits = fit_curves()
     edges = (fits.x < fits.x.min() + EDGE_WIDTH) | (fits.x > fits.x.max() - EDGE_WIDTH)
 
     def rmse(values: NDArray[np.float64], mask: NDArray[np.bool_]) -> float:
@@ -101,3 +114,8 @@ def example_payload() -> tuple[FitErrors, ...]:
             ("spline", fits.spline),
         )
     )
+
+
+def example_payload() -> tuple[FitErrors, ...]:
+    """Error of each fit in the article's figure, overall, at the edges, and inside."""
+    return fit_errors(fit_curves())

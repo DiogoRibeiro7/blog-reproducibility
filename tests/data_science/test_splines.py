@@ -1,23 +1,24 @@
-"""Check the three fits against what each method guarantees.
+"""Check the three fits against what each method guarantees, then the figure's claim.
 
 Least-squares polynomials reproduce polynomials of their own degree, and the
 smoothing spline keeps its residual sum of squares at the smoothing factor.
 
-The figure's title says the degree-10 polynomial wobbles while the spline
-follows the shape. With this design that does not hold: the polynomial is the
-closer fit to the true curve for most seeds, at the edges as well as the
-interior. The tests therefore check the fits' guarantees and leave the title's
-comparison untested; the migration notes record it for the article to revisit.
+The figure's title says the spline bends locally while the degree-10 polynomial
+wobbles globally. On a sharp peak that holds: the spline is closer to the true
+curve than the polynomial overall and at the edges, in the figure and for almost
+every other seed.
 """
 
 import numpy as np
 import pytest
 
 from blog_reproducibility.data_science.splines import (
+    NOISE_SD,
     POLYNOMIAL_DEGREE,
     SMOOTHING_PER_POINT,
     example_payload,
     fit_curves,
+    fit_errors,
     true_curve,
 )
 
@@ -25,7 +26,7 @@ SUMMARY = {row.fit: row for row in example_payload()}
 
 
 def test_spline_meets_its_smoothing_bound() -> None:
-    """The residual sum of squares equals the smoothing factor, n times 0.09."""
+    """The residual sum of squares equals the smoothing factor, n times 0.025."""
     fits = fit_curves()
     residual = float(np.sum((fits.y - fits.spline) ** 2))
 
@@ -41,24 +42,52 @@ def test_polynomial_reproduces_polynomials_of_its_degree() -> None:
     np.testing.assert_allclose(fitted, exact, atol=1e-8)
 
 
+def test_polynomial_matches_numpy_polynomial_fit() -> None:
+    """The degree-10 fit agrees with NumPy's scaled-domain Polynomial.fit."""
+    fits = fit_curves()
+    reference = np.polynomial.Polynomial.fit(fits.x, fits.y, POLYNOMIAL_DEGREE)
+
+    np.testing.assert_allclose(fits.polynomial, reference(fits.x), rtol=1e-6)
+
+
 def test_curved_fits_beat_the_line() -> None:
-    """Both flexible fits follow the curvature a straight line cannot."""
+    """Both flexible fits follow the peak a straight line cannot."""
     line = SUMMARY["line"].overall
 
     assert SUMMARY["spline"].overall < line / 2
     assert SUMMARY["polynomial"].overall < line / 2
 
 
-def test_fits_are_close_to_the_truth_but_not_to_the_noise() -> None:
-    """Both flexible fits sit well inside the noise level of 0.28."""
-    for fit in ("spline", "polynomial"):
-        assert SUMMARY[fit].overall < 0.28
+def test_spline_is_the_closer_fit_in_the_figure() -> None:
+    """The polynomial's error is about twice the spline's overall, more at the edges."""
+    spline, polynomial = SUMMARY["spline"], SUMMARY["polynomial"]
+
+    assert spline.overall < 0.6 * polynomial.overall
+    assert spline.edges < polynomial.edges / 2
+
+
+def test_spline_follows_the_signal_not_the_noise() -> None:
+    """The spline sits inside the noise level; the polynomial's wobble does not."""
+    assert SUMMARY["spline"].overall < NOISE_SD
+    assert SUMMARY["spline"].edges < NOISE_SD / 2
+    assert SUMMARY["polynomial"].overall > NOISE_SD
+
+
+def test_spline_is_the_closer_fit_for_almost_every_seed() -> None:
+    """Over 200 seeds the spline beats the polynomial overall and at the edges."""
+    wins = 0
+    for seed in range(200):
+        errors = {row.fit: row for row in fit_errors(fit_curves(seed=seed))}
+        spline, polynomial = errors["spline"], errors["polynomial"]
+        wins += spline.overall < polynomial.overall and spline.edges < polynomial.edges
+
+    assert wins >= 190
 
 
 def test_true_curve() -> None:
-    """sin(x) + 0.15 x at a few points."""
-    assert true_curve([0.0, np.pi / 2, 10.0]) == pytest.approx(
-        [0.0, 1 + 0.15 * np.pi / 2, np.sin(10) + 1.5]
+    """A peak of 2.5 at x = 5, half-width 0.5, on a trend of 0.15 x."""
+    assert true_curve([0.0, 4.5, 5.0, 10.0]) == pytest.approx(
+        [2.5 / 101, 1.25 + 0.675, 2.5 + 0.75, 2.5 / 101 + 1.5]
     )
 
 
