@@ -52,6 +52,10 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- Three figures now show what their articles claim: the splines figure uses a sharp
+  peak on a trend, the sample-ratio-mismatch figure plots the signed bias rather
+  than the absolute error, and the capture-recapture figure applies the
+  (t - 1)/t factor in Chao's three-pass bound.
 - The migration from the website is finished: the 67 articles migrated from its
   `generate_figures.py` link to their figure generators here, the file is gone
   from the website, and their manifest entries record the cleanup as complete.
