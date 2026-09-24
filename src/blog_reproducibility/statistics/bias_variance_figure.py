@@ -80,7 +80,11 @@ def render_regularization_paths_figure(*, output_dir: Path) -> FigureArtifact:
     # identity comes from direct labels on the survivors, not from eight
     # colours (four of which would sit indistinguishably on top of zero).
     figure, axis = plt.subplots()
-    axis.set_xlim(float(penalties[0]), float(penalties[-1]) * 0.45)  # room for the labels
+    axis.set_xscale("log")
+    # Largest penalty on the left, as the axis label says, so the paths read
+    # from everything-zero to near least squares; the extra room past the
+    # smallest penalty on the right holds the labels.
+    axis.set_xlim(float(penalties[0]), float(penalties[-1]) * 0.45)
     for j, row in enumerate(coefficients):
         survives = bool(np.abs(row[-1]) > LABEL_THRESHOLD)
         axis.plot(
@@ -91,21 +95,17 @@ def render_regularization_paths_figure(*, output_dir: Path) -> FigureArtifact:
             lw=2.0 if survives else 1.2,
         )
         if survives:
-            # The final value sits at the left edge: offset leftwards into the margin.
+            # The final value sits at the right end of the path: label it in the margin.
             axis.annotate(
                 f"$x_{{{j + 1}}}$",
                 xy=(float(penalties[-1]), float(row[-1])),
-                xytext=(-10, 0),
+                xytext=(10, 0),
                 textcoords="offset points",
                 fontsize=9.5,
                 color=INK_SECONDARY,
                 va="center",
-                ha="right",
+                ha="left",
             )
-    axis.set_xscale("log")
-    # The limits above already run from large to small, so this flips them back
-    # and the penalty grows to the right, whatever the label says. Kept as published.
-    axis.invert_xaxis()
     axis.axhline(0, color=BASELINE, lw=0.8)
     axis.set_title("Lasso drives coefficients to exactly zero, one by one")
     axis.set_xlabel("regularisation strength $\\alpha$ (log scale, decreasing)")

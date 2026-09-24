@@ -25,6 +25,8 @@ SUMMARY = CensoredLabelsSummary(
     naive_new_customer=0.006,
     true_new_customer=0.446,
     test_rates=ChurnRates(0.49, 0.42, 0.49),
+    snapshot_positive_rate=0.54,
+    tenure_free_mean=0.54,
 )
 
 

@@ -26,12 +26,14 @@ The closed forms (the naive difference, the misspecified regression's limit of
 1.81, the covariates' standardised differences and the share of scores outside
 ``[0.1, 0.9]``) are checked against a large sample and against Stein's identity.
 The article's overlap and balance tables come from later draws and are checked
-against them at their noise level. Three remarks in its prose do not hold as
-written: the naive bias is 83 percent of the effect, not 84 (1.67 / 2, rounded
-up); matching's spread under poor overlap is 3.1 times its spread with both
-models correct, not quadrupled; and the misspecified regression's 95 percent
-interval excludes the truth in only 30 percent of the figure's studies (121 of
-400), not as a rule, since its bias of 0.19 is 1.6 standard errors.
+against them at their noise level. The article's naive bias of 84 percent of the
+effect holds: the population value is 1.675 / 2 = 83.75 percent, of which the
+figure's run (83.4) and the article's table (1.67 / 2) are samples. Two remarks
+in its prose did not hold as first written and have been corrected there:
+matching's spread under poor overlap is 3.1 times its spread with both models
+correct, not quadrupled; and the misspecified regression's 95 percent interval
+excludes the truth in only 30 percent of the figure's studies (121 of 400), not
+as a rule, since its bias of 0.19 is 1.6 standard errors.
 """
 
 from math import sqrt
