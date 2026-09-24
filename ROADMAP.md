@@ -143,11 +143,11 @@ and `code/michelson_morley.py` both hold the same box plot of ten numbers marked
   - [x] Mathematics and time series.
   - [x] Data science.
   - [x] Machine learning.
-  - [ ] Statistics.
-    - [x] Experiment design and analysis (11).
-    - [x] Inference and evidence (9).
-    - [x] Causal inference and observational data (10).
-    - [ ] Operational data and measurement (12).
+  - [x] Statistics.
+  - [ ] Confirm that `acf_pacf`, `type_i_ii`, and `linear_vs_logistic`, which no
+        article embeds, can be deleted rather than migrated.
+  - [ ] Remove `generate_figures.py` from the website repository and mark the
+        migrated articles' `website_cleanup` complete.
 
 ## Phase 7 — Hardening
 

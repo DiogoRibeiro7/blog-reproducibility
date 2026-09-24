@@ -1804,6 +1804,258 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  acceptance-sampling-what-a-clean-sample-proves:
+    path: _posts/statistics/2026-02-12-acceptance_sampling_what_a_clean_sample_proves.md
+    permalink: /statistics/acceptance_sampling_what_a_clean_sample_proves/
+    modules:
+      - blog_reproducibility.statistics.acceptance_sampling
+      - blog_reproducibility.statistics.acceptance_sampling_figure
+    figure_scripts:
+      - scripts/figures/statistics/acceptance_sampling.py
+    generated_figures:
+      - build/figures/statistics/acceptance_sampling_oc.png
+    tests:
+      - tests/statistics/test_acceptance_sampling.py
+      - tests/statistics/test_acceptance_sampling_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  extreme-value-theory-operational-risk:
+    path: _posts/statistics/2025-11-03-extreme_value_theory_operational_risk.md
+    permalink: /statistics/extreme_value_theory_operational_risk/
+    modules:
+      - blog_reproducibility.statistics.extreme_values
+      - blog_reproducibility.statistics.extreme_values_figure
+    figure_scripts:
+      - scripts/figures/statistics/extreme_values.py
+    generated_figures:
+      - build/figures/statistics/extreme_value_tail_plot.png
+    tests:
+      - tests/statistics/test_extreme_values.py
+      - tests/statistics/test_extreme_values_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  run-length-how-long-a-monitor-takes:
+    path: _posts/statistics/2025-02-06-run_length_how_long_a_monitor_takes.md
+    permalink: /statistics/run_length_how_long_a_monitor_takes/
+    modules:
+      - blog_reproducibility.statistics.run_length
+      - blog_reproducibility.statistics.run_length_figure
+    figure_scripts:
+      - scripts/figures/statistics/run_length.py
+    generated_figures:
+      - build/figures/statistics/monitor_detection_delay.png
+    tests:
+      - tests/statistics/test_run_length.py
+      - tests/statistics/test_run_length_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  recurrent-events-maintenance-mean-cumulative-function:
+    path: _posts/statistics/2025-12-08-recurrent_events_maintenance_mean_cumulative_function.md
+    permalink: /statistics/recurrent_events_maintenance_mean_cumulative_function/
+    modules:
+      - blog_reproducibility.statistics.recurrent_events
+      - blog_reproducibility.statistics.recurrent_events_figure
+    figure_scripts:
+      - scripts/figures/statistics/recurrent_events.py
+    generated_figures:
+      - build/figures/statistics/recurrent_events_mcf.png
+    tests:
+      - tests/statistics/test_recurrent_events.py
+      - tests/statistics/test_recurrent_events_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  benfords-law-screening-not-proof:
+    path: _posts/statistics/2025-02-11-benfords_law_screening_not_proof.md
+    permalink: /statistics/benfords_law_screening_not_proof/
+    modules:
+      - blog_reproducibility.statistics.benford
+      - blog_reproducibility.statistics.benford_figure
+    figure_scripts:
+      - scripts/figures/statistics/benford.py
+    generated_figures:
+      - build/figures/statistics/benford_spread.png
+    tests:
+      - tests/statistics/test_benford.py
+      - tests/statistics/test_benford_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  digit-heaping-rounded-entries-thresholds:
+    path: _posts/statistics/2026-06-19-digit_heaping_rounded_entries_thresholds.md
+    permalink: /statistics/digit_heaping_rounded_entries_thresholds/
+    modules:
+      - blog_reproducibility.statistics.digit_heaping
+      - blog_reproducibility.statistics.digit_heaping_figure
+    figure_scripts:
+      - scripts/figures/statistics/digit_heaping.py
+    generated_figures:
+      - build/figures/statistics/heaping_threshold_error.png
+    tests:
+      - tests/statistics/test_digit_heaping.py
+      - tests/statistics/test_digit_heaping_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  capture-recapture-estimating-what-was-missed:
+    path: _posts/statistics/2025-05-13-capture_recapture_estimating_what_was_missed.md
+    permalink: /statistics/capture_recapture_estimating_what_was_missed/
+    modules:
+      - blog_reproducibility.statistics.capture_recapture
+      - blog_reproducibility.statistics.capture_recapture_figure
+    figure_scripts:
+      - scripts/figures/statistics/capture_recapture.py
+    generated_figures:
+      - build/figures/statistics/capture_recapture_heterogeneity.png
+    tests:
+      - tests/statistics/test_capture_recapture.py
+      - tests/statistics/test_capture_recapture_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  post-stratification-weighting-a-survey:
+    path: _posts/statistics/2026-05-21-post_stratification_weighting_a_survey.md
+    permalink: /statistics/post_stratification_weighting_a_survey/
+    modules:
+      - blog_reproducibility.statistics.post_stratification
+      - blog_reproducibility.statistics.post_stratification_figure
+    figure_scripts:
+      - scripts/figures/statistics/post_stratification.py
+    generated_figures:
+      - build/figures/statistics/weighting_effective_sample.png
+    tests:
+      - tests/statistics/test_post_stratification.py
+      - tests/statistics/test_post_stratification_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  quantile-regression-predicting-the-range:
+    path: _posts/statistics/2026-04-23-quantile_regression_predicting_the_range.md
+    permalink: /statistics/quantile_regression_predicting_the_range/
+    modules:
+      - blog_reproducibility.statistics.quantile_regression
+      - blog_reproducibility.statistics.quantile_regression_figure
+    figure_scripts:
+      - scripts/figures/statistics/quantile_regression.py
+    generated_figures:
+      - build/figures/statistics/quantile_regression_bands.png
+    tests:
+      - tests/statistics/test_quantile_regression.py
+      - tests/statistics/test_quantile_regression_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  intermittent-demand-forecasting-mostly-zeros:
+    path: _posts/statistics/2026-01-05-intermittent_demand_forecasting_mostly_zeros.md
+    permalink: /statistics/intermittent_demand_forecasting_mostly_zeros/
+    modules:
+      - blog_reproducibility.statistics.intermittent_demand
+      - blog_reproducibility.statistics.intermittent_demand_figure
+    figure_scripts:
+      - scripts/figures/statistics/intermittent_demand.py
+    generated_figures:
+      - build/figures/statistics/intermittent_forecast_bias.png
+    tests:
+      - tests/statistics/test_intermittent_demand.py
+      - tests/statistics/test_intermittent_demand_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  week-over-week-comparisons:
+    path: _posts/statistics/2026-09-11-week_over_week_comparisons.md
+    permalink: /statistics/week_over_week_comparisons/
+    modules:
+      - blog_reproducibility.statistics.week_over_week
+      - blog_reproducibility.statistics.week_over_week_figure
+    figure_scripts:
+      - scripts/figures/statistics/week_over_week.py
+    generated_figures:
+      - build/figures/statistics/wow_noise_distribution.png
+    tests:
+      - tests/statistics/test_week_over_week.py
+      - tests/statistics/test_week_over_week_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  one-factor-at-a-time-vs-factorial-designs:
+    path: _posts/statistics/2026-01-21-one_factor_at_a_time_vs_factorial_designs.md
+    permalink: /statistics/one_factor_at_a_time_vs_factorial_designs/
+    modules:
+      - blog_reproducibility.statistics.factorial_designs
+      - blog_reproducibility.statistics.factorial_designs_figure
+    figure_scripts:
+      - scripts/figures/statistics/factorial_designs.py
+    generated_figures:
+      - build/figures/statistics/factorial_vs_ofat_optimum.png
+    tests:
+      - tests/statistics/test_factorial_designs.py
+      - tests/statistics/test_factorial_designs_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:

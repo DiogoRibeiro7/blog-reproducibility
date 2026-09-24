@@ -45,6 +45,11 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
   propensity scores, negative controls, Berkson's paradox, regression to the
   mean, the ecological fallacy, left truncation, and measurement error.
 
+- 12 operational-data and measurement figures under statistics:
+  acceptance sampling, extreme values, run length, recurrent events, Benford's law,
+  digit heaping, capture-recapture, post-stratification weighting, quantile
+  regression, intermittent demand, week-over-week noise, and factorial designs.
+
 ### Changed
 
 - Pull requests run the test matrix on Linux only; Windows and macOS run on merges
