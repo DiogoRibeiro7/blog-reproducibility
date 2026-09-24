@@ -154,9 +154,9 @@ def test_the_figure_claims() -> None:
     # Croston is above the truth by 3.5 percent, and its interval excludes it.
     assert round(CROSTON.average_forecast / truth - 1, 3) == 0.035
     assert CROSTON.average_forecast - 1.96 * CROSTON.standard_error > truth
-    # "Only the zero forecast is far off the rate": every other bar within 4 percent.
+    # "Zero misses the rate": every other bar is within 4 percent of it.
     assert max(abs(row.average_forecast / truth - 1) for row in SUMMARY.rows[1:]) < 0.04
-    # "It wins on absolute error": the lowest absolute error, and the highest squared error.
+    # "The least absolute error", though the highest squared error.
     maes = [row.mean_absolute_error for row in SUMMARY.rows]
     rmses = [row.root_mean_squared_error for row in SUMMARY.rows]
     assert min(maes) == ZERO.mean_absolute_error

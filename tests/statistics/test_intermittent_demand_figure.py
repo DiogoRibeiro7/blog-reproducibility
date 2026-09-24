@@ -49,8 +49,9 @@ def test_the_title_names_the_one_method_far_off_the_rate(
 
     The published title said only one method was wrong about the rate, but
     undebiased Croston is 3.5 percent above it too (2.8 standard errors); the
-    forecast of zero is the one far off. The bars are unchanged, and the longer
-    title still ends inside the axes, so the saved image is no wider.
+    forecast of zero is the one far off. The bars are unchanged, and the title
+    ends inside the axes in whichever font renders it: CI's Linux runners fall
+    back to DejaVu Sans, which is wider than the house style's Segoe UI.
     """
     saved: list[Figure] = []
 
@@ -63,7 +64,7 @@ def test_the_title_names_the_one_method_far_off_the_rate(
 
     (axis,) = saved[0].axes
     title = axis.get_title(loc="left")
-    assert title == "Only the zero forecast is far off the rate, and it wins on absolute error"
+    assert title == "Zero misses the rate but has the least absolute error"
     assert "only one method" not in title.lower()
     bars = [patch for patch in axis.patches if isinstance(patch, Rectangle)]
     assert [bar.get_width() for bar in bars] == list(AVERAGES)
