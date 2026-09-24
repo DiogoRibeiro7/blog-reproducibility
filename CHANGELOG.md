@@ -52,6 +52,9 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- The migration from the website is finished: the 67 articles migrated from its
+  `generate_figures.py` link to their figure generators here, the file is gone
+  from the website, and their manifest entries record the cleanup as complete.
 - Pull requests run the test matrix on Linux only; Windows and macOS run on merges
   to `main`, version tags, and manual runs, so releases are still checked on all
   three platforms.
