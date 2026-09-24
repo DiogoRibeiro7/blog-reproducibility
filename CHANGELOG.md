@@ -52,6 +52,10 @@ here. The migration roadmap is maintained separately in [ROADMAP.md](ROADMAP.md)
 
 ### Changed
 
+- The censored-labels model builds customer-month rows only from fully observed
+  months; counting the month the extract falls in as survived biased every
+  monthly hazard down by about 1.2 points. The lasso figure's penalty axis now
+  decreases from left to right, as its label says.
 - Three figures now show what their articles claim: the splines figure uses a sharp
   peak on a trend, the sample-ratio-mismatch figure plots the signed bias rather
   than the absolute error, and the capture-recapture figure applies the
