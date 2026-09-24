@@ -1594,6 +1594,216 @@ articles:
       figure_renderer: migrated
       website_cleanup: pending
 
+  non-compliance-experiments-intention-to-treat-complier-effect:
+    path: _posts/statistics/2026-02-25-non_compliance_experiments_intention_to_treat_complier_effect.md
+    permalink: /statistics/non_compliance_experiments_intention_to_treat_complier_effect/
+    modules:
+      - blog_reproducibility.statistics.noncompliance
+      - blog_reproducibility.statistics.noncompliance_figure
+    figure_scripts:
+      - scripts/figures/statistics/noncompliance.py
+    generated_figures:
+      - build/figures/statistics/noncompliance_estimators.png
+    tests:
+      - tests/statistics/test_noncompliance.py
+      - tests/statistics/test_noncompliance_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  regression-discontinuity-design-cutoff-effects:
+    path: _posts/statistics/2026-01-08-regression_discontinuity_design_cutoff_effects.md
+    permalink: /statistics/regression_discontinuity_design_cutoff_effects/
+    modules:
+      - blog_reproducibility.statistics.regression_discontinuity
+      - blog_reproducibility.statistics.regression_discontinuity_figure
+    figure_scripts:
+      - scripts/figures/statistics/regression_discontinuity.py
+    generated_figures:
+      - build/figures/statistics/rdd_bandwidth_tradeoff.png
+    tests:
+      - tests/statistics/test_regression_discontinuity.py
+      - tests/statistics/test_regression_discontinuity_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  staggered-difference-in-differences-two-way-fixed-effects:
+    path: _posts/statistics/2026-09-07-staggered_difference_in_differences_two_way_fixed_effects.md
+    permalink: /statistics/staggered_difference_in_differences_two_way_fixed_effects/
+    modules:
+      - blog_reproducibility.statistics.staggered_did
+      - blog_reproducibility.statistics.staggered_did_figure
+    figure_scripts:
+      - scripts/figures/statistics/staggered_did.py
+    generated_figures:
+      - build/figures/statistics/staggered_did_event_study.png
+    tests:
+      - tests/statistics/test_staggered_did.py
+      - tests/statistics/test_staggered_did_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  propensity-scores-matching-weighting-doubly-robust:
+    path: _posts/statistics/2026-09-05-propensity_scores_matching_weighting_doubly_robust.md
+    permalink: /statistics/propensity_scores_matching_weighting_doubly_robust/
+    modules:
+      - blog_reproducibility.statistics.propensity_scores
+      - blog_reproducibility.statistics.propensity_scores_figure
+    figure_scripts:
+      - scripts/figures/statistics/propensity_scores.py
+    generated_figures:
+      - build/figures/statistics/propensity_estimator_bias.png
+    tests:
+      - tests/statistics/test_propensity_scores.py
+      - tests/statistics/test_propensity_scores_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  negative-controls-finding-bias-you-cannot-see:
+    path: _posts/statistics/2026-03-19-negative_controls_finding_bias_you_cannot_see.md
+    permalink: /statistics/negative_controls_finding_bias_you_cannot_see/
+    modules:
+      - blog_reproducibility.statistics.negative_controls
+      - blog_reproducibility.statistics.negative_controls_figure
+    figure_scripts:
+      - scripts/figures/statistics/negative_controls.py
+    generated_figures:
+      - build/figures/statistics/negative_control_tracking.png
+    tests:
+      - tests/statistics/test_negative_controls.py
+      - tests/statistics/test_negative_controls_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  berksons-paradox-collider-bias-operational-data:
+    path: _posts/statistics/2026-09-10-berksons_paradox_collider_bias_operational_data.md
+    permalink: /statistics/berksons_paradox_collider_bias_operational_data/
+    modules:
+      - blog_reproducibility.statistics.berkson_selection
+      - blog_reproducibility.statistics.berkson_selection_figure
+    figure_scripts:
+      - scripts/figures/statistics/berkson_selection.py
+    generated_figures:
+      - build/figures/statistics/berkson_selection_correlation.png
+    tests:
+      - tests/statistics/test_berkson_selection.py
+      - tests/statistics/test_berkson_selection_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  regression-to-the-mean-operational-analytics:
+    path: _posts/statistics/2025-12-28-regression_to_the_mean_operational_analytics.md
+    permalink: /statistics/regression_to_the_mean_operational_analytics/
+    modules:
+      - blog_reproducibility.statistics.regression_to_the_mean
+      - blog_reproducibility.statistics.regression_to_the_mean_figure
+    figure_scripts:
+      - scripts/figures/statistics/regression_to_the_mean.py
+    generated_figures:
+      - build/figures/statistics/regression_to_the_mean_scatter.png
+    tests:
+      - tests/statistics/test_regression_to_the_mean.py
+      - tests/statistics/test_regression_to_the_mean_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  group-averages-ecological-fallacy:
+    path: _posts/statistics/2025-07-09-group_averages_ecological_fallacy.md
+    permalink: /statistics/group_averages_ecological_fallacy/
+    modules:
+      - blog_reproducibility.statistics.group_aggregation
+      - blog_reproducibility.statistics.group_aggregation_figure
+    figure_scripts:
+      - scripts/figures/statistics/group_aggregation.py
+    generated_figures:
+      - build/figures/statistics/aggregation_group_size.png
+    tests:
+      - tests/statistics/test_group_aggregation.py
+      - tests/statistics/test_group_aggregation_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  survivorship-bias-left-truncation-operational-data:
+    path: _posts/statistics/2026-06-11-survivorship_bias_left_truncation_operational_data.md
+    permalink: /statistics/survivorship_bias_left_truncation_operational_data/
+    modules:
+      - blog_reproducibility.statistics.left_truncation
+      - blog_reproducibility.statistics.left_truncation_figure
+    figure_scripts:
+      - scripts/figures/statistics/left_truncation.py
+    generated_figures:
+      - build/figures/statistics/survivorship_left_truncation.png
+    tests:
+      - tests/statistics/test_left_truncation.py
+      - tests/statistics/test_left_truncation_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
+  measurement-error-predictors-regression-dilution:
+    path: _posts/statistics/2026-06-04-measurement_error_predictors_regression_dilution.md
+    permalink: /statistics/measurement_error_predictors_regression_dilution/
+    modules:
+      - blog_reproducibility.statistics.measurement_error
+      - blog_reproducibility.statistics.measurement_error_figure
+    figure_scripts:
+      - scripts/figures/statistics/measurement_error.py
+    generated_figures:
+      - build/figures/statistics/measurement_error_attenuation_simex.png
+    tests:
+      - tests/statistics/test_measurement_error.py
+      - tests/statistics/test_measurement_error_figure.py
+    original_website_sources:
+      - assets/viz/generate_figures.py
+    migration:
+      numerical_model: migrated
+      reproducibility_tests: migrated
+      figure_renderer: migrated
+      website_cleanup: pending
+
 # Unpublished drafts. The prose is still in _drafts/ on the website, so there is
 # no permalink yet, but the models are real and their checks are worth keeping.
 drafts:

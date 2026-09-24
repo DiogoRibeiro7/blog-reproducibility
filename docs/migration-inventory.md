@@ -247,7 +247,7 @@ the images it writes.
 | Mathematics, time series | 6 | **migrated** to `mathematics/` and `time_series/optimal_partition*.py` |
 | Data science | 6 | **migrated** to `data_science/` |
 | Machine learning | 16 | **migrated** to `machine_learning/` |
-| Statistics | 42 | 20 **migrated** (experiment design, inference and evidence); 22 pending |
+| Statistics | 42 | 30 **migrated** (experiment design, inference, causal and observational); 12 pending |
 
 Migrated figures keep their website slugs, so a regenerated PNG replaces the
 published one under the same name. Each takes its own seed, 20260816, the value
