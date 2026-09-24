@@ -86,7 +86,7 @@ def _website_run_lengths(
             acc = lam * v + (1 - lam) * acc
             z[i] = acc
         sd = np.sqrt(lam / (2 - lam) * (1 - (1 - lam) ** (2 * (np.arange(len(x)) + 1))))
-        return np.abs(z) > limit * sd
+        return np.asarray(np.abs(z) > limit * sd, dtype=bool)
 
     def cusum(x: NDArray[np.float64], k: float, h: float) -> NDArray[np.bool_]:
         hi = lo = 0.0
