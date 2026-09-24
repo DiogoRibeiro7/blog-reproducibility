@@ -54,7 +54,9 @@ jobs:
   tests:
     name: Tests / ${{ matrix.os }} / Python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
+    # Every article is reproduced by its own test, so the suite grows with the
+    # collection; Windows took 11 minutes with 98 articles.
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:
